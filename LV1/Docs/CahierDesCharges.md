@@ -1,10 +1,7 @@
 # sae2022-bank-4b2
-sae2022-bank-4b2 created by GitHub Classroom
 
 ============================================================================================
-Cahier des charges - Système bancaire
-Version : 1.0
-Date : 10 mai 2023
+Cahier des charges DailyBank - Version : 1.0 - Date : 10 mai 2023 - Rédigé par Ahmad KHALIL
 
 Sommaire :
 - Objectif
