@@ -243,7 +243,7 @@ Dans sa colonne il doit remplir la ligne correspondant à chaque partie qu'il a 
 [cols="1,2,2,5",options=header]
 |===
 | Date    | Nom         |  Lien                             | Retour
-| Sem.19  | CDC V1      |  [Voir le cahier des charges](LV1/Docs/CahierDesCharges.md)  |           
+| Sem.19  | CDC V1      |  link:LV0/Docs/CahierDesCharges.md[Cahier des charges V1]|           
 |         |Gantt V1 Prévu|                                  |
 | 16/05  | CdC V2final|                                     |  
 |         | Gantt V1 Réalisé |                               |     
