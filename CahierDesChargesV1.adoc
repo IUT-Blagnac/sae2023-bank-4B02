@@ -61,11 +61,7 @@ Dans la version existante (V0), un chef d’agence peut :
 
 - Rendre inactif un client
 
-.Diagramme des Cas d'Utilisation initial
 image::LV0/Docs/UseCaseV0.png[]
-
-.Diagramme de classe de la version initiale
-image::LV0/Docs/dc-initialv0.svg[]
 
 === Versions à développer
 
@@ -87,10 +83,6 @@ ifdef::correction[]
 ====
 .Diagramme des Cas d'Utilisation V1
 image::{models}/uc-initialv1.svg[]
-
-.Diagramme de classe de la V1
-image::{models}/dc-initialv1.svg[]
-
 ====
 endif::[]
 
@@ -140,9 +132,4 @@ Eventuellement, pour aller plus loin :
 === Contraintes organisationnelles : 
 
 * Travail en équipe de 3 à 4 étudiants
-* Dépot sous GITHUB de vos codes et de vos documentations
-* 6 séances d'autonomie en gestion de projet et 10 séances d'autonomie en développement 
-* 1 séance guidée en gestion de projet pour préparer l'oral et faire le suivi du projet
-* 6 tds d'accompagnement en développement
-* Des intervenants en gestion de projet (EP et PGA) et des intervenants en developpement (AP, JMB, MDM, MFC, SA)
-* Tous les étudiants rédigent au moins un peu, tous les étudiants codent au moins une fonctionnalité :  Sur les docs les initiales de ceux qui ont rédigés doivent apparaitre dans le sommaire à la fin de chaque titre. Un étudiant qui code une fonctionnalité rédige  doc technique, cahier de tests et doc utilisateur correspondants.
+* Dépot sous GITHUB des codes et des documentations
