@@ -1,4 +1,4 @@
-# sae2023-bank-4bdeux
+# sae2022-bank-4b2
 Groupe 4B2: KHALIL AHMAD, Marwan ALMASRI, Rayan SELLOU
 
 [Lien vers le cahier des charges V1](LV1/Docs/CahierDesCharges.md)
