@@ -1,0 +1,48 @@
+= Cahier des charges DailyBank - Version : 1.0 - Date : 10 mai 2023 - Rédigé par Ahmad KHALIL
+
+:toc:
+
+== Objectif
+
+Le système de gestion bancaire doit permettre aux guichetiers et aux chefs d’agence de gérer les comptes bancaires des clients de manière efficace et fiable. Les fonctionnalités principales incluent la gestion de comptes, les transactions, la création de comptes, la clôture de comptes et la gestion des employés.
+
+== Fonctionnalités
+
+Guichetier : il doit être en mesure de :
+
+Créditer/débiter un compte bancaire : Cette fonctionnalité permet de créditer ou débiter un compte bancaire existant.
+Créer un compte bancaire : Cette fonctionnalité permet au guichetier de créer un nouveau compte bancaire.
+Effectuer un virement de compte à compte : Cette fonctionnalité permet de transférer de l'argent d'un compte bancaire à un autre.
+Clôturer un compte bancaire : Cette fonctionnalité permet de clôturer un compte bancaire.
+Chef d’Agence : il doit être en mesure de :
+
+Création d'un nouvel employé : le chef d'agence doit pouvoir saisir les informations d'un nouvel employé, telles que son nom, son prénom, son adresse e-mail, son numéro de téléphone, son poste occupé, son salaire, etc. Le système doit enregistrer ces informations dans la base de données et générer un identifiant unique pour l'employé.
+Consultation des données d'un employé existant : le chef d'agence doit être en mesure de consulter les informations d'un employé existant, y compris ses données personnelles, ses informations de contact, son historique de travail, etc. Cette fonctionnalité permet au chef d'agence de vérifier le statut et le profil de l'employé en question.
+Modification des données d'un employé : le chef d'agence doit pouvoir modifier les informations d'un employé existant, par exemple pour mettre à jour son adresse e-mail ou son numéro de téléphone. Cette fonctionnalité permet au chef d'agence de maintenir une base de données précise et à jour sur tous les employés travaillant dans l'agence bancaire.
+Suppression d'un employé : le chef d'agence doit pouvoir supprimer les données d'un employé si celui-ci quitte l'agence bancaire. Cette fonctionnalité permet de maintenir une base de données propre et organisée.
+== Exigences techniques
+
+Le système doit être développé en utilisant Java.
+Le système doit utiliser une BD avec une procédure stockée pour les transactions bancaires.
+Le système doit être sécurisé avec un système d'authentification pour l'accès aux fonctionnalités.
+== Interface utilisateur
+
+Le système doit avoir une interface graphique simple pour les utilisateurs.
+Le système doit permettre aux utilisateurs de naviguer facilement entre les différentes fonctionnalités.
+Le système doit fournir des messages d'erreur clairs en cas d'erreurs de saisie.
+== Exigences de qualité
+
+Le système doit être testé avant d'être déployé pour s'assurer qu'il fonctionne correctement.
+Le système doit être facilement maintenable et évolutif.
+Le système doit être documenté pour permettre une utilisation et une maintenance aisée
+
+Contraintes :
+
+Le système doit être développé dans un délai de six mois.
+Le budget total alloué au projet est de 50 000 euros.
+Le système doit être compatible avec les systèmes d'exploitation Windows et Linux.
+
+Équipe de développement :
+
+Chef de projet : Marwan ALMASRI
+Développeurs : Ahmad KHALIL, Rayan SELLOU, Marwan ALMASRI
