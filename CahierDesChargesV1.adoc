@@ -13,7 +13,6 @@
 :icongit: icon:git[]
 :git: http://git-scm.com/[{icongit}]
 :plantuml: https://plantuml.com/fr/[plantUML]
-:vscode: https://code.visualstudio.com/[VS Code]
 
 ifndef::env-github[:icons: font]
 // Specific to GitHub
@@ -31,105 +30,35 @@ endif::[]
 toc::[]
 
 == Présentation du sujet
+=== Contexte général
+Les banques françaises font face à des exigences croissantes de la part de leurs clients en termes d'instantanéité et de services numériques. Pour répondre à ces demandes, les banques ont intensifié leurs efforts de restructuration et d'investissement dans le digital. Les services bancaires du quotidien font l'objet d'une refonte en profondeur, avec des investissements majeurs dans la modernisation des outils de bureautique des guichetiers et la robotisation des tâches automatisables. Cette évolution nécessite également des changements organisationnels, tels que la mise en place d'une approche transversale et pluridisciplinaire, afin de suivre le client sans interruption et de connaître en permanence sa situation. Dans ce contexte, la banque DailyBank souhaite développer une application JAVA-Oracle de gestion des comptes clients et employés pour remplacer plusieurs outils obsolètes. Le développement de cette application s'inscrit dans le cadre de la restructuration de ses services bancaires et sera déployé dans les 100 agences de son réseau. Pour mener à bien ce projet, l'équipe de développement travaillera à partir d'une application existante « Daily Bank » qu'il faudra adapter aux nouveaux besoins de la banque. L'objectif de cette application est de permettre la gestion des comptes bancaires de dépôt de ses clients ainsi que la gestion de ses employés.
 
-Pour s'adapter aux exigences d'instantanéité de leurs clients, les banques françaises ont accentué leurs efforts de restructuration et leurs investissements dans le digital. Des chantiers longs et coûteux. Par exemple, la Banque Postale a indiqué que sa banque mobile baptisée Ma French Bank sera disponible dans les bureaux de Poste au printemps 2019. Mais les banques ne se contentent pas de créer des offres alternatives : elles rénovent aussi en profondeur leurs services de banque au quotidien. 
-
-[quote, Rémy Weber, Président du directoire de La Banque Postale lors de la présentation des résultats de la banque]
-On ne peut pas proposer une banque digitale qui permet d'ouvrir un compte en quelques minutes et en parallèle offrir des services bancaires bien moins rapides. Il nous faut faire les deux en même temps.
-
-Au sein des réseaux de banque de détail, cela se traduit par des investissements majeurs dans la modernisation des outils de bureautique des guichetiers, et dans la robotisation des tâches automatisables. Un exercice qui s'accompagne de restructurations et, dans certains cas, d'une refonte du réseau. 
-
-Ainsi, le modèle organisationnel de BNP Paribas, basé sur une structure historique hiérarchique, vit actuellement une petite révolution, alors qu'il évolue vers une approche transversale et pluridisciplinaire. "De la phase de la simulation d'un emprunt à la signature de l'acte définitif chez le notaire,  il faut que nous puissions suivre notre client sans interruption et que nous sachions (tout comme lui) en permanence où il en est", décrit Sophie Heller (directeur des opérations). Les équipes seront ainsi réparties en fonction de parcours clients – achat d'un bien, projet d'investissement ou de retraite, succession… Pour chacun de ces "projets de vie", des professionnels de diverses disciplines (marketeurs, développeurs, designers mais aussi des fonctions "juridiques" ou "risque") interagissent pour développer les parcours et les trajectoires de chaque client, captées, traitées, mises à jour et accessibles par tous en temps réel. "Cela nécessite de profonds changements culturels et organisationnels, en plus d'une nouvelle architecture IT", évalue Sophie Heller.
-
+=== Objectifs
+L'objectif de ce projet est de développer une application de gestion des comptes clients et les employés. Cette application sera déployée dans les 100 agences que compte le réseau de la banque DailyBank, dans le cadre de la restructuration de ses services bancaires. L'application doit permettre de gérer des comptes bancaires de dépôt pour des clients préalablement créés et de débiter ou créditer un compte soit par virement, soit par une personne physique se présentant devant un guichet. Le développement de cette application permettra de répondre au problème de l'obsolescence des outils actuels de gestion des comptes clients ainsi que des employés de la banque DailyBank, ainsi qu'à la nécessité de moderniser et de digitaliser les services bancaires pour satisfaire les attentes des clients en termes d'instantanéité et de rapidité. En outre, l'application permettra de simplifier la gestion des comptes clients pour les employés des agences, de réduire les erreurs et les risques de fraude, et d'améliorer la qualité de service offerte aux clients.
 Sources :
-
-- Les échos février 2018 : Banques, des restructurations menées tambour battant
-- JDN Février 2018 : BNP Paribas accélère sa transformation digitale 
 
 == Analyse de l'existant 
 
-=== Version existante (V0)
+Dans la version existante (V0) de l'application de gestion des comptes clients de DailyBank, le guichetier dispose de plusieurs fonctionnalités. Il peut modifier les informations d'un client telles que son adresse ou son numéro de téléphone. Il a également la possibilité de créer un nouveau client en entrant ses informations personnelles dans l'application. Il peut consulter les informations d'un compte client, notamment le solde et l'historique des transactions. Enfin, il peut effectuer un débit sur un compte client, c'est-à-dire retirer de l'argent.
 
-Dans la version existante (V0), un guichetier peut :
-
-- Modifier informations client (adresse, téléphone, …)
-- Créer un nouveau client
-- Consulter un compte
-- Débiter un compte (BD)
-
-Dans la version existante (V0), un chef d’agence peut :
-
-- Rendre inactif un client
+Quant au chef d'agence, il a la possibilité de rendre un client inactif dans l'application, ce qui signifie que le compte ne pourra plus être utilisé pour effectuer des transactions. Ces fonctionnalités sont limitées et ne permettent pas une gestion complète et optimisée des comptes clients de la banque. Il est donc nécessaire de développer une nouvelle version de l'application pour répondre aux nouveaux besoins de DailyBank dans le cadre de la restructuration de ses services bancaires. Voici le diagramme de cas d'utilisation qui présente les fonctionnalités citées qui sont présentes dans la version existante :
 
 image::LV0/Docs/UseCaseV0.png[]
 
-=== Versions à développer
-
-Voici l’ordre de développement des UCfootnote:[Cas d'utilisation] à respecter dans les différentes versions du logiciel (V1, V2)
-
-Cas d’utilisation à développer dans la *Version 1* :
-
-* Guichetier :
-** Créditer/débiter un compte (java et BD avec procédure stockée)
-** Créer un compte
-** Effectuer un virement de compte à compte
-** Clôturer un compte
-* Chef d’Agence :
-** Gérer (faire le « CRUD ») les employés (guichetier et chef d’agence)
-
-ifdef::correction[]
-[%collapsible]
-.Diagrammes de la V1 image:icons/solution.png[] 
-====
-.Diagramme des Cas d'Utilisation V1
-image::{models}/uc-initialv1.svg[]
-====
-endif::[]
-
-Cas d’utilisation à développer dans la *Version 2* :
-
-* Guichetier :
-** Générer un relevé mensuel d’un compte en PDF
-** Gérer (faire le « CRUDfootnote:[_Create Read Update Delete_] ») les prélèvements automatiques
-* Chef d’Agence :  uniquement les spécifications
-** Effectuer un Débit exceptionnel
-** Simuler un emprunt
-** Simuler une assurance d’emprunt
-
-ifdef::correction[]
-[%collapsible]
-.Diagrammes de la V2 image:icons/solution.png[] 
-====
-.Diagramme des Cas d'Utilisation V2
-image::{models}/uc-initialv2.svg[]
-
-.Diagramme de classe de la V2
-image::{models}/dc-initialv2.svg[]
-
-====
-endif::[]
-
-Eventuellement, pour aller plus loin :
-
-* Chef d’Agence :  
-** Les spécifications finalisées de la version 2
-** Supers options pour les tops … 
-** Développer une ou plusieurs fonctionnalités au choix et selon vos compétences
-* « Batch »: 
-** Générer les relevés mensuels en PDF
-** Exécuter les prélèvements automatiques
-
 == Analyse des besoins
+
+
+
+
 
 == Analyse des contraintes
 
 === Contraintes techniques : 
 - Le système doit avoir une interface graphique simple pour les utilisateurs.
 - Le système doit être développé en utilisant Java.
-- Le système doit utiliser une BD avec une procédure stockée pour les transactions bancaires.
+- Le système doit utiliser une Base de donnée Oracle pour stocker les transactions bancaires.
 - Le système doit être sécurisé avec un système d'authentification pour l'accès aux fonctionnalités.
 
 === Contraintes organisationnelles : 
 
 * Travail en équipe de 3 à 4 étudiants
-* Dépot sous GITHUB des codes et des documentations
