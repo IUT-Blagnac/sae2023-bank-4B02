@@ -237,7 +237,7 @@ Dans sa colonne il doit remplir la ligne correspondant à chaque partie qu'il a 
 [cols="1,2,2,5",options=header]
 |===
 | Date    | Nom         |  Lien                                                    | Retour  | Must | Should | Could | Will | Assigné | Etat |
-| Sem.19  | CDC V1      |  link:LV1/Docs/CahierDesCharges.adoc[Cahier des charges V1]|         |      |        |       |      | Ahmad        |      |
+| Sem.19  | CDC V1      |  link:LV1/Docs/CahierDesChargesV1.adoc[Cahier des charges V1]|         |      |        |       |      | Ahmad        |      |
 |         |Gantt V1 Prévu|                                  |                      |         |      |        |       |      | Marwan       |      |
 | 16/05  | CdC V2final|                                     |                      |         |      |        |       |      | Ahmad        |      |
 |         | Gantt V1 Réalisé |                               |                     |         |      |        |       |      | Marwan       |      |
