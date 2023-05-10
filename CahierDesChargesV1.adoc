@@ -27,6 +27,10 @@ ifdef::env-github[]
 :icongit: Git
 endif::[]
 
+Équipe de développement :
+- Chef de projet : Marwan ALMASRI
+- Développeurs : Ahmad KHALIL, Rayan SELLOU, Marwan ALMASRI
+
 toc::[]
 
 == Présentation du sujet
@@ -47,18 +51,34 @@ image::LV0/Docs/UseCaseV0.png[]
 
 == Analyse des besoins
 
+=== Version existante (V0)
+  - Le guichetier peut modifier les informations d'un client telles que son adresse ou son numéro de téléphone.
+  - Le guichetier peut créer un nouveau client en entrant ses informations personnelles dans l'application.
+  - Le guichetier peut consulter les informations d'un compte client, notamment le solde et l'historique des transactions.
+  - Le guichetier peut effectuer un débit sur un compte client, c'est-à-dire retirer de l'argent.
+  - Le chef d'agence peut rendre un client inactif dans l'application, ce qui signifie que le compte ne pourra plus être utilisé pour effectuer des transactions.
+
+=== Version à développer (V1)
+- L'application doit permettre aux guichetiers de créditer/débiter un compte client en entrant le montant de la transaction.
+- Les guichetiers doivent être en mesure de créer un nouveau compte client en entrant ses informations personnelles dans l'application.
+- L'application doit permettre aux guichetiers d'effectuer un virement de compte à compte pour un même client.
+- Les guichetiers doivent être en mesure de clôturer un compte client à la demande du client ou en cas de fraude ou de comportement frauduleux.
+- Le chef d'agence doit être en mesure de gérer les employés (guichetiers et chefs d'agence) de manière à pouvoir créer, lire, mettre à jour et supprimer des comptes employés.
+
+Ces exigences doivent être satisfaites dans la version 1 de l'application pour répondre aux besoins de DailyBank en matière de gestion de ses comptes clients et employés.
+Voici le diagramme de cas d’utilisation qui présente les fonctionnalités citées de la V1 qui seront à développer : 
+
 
 
 
 
 == Analyse des contraintes
 
-=== Contraintes techniques : 
+=== Contraintes techniques
 - Le système doit avoir une interface graphique simple pour les utilisateurs.
 - Le système doit être développé en utilisant Java.
 - Le système doit utiliser une Base de donnée Oracle pour stocker les transactions bancaires.
 - Le système doit être sécurisé avec un système d'authentification pour l'accès aux fonctionnalités.
 
-=== Contraintes organisationnelles : 
-
-* Travail en équipe de 3 à 4 étudiants
+=== Contraintes organisationnelles
+- Travail en équipe de 3 à 4 étudiants
