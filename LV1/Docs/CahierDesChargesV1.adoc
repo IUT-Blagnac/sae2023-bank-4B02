@@ -47,7 +47,7 @@ Dans la version existante (V0) de l'application de gestion des comptes clients d
 
 Quant au chef d'agence, il a la possibilité de rendre un client inactif dans l'application, ce qui signifie que le compte ne pourra plus être utilisé pour effectuer des transactions. Ces fonctionnalités sont limitées et ne permettent pas une gestion complète et optimisée des comptes clients de la banque. Il est donc nécessaire de développer une nouvelle version de l'application pour répondre aux nouveaux besoins de DailyBank dans le cadre de la restructuration de ses services bancaires. Voici le diagramme de cas d'utilisation qui présente les fonctionnalités citées qui sont présentes dans la version existante :
 
-image::LV0/Docs/UseCaseV0.png[]
+image::../../LV0/Docs/UseCaseV0.png[]
 
 == Analyse des besoins
 
@@ -67,11 +67,8 @@ image::LV0/Docs/UseCaseV0.png[]
 
 Ces exigences doivent être satisfaites dans la version 1 de l'application pour répondre aux besoins de DailyBank en matière de gestion de ses comptes clients et employés.
 Voici le diagramme de cas d’utilisation qui présente les fonctionnalités citées de la V1 qui seront à développer : 
-image::LV1/Docs/UseCaseV1.png[]
 
-
-
-
+image::UseCaseV1.PNG[]
 
 == Analyse des contraintes
 
