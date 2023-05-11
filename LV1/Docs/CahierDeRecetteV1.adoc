@@ -141,9 +141,23 @@ autorisé est de -100 euros.
  ^|OK
   
  
+|====
 
 |====
 
+|Cas de test 4+|Test-01-03-03
+|Titre 4+|Clôturer un compte
+|Objectif 4+| Vérifier qu'il est possible de clôturer un compte
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_CB.3 ^|Cliquer sur le bouton "Comptes client". ^|La page des comptes du client s'affiche. ^|Un client actif est sélectionné ^|OK
+^|All_G_CB.4 ^|Sélectionner le compte à clôturer et cliquer sur le bouton "Clôturer". ^|La fenêtre de confirmation de clôture s'affiche. ^|Le compte à clôturer est sélectionné ^|OK
+^|All_G_CB.5 ^|Confirmer la clôture du compte. ^|Le compte est clôturé et n'apparaît plus sur la page des comptes du client. ^|La fenêtre de confirmation de clôture est active ^|OK
+^|All_G_CB.6 ^|Annuler la clôture du compte. ^|Le compte n'est pas clôturé et reste sur la page des comptes du client. ^|La fenêtre de confirmation de clôture est active ^|OK
+
+|====
 
 
 
