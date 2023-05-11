@@ -170,3 +170,72 @@ Les chefs d'agence ont accès aux mêmes fonctionnalités que les guichetiers, a
  *clôturés*.|
 
 |====
+
+|====
+
+>|Cas de test 4+|Test-02-02-01
+>|Titre 4+|Création d'un nouvel employé
+>|Objectif 4+| Vérifier qu'il est possible de créer un nouvel employé
+
+5+|
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_C.1 ^|Cliquer sur le bouton "Nouvel employé". ^|La fenêtre de création des employés s'ouvre. ^| aucune ^|OK
+^|All_G_C.2 ^|Compléter les champs spécifiés et valider. ^|Un nouvel employé est créé. ^|aucune ^|OK
+
+
+5+|
+
+5+|Commentaire :
+Compléter et si on ne valide pas, ...
+|====
+
+|====
+
+>|Cas de test 4+|Test-02-02-02
+>|Titre 4+|Consultation des informations d'un employé
+>|Objectif 4+| Vérifier qu'il est possible de consulter les informations d'un employé
+
+5+|
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_C.1 ^|Cliquer sur le bouton "Info Employé". ^|La page des informations de l'employé s’affiche. ^| Un employé actif est sélectionné ^|OK
+
+
+5+|
+
+5+|Commentaire :
+Compléter et si on ne valide pas, ...
+|====
+
+|====
+
+>|Cas de test 4+|Test-01-01-02
+>|Titre 4+|Modification d'un employé
+>|Objectif 4+| Vérifier qu'il est possible de modifier un employé
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_C.3 ^|Cliquer sur le bouton "Modifier employé". ^|La fenêtre de modification des données de l'employé s'ouvre. ^|L'employé est sélectionné ^|OK
+^|All_G_C.4 ^|Modifier les champs souhaités et confirmer. ^|Retour sur les informations de l'employé. L'employé est modifié. ^|La fenêtre modifier employé est active ^|OK
+^|All_G_C.5 ^|Modifier les champs souhaités et annuler. ^|Retour sur les informations de l'employé. L'employé est inchangé. ^|La fenêtre modifier employé est active ^|OK
+
+|====
+
+|====
+
+>|Cas de test 4+|Test-01-01-01
+>|Titre 4+|S
+>|Objectif 4+| Vérifier qu'il est possible de créer un nouveau client
+
+5+|
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_C.1 ^|Cliquer sur le bouton "Nouveau client". ^|La fenêtre de création des clients s'ouvre. ^| aucune ^|OK
+^|All_G_C.2 ^|Compléter les champs spécifiés et valider. ^|Un nouveau client est créé. ^|aucune ^|OK
+
+
+5+|
+
+5+|Commentaire :
+Compléter et si on ne valide pas, ...
+|====
+
