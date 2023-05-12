@@ -19,6 +19,11 @@ import model.data.Client;
 import model.data.CompteCourant;
 import model.data.Operation;
 
+/**
+ * Controller JavaFX de la view OperationsManagement.
+ *
+ */
+
 public class OperationsManagementController {
 
 	// Etat courant de l'application

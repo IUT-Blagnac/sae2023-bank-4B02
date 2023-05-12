@@ -16,9 +16,10 @@ import model.data.AgenceBancaire;
 import model.data.Employe;
 
 /**
- * Controller JavaFX de la view dailybankmainframe.
+ * Controller JavaFX de la view DailyBankMainFrame.
  *
  */
+
 public class DailyBankMainFrameController {
 
 	// Etat courant de l'application
@@ -198,20 +199,6 @@ public class DailyBankMainFrameController {
 	@FXML
 	private void doClientOption() {
 		this.dbmfDialogController.gestionClients();
-	}
-
-	/*
-	 * Action menu Employé. Not Yet Implemented. Pour le moment : une alerte
-	 * d'information
-	 */
-	@FXML
-	private void doEmployeOption() {
-
-		LocalDate current_date;
-
-		current_date = LocalDate.now();
-		AlertUtilities.showAlert(this.primaryStage, "Gestion des Employé", "En cours de développement",
-				"Livraison prévue\nEn juin " + current_date.getYear(), AlertType.INFORMATION);
 	}
 
 	/*

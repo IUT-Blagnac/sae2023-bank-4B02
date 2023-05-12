@@ -19,6 +19,11 @@ import javafx.stage.WindowEvent;
 import model.data.CompteCourant;
 import model.data.Operation;
 
+/**
+ * Controller JavaFX de la view OperationEditorPane.
+ *
+ */
+
 public class OperationEditorPaneController {
 
 	// Etat courant de l'application

@@ -21,6 +21,10 @@ import model.orm.exception.ApplicationException;
 import model.orm.exception.Order;
 import model.orm.exception.Table;
 
+/**
+ * Controller JavaFX de la view ClientEditorPane.
+ *
+ */
 public class ClientEditorPaneController {
 
 	// Etat courant de l'application

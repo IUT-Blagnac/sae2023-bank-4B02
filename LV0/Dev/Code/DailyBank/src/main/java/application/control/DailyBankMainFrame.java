@@ -13,7 +13,6 @@ import model.orm.exception.DatabaseConnexionException;
 
 /**
  * Classe de controleur de Dialogue de la fenêtre principale.
- *
  */
 
 public class DailyBankMainFrame extends Application {

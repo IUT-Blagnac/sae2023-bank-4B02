@@ -15,6 +15,11 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 
+/**
+ * Controller JavaFX de la view ClientsManagement.
+ *
+ */
+
 public class ClientsManagementController {
 
 	// Etat courant de l'application

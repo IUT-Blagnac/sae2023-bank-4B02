@@ -17,6 +17,11 @@ import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
 
+/**
+ * Controller JavaFX de la view CompteEditorPane.
+ *
+ */
+
 public class CompteEditorPaneController {
 
 	// Etat courant de l'application

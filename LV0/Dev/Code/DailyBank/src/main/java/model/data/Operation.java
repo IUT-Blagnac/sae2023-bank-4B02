@@ -4,41 +4,76 @@ import java.sql.Date;
 
 /*
  * Attributs mis en public car cette classe ne fait que "véhiculer" des données.
+ * 
+ * Classe représentant une opération bancaire.
+ * Les attributs sont publics car cette classe ne fait que "véhiculer" des données.
  */
-
 public class Operation {
 
-	public int idOperation;
-	public double montant;
-	public Date dateOp;
-	public Date dateValeur;
-	public int idNumCompte;
-	public String idTypeOp;
+    /** Identifiant de l'opération */
+    public int idOperation;
 
-	public Operation(int idOperation, double montant, Date dateOp, Date dateValeur, int idNumCompte, String idTypeOp) {
-		super();
-		this.idOperation = idOperation;
-		this.montant = montant;
-		this.dateOp = dateOp;
-		this.dateValeur = dateValeur;
-		this.idNumCompte = idNumCompte;
-		this.idTypeOp = idTypeOp;
-	}
+    /** Montant de l'opération */
+    public double montant;
 
-	public Operation(Operation o) {
-		this(o.idOperation, o.montant, o.dateOp, o.dateValeur, o.idNumCompte, o.idTypeOp);
-	}
+    /** Date de l'opération */
+    public Date dateOp;
 
-	public Operation() {
-		this(-1000, 0, null, null, -1000, null);
-	}
+    /** Date de valeur de l'opération */
+    public Date dateValeur;
 
-	@Override
-	public String toString() {
-		return this.dateOp + " : " + String.format("%25s", this.idTypeOp) + " "
-				+ String.format("%10.02f", this.montant);
+    /** Identifiant du numéro de compte associé à l'opération */
+    public int idNumCompte;
 
-//		return "Operation [idOperation=" + idOperation + ", montant=" + montant + ", dateOp=" + dateOp + ", dateValeur="
-//				+ dateValeur + ", idNumCompte=" + idNumCompte + ", idTypeOp=" + idTypeOp + "]";
-	}
+    /** Identifiant du type d'opération */
+    public String idTypeOp;
+
+    /**
+     * Constructeur de la classe Operation.
+     * @param idOperation Identifiant de l'opération.
+     * @param montant Montant de l'opération.
+     * @param dateOp Date de l'opération.
+     * @param dateValeur Date de valeur de l'opération.
+     * @param idNumCompte Identifiant du numéro de compte associé à l'opération.
+     * @param idTypeOp Identifiant du type d'opération.
+     */
+    public Operation(int idOperation, double montant, Date dateOp, Date dateValeur, int idNumCompte, String idTypeOp) {
+        this.idOperation = idOperation;
+        this.montant = montant;
+        this.dateOp = dateOp;
+        this.dateValeur = dateValeur;
+        this.idNumCompte = idNumCompte;
+        this.idTypeOp = idTypeOp;
+    }
+
+    /**
+     * Constructeur de copie de la classe Operation.
+     * @param o Objet Operation à copier.
+     */
+    public Operation(Operation o) {
+        this(o.idOperation, o.montant, o.dateOp, o.dateValeur, o.idNumCompte, o.idTypeOp);
+    }
+
+    /**
+     * Constructeur par défaut de la classe Operation.
+     * L'identifiant de l'opération est initialisé à -1000.
+     * Le montant est initialisé à 0.
+     * Les dates sont initialisées à null.
+     * L'identifiant du numéro de compte est initialisé à -1000.
+     * L'identifiant du type d'opération est initialisé à null.
+     */
+    public Operation() {
+        this(-1000, 0, null, null, -1000, null);
+    }
+
+    /**
+     * Renvoie une chaîne de caractères représentant l'opération.
+     * @return Une chaîne de caractères représentant l'opération.
+     */
+    @Override
+    public String toString() {
+        return this.dateOp + " : " + String.format("%25s", this.idTypeOp) + " "
+                + String.format("%10.02f", this.montant);
+    }
+
 }
