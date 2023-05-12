@@ -15,7 +15,7 @@ Créé pour :
 == I. Introduction
 === 1. Objet :
 [.text-justify]
-Ce document a été produit dans le cadre d'un projet d'élaboration d'une application bancaire pour ...
+Ce document a été produit dans le cadre d'un projet d'élaboration d'une application bancaire pour la banque DailyBank qui souhaite développer une application de gestion des comptes clients.
 
 
 == II. Pre-Requis :
