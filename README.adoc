@@ -32,7 +32,6 @@ toc::[]
 
 == Livrables et liens vers documents
 
-[cols="^,^,^,^,^,^,^,^,^,^",options=header]
 |===
 | Date    | Nom              | Lien                                                        | Retour 
 | Sem.19  | CDC V1           |link:LV1/Docs/CahierDesChargesV1.adoc[Cahier des charges V1] |        
