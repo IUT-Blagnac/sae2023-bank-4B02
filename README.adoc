@@ -34,8 +34,12 @@ toc::[]
 
 |===
 | Date    | Nom              | Lien                                                        | Retour 
-| Sem.19  | CDC V1           |link:LV1/Docs/CahierDesChargesV1.adoc[Cahier des charges V1] |        
-| Sem.19  | Gantt V1 Prévu   | link:LV1/Docs/GANTTV1Prevu.pdf[GANTT V1 Prévu]              |        
+| Sem.19  | CDC V1           |link:LV1/Docs/CahierDesChargesV1.adoc[Cahier des charges V1] |    respectez convention de nommage du repo.
+les éléments de page de garde sont là, les reprendre pour faire une vrai page de garde.
+basculer les éléments du chapitre "analyse de l'existant" dans analyse du besoin (V0).
+affinez l'analyse de l'existant par rapport à ce qui vous a été fourni en entrant (documentation, executable ...)
+detaillez contraintes orga (contrainte sur qui fait quoi, jalons de livraisons, organisation de l'équipe ...)    
+| Sem.19  | Gantt V1 Prévu   | link:LV1/Docs/GANTTV1Prevu.pdf[GANTT V1 Prévu]              |     retrvaillez la mise en page, reprenez les durées (temps/homme), focalisez vous sur la V1 (le reste de la planif viendra après), assurez vous de n'avoir oublier aucune tache pour V1.Vérifier prédécesseur (ex: pour GANTT réalisé, entrant necessaire = GANTT planifié), ajoutez jalons livraison.   
 | 16/05   | CdC V2final      |                                                             |        
 | 16/05   | Gantt V1 Réalisé |                                                             |        
 | 16/05   | Gantt V2 Prevu   |                                                             |       
