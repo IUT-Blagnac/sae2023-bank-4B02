@@ -65,6 +65,41 @@ public class Access_BD_CompteCourant {
 
 		return alResult;
 	}
+	/*RAYAN SELLOU 4B
+	 * Cette méthode permet de créer un nouveau compte courant en le sauvegardant dans la base de données.
+	 *@param compte le compte courant à enregistrer
+	 *@throws RowNotFoundOrTooManyRowsException si aucun enregistrement n'est trouvé ou si plusieurs enregistrements sont trouvés
+	 *@throws DataAccessException si une erreur d'accès aux données se produit
+	 *@throws DatabaseConnexionException si une erreur de connexion à la base de données se produit
+	 * 
+	 */
+	public void createCompteCourant(CompteCourant compte) 
+		throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+			try {
+				CompteCourant cc;
+				
+				Connection con = LogToDatabase.getConnexion();
+
+				String query = "INSERT INTO CompteCourant values (seq_id_compte.NEXTVAL, ?, ?, ?, ?)";
+
+				PreparedStatement pst = con.prepareStatement(query);
+				
+				pst.setInt(1, compte.debitAutorise);
+				pst.setDouble(2, compte.solde);
+				pst.setInt(3, compte.idNumCli);
+				pst.setString(4, compte.estCloture);
+
+				System.err.println(query);
+
+				ResultSet rs = pst.executeQuery();
+				
+				rs.close();
+				pst.close();
+			} catch (SQLException e) {
+				throw new DataAccessException(Table.CompteCourant, Order.SELECT, "Erreur accès", e);
+			}
+		}
+	
 
 	/**
 	 * Recherche d'un CompteCourant à partir de son id (idNumCompte).

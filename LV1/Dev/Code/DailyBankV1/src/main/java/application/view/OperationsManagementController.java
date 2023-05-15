@@ -19,11 +19,6 @@ import model.data.Client;
 import model.data.CompteCourant;
 import model.data.Operation;
 
-/**
- * Controller JavaFX de la view OperationsManagement.
- *
- */
-
 public class OperationsManagementController {
 
 	// Etat courant de l'application
@@ -99,9 +94,21 @@ public class OperationsManagementController {
 			this.validateComponentState();
 		}
 	}
-
+	/*
+	 * Ici on créer la fonction permettant de gérer les crédits
+	 * 
+	 * Cette méthode permet de gérer les crédits d'un compte client.  
+	 * @implNote Cette méthode est appelée lorsque l'utilisateur clique sur le bouton de crédit. 
+	 * @implSpec Cette méthode utilise un objet de type Operation pour enregistrer le crédit dans le compte client. 
+	 * 
+	 */
 	@FXML
 	private void doCredit() {
+		Operation op = this.omDialogController.enregistrerCredit();
+		if (op != null) {
+			this.updateInfoCompteClient();
+			this.validateComponentState();
+		}
 	}
 
 	@FXML
@@ -110,7 +117,7 @@ public class OperationsManagementController {
 
 	private void validateComponentState() {
 		// Non implémenté => désactivé
-		this.btnCredit.setDisable(true);
+		this.btnCredit.setDisable(false);
 		this.btnDebit.setDisable(false);
 	}
 
