@@ -35,7 +35,12 @@ toc::[]
 
 == Présentation de l'application
 === Contexte général
-L'objectif de ce projet est de développer une application de gestion des comptes clients et les employés. Cette application sera déployée dans les 100 agences que compte le réseau de la banque DailyBank, dans le cadre de la restructuration de ses services bancaires. L'application doit permettre de gérer des comptes bancaires de dépôt pour des clients préalablement créés et de débiter ou créditer un compte soit par virement, soit par une personne physique se présentant devant un guichet. Le développement de cette application permettra de répondre au problème de l'obsolescence des outils actuels de gestion des comptes clients ainsi que des employés de la banque DailyBank, ainsi qu'à la nécessité de moderniser et de digitaliser les services bancaires pour satisfaire les attentes des clients en termes d'instantanéité et de rapidité. En outre, l'application permettra de simplifier la gestion des comptes clients pour les employés des agences, de réduire les erreurs et les risques de fraude, et d'améliorer la qualité de service offerte aux clients.
+Dans le cadre de la restructuration de ses services bancaires, la banque DailyBank souhaite développer une application de gestion des comptes clients et employés, qui sera déployée dans ses 100 agences. L'objectif est de moderniser et de digitaliser les services bancaires pour répondre aux attentes des clients en termes d'instantanéité et de rapidité, tout en simplifiant la gestion des comptes pour les employés des agences. L'application, nommée DailyBank, sera développée en Java-Oracle pour remplacer les outils obsolètes actuels.
+
+=== Description du besoin
+La banque BankUniv souhaite développer une nouvelle application Java-Oracle de gestion des comptes clients afin de remplacer plusieurs outils obsolètes. L'objectif est de s'adapter aux avancées technologiques et de répondre aux besoins croissants des clients en matière de services bancaires numériques. En effet, les avancées technologiques ont incité les banques à investir dans la numérisation de leurs services pour améliorer l'accessibilité et l'expérience client.
+
+L'application DailyBank sera utilisée par les guichetiers et les directeurs d'agence pour gérer les comptes bancaires des clients. Elle remplacera l'ancienne application mobile qui était limitée en termes de fonctionnalités. L'objectif principal est de permettre aux utilisateurs de réaliser des opérations courantes telles que les dépôts, les retraits et les virements, tout en offrant une interface conviviale pour une utilisation efficace. Le développement de cette application permettra de résoudre le problème de l'obsolescence des outils actuels de gestion des comptes clients et employés, tout en améliorant la qualité de service offerte aux clients et en réduisant les erreurs et les risques de fraude.
 
 === Cas d'utilisation
 
@@ -55,7 +60,7 @@ Voici le diagramme de cas d’utilisation qui présente les fonctionnalités cit
 
 === Schéma globale
 
-image::../../LV1/Docs/imageDocTech1/schemaBD.png[]
+image::../../LV1/Docs/ressources/schemaBD.png[]
 
 L'application Java DailyBank repose sur une architecture solide utilisant une base de données Oracle et le langage SQL. Au cœur de cette architecture se trouve la base de données Oracle, qui stocke et gère les informations relatives aux utilisateurs, aux comptes bancaires et aux transactions. Les employés interagissent avec l'application, envoyant des requêtes pour effectuer des opérations bancaires. L'application, composée de modules tels que les gestionnaires d'utilisateurs, de comptes et de transactions, traite ces requêtes, communique avec la base de données Oracle et effectue les opérations demandées. Cette architecture garantit une gestion efficace des données bancaires.
 
@@ -67,7 +72,7 @@ Le diagramme de classes UML représente les différentes entités impliquées da
 
 === Packages
 
-image::../../LV1/Docs/imageDocTech1/imagePackages.PNG[]
+image::../../LV1/Docs/ressources/imagePackages.PNG[]
 
 L'architecture de l'application DailyBank comprend plusieurs packages :  
 
