@@ -1,4 +1,4 @@
-= Document Technique Utilisateur DailyBank - Version : 1.0 - Date : 10 mai 2023 Groupe 4B02 - Rédigé par Ahmad KHALIL
+= Document Utilisateur DailyBank - Version : 1.0 - Date : 10 mai 2023 Groupe 4B02 - Rédigé par Ahmad KHALIL
 :icons: font
 :models: models
 :experimental:
@@ -35,147 +35,156 @@ toc::[]
 
 == Présentation de l'application
 === Contexte général
-L'objectif de ce projet est de développer une application de gestion des comptes clients et les employés. Cette application sera déployée dans les 100 agences que compte le réseau de la banque DailyBank, dans le cadre de la restructuration de ses services bancaires. L'application doit permettre de gérer des comptes bancaires de dépôt pour des clients préalablement créés et de débiter ou créditer un compte soit par virement, soit par une personne physique se présentant devant un guichet. Le développement de cette application permettra de répondre au problème de l'obsolescence des outils actuels de gestion des comptes clients ainsi que des employés de la banque DailyBank, ainsi qu'à la nécessité de moderniser et de digitaliser les services bancaires pour satisfaire les attentes des clients en termes d'instantanéité et de rapidité. En outre, l'application permettra de simplifier la gestion des comptes clients pour les employés des agences, de réduire les erreurs et les risques de fraude, et d'améliorer la qualité de service offerte aux clients.
+Dans le cadre de la restructuration de ses services bancaires, la banque DailyBank souhaite développer une application de gestion des comptes clients et employés, qui sera déployée dans ses 100 agences. L'objectif est de moderniser et de digitaliser les services bancaires pour répondre aux attentes des clients en termes d'instantanéité et de rapidité, tout en simplifiant la gestion des comptes pour les employés des agences. L'application, nommée DailyBank, sera développée en Java-Oracle pour remplacer les outils obsolètes actuels.
 
-=== Cas d'utilisation
+Dans un contexte plus général, l'évolution technologique a incité les banques à investir dans la numérisation de leurs services pour améliorer l'accessibilité et l'expérience client. La banque BankUniv, consciente de la concurrence des néobanques et des nouvelles attentes des clients, vise à offrir des services numériques efficaces et innovants. La pandémie de Covid-19 a également renforcé la demande des clients pour des services bancaires à distance.
 
-image::../../LV1/Docs/ressources/UseCaseV1.PNG[]
+=== Rôle de l'application
+L'application DailyBank a pour objectif de fournir une solution complète de gestion des comptes clients et employés pour la banque DailyBank. En tant qu'outil essentiel dans la restructuration des services bancaires, l'application permettra de moderniser et de digitaliser les opérations bancaires, en offrant une plateforme conviviale et efficace pour les guichetiers et les directeurs d'agence. Son rôle principal est de permettre la gestion des comptes bancaires, en offrant des fonctionnalités telles que la création de comptes, les dépôts, les retraits, les virements et la consultation des soldes. L'application vise à simplifier les processus, à améliorer la qualité de service et à offrir une expérience client optimale en répondant aux besoins changeants des clients en matière de services bancaires numériques. En outre, elle contribuera à réduire les erreurs et les risques de fraude, en garantissant la sécurité des opérations effectuées. Ainsi, l'application DailyBank joue un rôle crucial dans la transformation numérique de la banque DailyBank, en fournissant une plateforme robuste et complète pour la gestion des comptes clients et en contribuant à maintenir la compétitivité de la banque sur le marché.
 
-Version développé (V1)
-- L'application doit permettre aux guichetiers de créditer/débiter un compte client en entrant le montant de la transaction.
-- Les guichetiers doivent être en mesure de créer un nouveau compte client en entrant ses informations personnelles dans l'application.
-- L'application doit permettre aux guichetiers d'effectuer un virement de compte à compte pour un même client.
-- Les guichetiers doivent être en mesure de clôturer un compte client à la demande du client ou en cas de fraude ou de comportement frauduleux.
-- Le chef d'agence doit être en mesure de gérer les employés (guichetiers et chefs d'agence) de manière à pouvoir créer, lire, mettre à jour et supprimer des comptes employés.
+== Guide d'installation de l'application
+=== Pré-requis nécéssaires 
+Pour pouvoir lancer l'application, assurez vous d'avoir java installé sur l'ordinateur, vous pouvez vérifier cela en lançant une invite de commande et en tapant la commande : 
 
-Ces exigences doivent être satisfaites dans la version 1 de l'application pour répondre aux besoins de DailyBank en matière de gestion de ses comptes clients et employés.
-Voici le diagramme de cas d’utilisation qui présente les fonctionnalités citées de la V1 qui seront à développer :
+- java -version 
 
-== Architecture du projet 
+Si JAVA n'est pas installé, rendez vous sur https://www.java.com/fr/download/ pour le télécharger.
 
-=== Schéma globale
+=== Lancer l'exécutable
+Deux options : 
 
-image::../../LV1/Docs/imageDocTech1/schemaBD.png[]
+- Lancer une invite de commande et tappez la commande suivante : java -jar DailyBankV1.jar
 
-L'application Java DailyBank repose sur une architecture solide utilisant une base de données Oracle et le langage SQL. Au cœur de cette architecture se trouve la base de données Oracle, qui stocke et gère les informations relatives aux utilisateurs, aux comptes bancaires et aux transactions. Les employés interagissent avec l'application, envoyant des requêtes pour effectuer des opérations bancaires. L'application, composée de modules tels que les gestionnaires d'utilisateurs, de comptes et de transactions, traite ces requêtes, communique avec la base de données Oracle et effectue les opérations demandées. Cette architecture garantit une gestion efficace des données bancaires.
+- Double cliquez sur l'application (fichier nommée DailyBankV1.jar)
 
-=== Diagramme de classe
+== Prise en main de l'application
 
-image::../../LV1/Docs/ressources/dc-initialv1.svg[]
+=== Se connecter
 
-Le diagramme de classes UML représente les différentes entités impliquées dans une banque, notamment les employés, les agences, les clients, les comptes courants, les opérations bancaires et les types d'opérations. Les relations entre ces entités sont également représentées, telles que la relation de possession entre un client et un compte courant, la relation de gestion entre un compte courant et une agence, et la relation de couverture entre un emprunt et une assurance. On retrouve également le chef d'agence qui est représenté comme un employé avec une relation d'association avec une agence bancaire (0..1 car il peut y avoir au maximum 1 chef d'agence par agence). Les clients inactifs sont également pris en compte avec un attribut booléen "estInactif" dans la classe Client. Il y a aussi l'attribut "estCloturé" dans la classe CompteCourant pour déterminer si le compte est clôturé ou non.
+Première chose à faire dans l'application, se connecter soit en tant que guichetier soit en tant que chef d'agence. Pour se connecter : 
 
-=== Packages
+- Appuyer sur le bouton 'connexion' comme ci-dessus puis entrer l'identifiant et le mot de passe.
 
-image::../../LV1/Docs/imageDocTech1/imagePackages.PNG[]
+image::ressources/docUtil1.PNG[]
 
-L'architecture de l'application DailyBank comprend plusieurs packages :  
+=== Créer un compte bancaire
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Clients' comme ci-dessous.
 
-- application : comporte le main permettant de lancer l'application ainsi que la classe qui permet de connaître l'état de l'application
-- application.control : contient les contrôleurs et l'accès aux données, regroupés dans le package "application.control", sont responsables de la gestion des fonctionnalités de l'application. Ils traitent les requêtes des utilisateurs et assurent la liaison avec la base de données Oracle via les classes du package "model.orm".
-- application.tools : fournit des outils d'aide supplémentaires facilitant ainsi le développement et la maintenance de l'application.
-- application.view : contient les vues de l'application, gérée par le package "application.view", est basée sur des fichiers FXML et leurs contrôleurs associés. Chaque page FXML possède sa propre vue, garantissant une interface utilisateur claire et intuitive.
-- model.data : contient des classes Java qui correspondent directement aux tables de la base de données. Chaque table est associée à une classe, permettant une gestion efficace des données et une cohérence entre l'application et la base de données.
-- model.orm : classes par lesquels l'accès à la base de donnée est établie
-- model.orm.exception : rassemble les classes d'exceptions liées à l'accès à la base de données. Ces classes permettent de gérer les erreurs et les situations exceptionnelles lors des opérations avec la base de données, assurant ainsi une gestion appropriée des problèmes d'accès aux données.
- 
-== Fonctionnalités développées
-=== Créer un compte bancaire (SELLOU Rayan)
-Permet à un employé de créer un compte bancaire qui sera enregistré dans la base de données.
+image::ressources/docUtil2.PNG[]
 
-Classes utilisées : 
+- Selectionnez un client puis cliquer sur 'Comptes client'.
 
-- ComptesManagement.java
-- ComptesManagementController.java
-- CompteEditorPane.java
-- CompteEditorPaneController.java
-- Acces_BD_CompteCourant.java
-- ComptesCourant.java
-- ComptesManagement.fxml
+image::ressources/docUtil3.PNG[]
 
-=== Créditer / Débiter un compte (SELLOU Rayan)
-Permet de créditer / débiter un compte bancaire, son solde sera actualisé dans la base de données.
+- Cliquez sur 'Nouveau Compte'.
 
-Classe utilisées : 
+image::ressources/docUtil4.PNG[]
 
-- OperationEditorPane.java
-- OperationManagement.java
-- CategorieOperation.java
-- OperationEditorPaneController.java
-- OperationManagementController.java
-- Operation.java
-- TypeOperation.java
-- Access_BD_Operation.java
-- Acces_BD_TypeOperation.java
-- OperationEditorPane.fxml
-- operationManagement.fxml
+- Entrer le solde et le découvert autorisé du compte puis cliquez sur 'Ajouter'.
 
+image::ressources/docUtil5.PNG[]
 
-=== Cloturer un compte (ALMASRI Marwan)
-Change l'état d'un compte ouvert en un compte fermé, son état sera actualisé dans la base de données.
+=== Créditer / Débiter un compte
 
-Classe utilisées : 
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Clients' comme ci-dessous.
 
-- CompteManagement.java
-- CompteManagementController.java
-- Acces_BD_CompteCourant.java
-- comptesManagement.fxml
+image::ressources/docUtil2.PNG[]
 
-=== Effectuer un virement (KHALIL Ahmad)
-Débite le compte sur lequel l'opération est effectué et crédite le compte destinataire du virement, les soldes des deux comptes devra être actualisé dans la base de données.
+- Selectionnez un client puis cliquer sur 'Comptes client'.
 
-Classe utilisées :
+image::ressources/docUtil3.PNG[]
 
-- OperationEditorPane.java
-- OperationManagement.java
-- OperationManagementController.java
-- OpérationEditorPaneController.java
-- CategorieOperation.java
-- Operation.java
-- Access_BD_Operation.java *
-- operationManagement.fxml
+- Selectionnez un client puis cliquer sur 'Voir opérations'.
 
-=== CRUD Employé - Create (KHALIL Ahmad)
-Permet de créer un nouvel employé. L'employé sera également crée dans la base de données.
+image::ressources/docUtil6.PNG[]
 
-Classe utilisées :
+- Appuyez sur 'Créditer' ou 'Débiter'.
 
-- EmployeEditorPane.java
-- EmployeManagement.java
-- EmployeEditorPaneController.java
-- EmployeManagementController.java
-- Employe.java
-- Access_BD_Employe.java
-- employeeditpane.fxml
-- employemanagement.fxml
+image::ressources/docUtil7.PNG[]
 
-=== CRUD Employé - Read (ALMASRI Marwan)
-Permet de visualiser les informations d'un employés.
+- Selectionnez le type d'opération dans le menu, ensuite entrez un montant puis effectuer le Crédit / Débit.
 
-Classe utilisées :
+image::ressources/docUtil8.PNG[]
 
-- EmployeManagementController.java
+=== Cloturer un compte
 
-=== CRUD Employé - UPDATE (KHALIL Ahmad)
-Permet de mettre à jour les informations d'un employés, les champs mises à jour le seront également dans la base de données.
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Clients' comme ci-dessous.
 
-Classe utilisées :
+image::ressources/docUtil2.PNG[]
 
-- EmployeEditorPane.java
-- EmployeManagement.java
-- EmployeEditorPaneController.java
-- EmployeManagementController.java
-- Employe.java
-- Access_BD_Employe.java
-- employeeditpane.fxml
-- employemanagement.fxml
+- Selectionnez un client puis cliquer sur 'Comptes client'.
 
-=== CRUD Employé - DELETE (KHALIL Ahmad)
-Supprime de manière définitive un employé, une alerte de confirmation est affichée lorsque un employé appuie sur ce bouton, à noter que les chefs d'agence ont le droit de supprimer seulement les guichetiers, pour supprimer un chef d'agence, il faudra les droits d'administrateur (V2). L'employé devra également être supprimé dans la base de données.
+image::ressources/docUtil3.PNG[]
 
-Classe utilisées :
+- Selectionnez un compte puis cliquez sur 'Cloturer le compte', le statut du compte passera de 'Ouvert' à 'Cloturé'.
 
-- EmployeManagement.java
-- EmployeManagementController.java
-- Access_BD_Employe.java
-- employemanagement.fxml
+image::ressources/docUtil9.PNG[]
+
+=== Effectuer un virement
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Clients' comme ci-dessous.
+
+image::ressources/docUtil2.PNG[]
+
+- Selectionnez un client puis cliquer sur 'Comptes client'.
+
+image::ressources/docUtil3.PNG[]
+
+- Selectionnez un client puis cliquer sur 'Voir opérations'.
+
+image::ressources/docUtil6.PNG[]
+
+- Appuyez sur 'Virement'.
+
+image::ressources/docUtil7.PNG[]
+
+- Choisissez le compte destinataire dans le ménu déroulant, entrer le montant puis cliquez sur 'Effectuer virement'.
+
+image::ressources/docUtil10.PNG[]
+
+=== Créer un employé
+
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Employe' comme ci-dessous.
+
+image::ressources/docUtil11.png[]
+
+- Cliquez sur 'Ajouter'.
+
+image::ressources/docUtil12.PNG[]
+
+- Entrez les informations de l'employé puis cliquez sur 'Valider'
+
+image::ressources/docUtil13.PNG[]
+
+=== Voir un employé
+
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Employe' comme ci-dessous.
+
+image::ressources/docUtil11.png[]
+
+- Selectionnez un employé puis cliquez sur 'Informations'.
+
+image::ressources/docUtil14.PNG[]
+
+=== Mettre à jour un employé
+
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Employe' comme ci-dessous.
+
+image::ressources/docUtil11.png[]
+
+- Selectionnez un employé puis cliquez sur 'Mettre à jour'.
+
+image::ressources/docUtil15.PNG[]
+
+- Saisissez les informations à mettre à jour puis cliquez sur 'Modifier'.
+
+image::ressources/docUtil16.PNG[]
+
+=== Supprimer un employé
+
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Employe' comme ci-dessous.
+
+image::ressources/docUtil11.png[]
+
+- Selectionnez un employé puis cliquez sur 'Supprimer'.
+
+image::ressources/docUtil17.PNG[]
