@@ -123,6 +123,8 @@ public class OperationEditorPaneController {
 
 	/*
 	 * SELLOU RAYAN 4B 
+	 * Cette méthode est appelée lors de l'appui sur le bouton "Ajouter" dans la fenêtre d'édition d'une opération.
+	 * Elle effectue différentes vérifications et actions en fonction de la catégorie de l'opération sélectionnée.
 	 * J'ai ici rajouté le cas du crédit*/
 	@FXML
 	private void doAjouter() {
@@ -189,8 +191,7 @@ public class OperationEditorPaneController {
 							this.lblMontant.getStyleClass().add("borderred");
 							this.txtMontant.requestFocus();
 							return;
-						}
-													
+						}											
 						String typeOpCredit = this.cbTypeOpe.getValue();
 						this.operationResultat = new Operation(-1, montantCredit, null, null, this.compteEdite.idNumCli, typeOpCredit);
 						this.primaryStage.close();

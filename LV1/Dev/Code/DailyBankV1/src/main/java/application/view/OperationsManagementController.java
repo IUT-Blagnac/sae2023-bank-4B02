@@ -94,9 +94,8 @@ public class OperationsManagementController {
 			this.validateComponentState();
 		}
 	}
-	/*
+	/*RAYAN SELLOU 4B
 	 * Ici on créer la fonction permettant de gérer les crédits
-	 * 
 	 * Cette méthode permet de gérer les crédits d'un compte client.  
 	 * @implNote Cette méthode est appelée lorsque l'utilisateur clique sur le bouton de crédit. 
 	 * @implSpec Cette méthode utilise un objet de type Operation pour enregistrer le crédit dans le compte client. 

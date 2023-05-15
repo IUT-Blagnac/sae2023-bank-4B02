@@ -88,16 +88,10 @@ public class OperationsManagement {
 	
 	
 	/*
-	 * FAIT PAR RAYAN SELLOU 4B
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
+	 * RAYAN SELLOU 4B
+	 * Cette méthode permet d'enregistrer une opération de crédit en ouvrant une fenêtre de dialogue pour l'édition des informations de l'opération.
+	 * L'opération de crédit est ensuite enregistrée dans la base de données associée au compte courant concerné.
+	 * @return L'opération de crédit enregistrée, ou null si l'utilisateur a annulé l'opération.
 	 */
 	public Operation enregistrerCredit() {
 

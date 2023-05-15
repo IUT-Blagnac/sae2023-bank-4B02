@@ -68,6 +68,12 @@ public class ComptesManagement {
 		om.doOperationsManagementDialog();
 	}
 
+	/*
+	 * Rayan SELLOU 4B
+	 * Cette méthode permet de créer un nouveau compte courant en ouvrant une fenêtre de dialogue pour l'édition des informations du compte.
+	 * Si le compte est créé avec succès, il est enregistré dans la base de données.
+	 * @return Le nouveau compte courant créé, ou null si l'utilisateur a annulé l'opération.
+	 */
 	public CompteCourant creerNouveauCompte() {
 		CompteCourant compte;
 		CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dailyBankState);

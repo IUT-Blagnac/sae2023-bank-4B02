@@ -107,6 +107,13 @@ public class ComptesManagementController {
 	private void doSupprimerCompte() {
 	}
 
+	
+	/*
+	 * RAYAN SELLOU 4B
+	 * Cette méthode est appelée lors de l'appui sur le bouton "Nouveau Compte" dans la fenêtre principale de l'application.
+	 * Elle ouvre la fenêtre de création d'un nouveau compte courant, permet à l'utilisateur de saisir les informations nécessaires
+	 * et ajoute le compte créé à la liste des comptes courants.
+	 */
 	@FXML
 	private void doNouveauCompte() {
 		CompteCourant compte;
