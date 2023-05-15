@@ -33,26 +33,26 @@ toc::[]
 == Livrables et liens vers documents
 
 |===
-| Date    | Nom              | Lien                                                        | Retour 
-| Sem.19  | CDC V1           |link:LV1/Docs/CahierDesChargesV1.adoc[Cahier des charges V1] |    respectez convention de nommage du repo.
+| Date    | Nom              | Assignation | Lien                                                        | Retour 
+| Sem.19  | CDC V1           |    Ahmad    | link:LV1/Docs/CahierDesChargesV1.adoc[Cahier des charges V1] |    respectez convention de nommage du repo.
 les éléments de page de garde sont là, les reprendre pour faire une vrai page de garde.
 basculer les éléments du chapitre "analyse de l'existant" dans analyse du besoin (V0).
 affinez l'analyse de l'existant par rapport à ce qui vous a été fourni en entrant (documentation, executable ...)
 detaillez contraintes orga (contrainte sur qui fait quoi, jalons de livraisons, organisation de l'équipe ...)    
-| Sem.19  | Gantt V1 Prévu   | link:LV1/Docs/GANTTV1Prevu.pdf[GANTT V1 Prévu]              |     retrvaillez la mise en page, reprenez les durées (temps/homme), focalisez vous sur la V1 (le reste de la planif viendra après), assurez vous de n'avoir oublier aucune tache pour V1.Vérifier prédécesseur (ex: pour GANTT réalisé, entrant necessaire = GANTT planifié), ajoutez jalons livraison.   
-| 16/05   | CdC V2final      |                                                             |        
-| 16/05   | Gantt V1 Réalisé |                                                             |        
-| 16/05   | Gantt V2 Prevu   |                                                             |       
-| 17/05   | Doc. Tec. V1     |                                                             |       
-| 16/05   | Doc User V1      |                                                             |       
-| 17/05   | Recette V1       |                                                             |       
-| 16/05   | Suivi projet V1  |                                                             |       
-| 26/05   | Gantt V2 réalisé |                                                             |       
-| 26/05   | Doc. Util. V2    |                                                             |       
-| 26/05   | Doc. Tec. V2     |                                                             |       
-| 26/05   | Code V2          |                                                             |       
-| 26/05   | Recette V2       |                                                             |        
-| 26/05   | `jar` projet     |                                                             |        
+| Sem.19  | Gantt V1 Prévu   |    Marwan   | link:LV1/Docs/GANTTV1Prevu.pdf[GANTT V1 Prévu]              |     retrvaillez la mise en page, reprenez les durées (temps/homme), focalisez vous sur la V1 (le reste de la planif viendra après), assurez vous de n'avoir oublier aucune tache pour V1.Vérifier prédécesseur (ex: pour GANTT réalisé, entrant necessaire = GANTT planifié), ajoutez jalons livraison.   
+| 16/05   | CdC V2final      |    Marwan   |                                                             |        
+| 16/05   | Gantt V1 Réalisé |    Marwan   |                                                             |        
+| 16/05   | Gantt V2 Prevu   |    Rayan    |                                                             |       
+| 17/05   | Doc. Tec. V1     |    Ahmad    |                                                             |       
+| 16/05   | Doc User V1      |    Ahmad    |                                                             |       
+| 17/05   | Recette V1       |    Rayan    |                                                             |       
+| 16/05   | Suivi projet V1  |             |                                                             |       
+| 26/05   | Gantt V2 réalisé |             |                                                             |       
+| 26/05   | Doc. Util. V2    |             |                                                             |       
+| 26/05   | Doc. Tec. V2     |             |                                                             |       
+| 26/05   | Code V2          |             |                                                             |       
+| 26/05   | Recette V2       |             |                                                             |        
+| 26/05   | `jar` projet     |             |                                                             |        
 |===
 
 == Répartition des tâches et état d'avancement
