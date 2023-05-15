@@ -68,7 +68,7 @@ image::../../LV0/Docs/UseCaseV0.png[]
 Ces exigences doivent être satisfaites dans la version 1 de l'application pour répondre aux besoins de DailyBank en matière de gestion de ses comptes clients et employés.
 Voici le diagramme de cas d’utilisation qui présente les fonctionnalités citées de la V1 qui seront à développer : 
 
-image::UseCaseV1.PNG[]
+image::ressources/UseCaseV1.PNG[]
 
 == Analyse des contraintes
 
