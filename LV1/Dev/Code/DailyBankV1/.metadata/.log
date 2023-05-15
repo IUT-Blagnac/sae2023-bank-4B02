@@ -1,20 +1,20 @@
-!SESSION 2023-05-15 11:15:31.092 -----------------------------------------------
-eclipse.buildId=4.26.0.20221201-1200
-java.version=19.0.2
-java.vendor=Oracle Corporation
+!SESSION 2023-05-15 13:52:39.095 -----------------------------------------------
+eclipse.buildId=4.27.0.20230309-1200
+java.version=17.0.7
+java.vendor=Eclipse Adoptium
 BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
 Framework arguments:  -product org.eclipse.epp.package.java.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
 
-!ENTRY ch.qos.logback.classic 1 0 2023-05-15 11:15:32.512
+!ENTRY ch.qos.logback.classic 1 0 2023-05-15 13:52:40.304
 !MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
 
-!ENTRY ch.qos.logback.classic 1 0 2023-05-15 11:15:42.189
-!MESSAGE Logback config file: C:\Users\Rayan\Documents\GitHub\sae2023-bank-4B02\LV1\Dev\Code\DailyBankV1\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.1.0.20221015-0744.xml
+!ENTRY ch.qos.logback.classic 1 0 2023-05-15 13:52:46.062
+!MESSAGE Logback config file: C:\Users\KHALIL\Downloads\Nouveau dossier\DailyBank\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.1.100.20230106-1511.xml
 
-!ENTRY org.eclipse.jface 2 0 2023-05-15 11:15:43.281
+!ENTRY org.eclipse.jface 2 0 2023-05-15 13:52:47.093
 !MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
-!SUBENTRY 1 org.eclipse.jface 2 0 2023-05-15 11:15:43.282
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-05-15 13:52:47.093
 !MESSAGE A conflict occurred for CTRL+SHIFT+T:
 Binding(CTRL+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
@@ -32,7 +32,7 @@ Binding(CTRL+SHIFT+T,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2023-05-15 11:15:43.282
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-05-15 13:52:47.093
 !MESSAGE A conflict occurred for ALT+SHIFT+R:
 Binding(ALT+SHIFT+R,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
@@ -51,29 +51,29 @@ Binding(ALT+SHIFT+R,
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
 
-!ENTRY org.eclipse.egit.ui 2 0 2023-05-15 11:15:45.517
+!ENTRY org.eclipse.egit.ui 2 0 2023-05-15 13:52:49.252
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
-user global configuration and to define the default location to store repositories: 'C:\Users\Rayan'. If this is
+user global configuration and to define the default location to store repositories: 'C:\Users\KHALIL'. If this is
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
-!SESSION 2023-05-15 11:16:20.883 -----------------------------------------------
-eclipse.buildId=4.26.0.20221201-1200
-java.version=19.0.2
-java.vendor=Oracle Corporation
+!SESSION 2023-05-15 13:53:22.785 -----------------------------------------------
+eclipse.buildId=4.27.0.20230309-1200
+java.version=17.0.7
+java.vendor=Eclipse Adoptium
 BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_FR
-Framework arguments:  -product org.eclipse.epp.package.java.product
-Command-line arguments:  -data C:\Users\Rayan\Documents\GitHub\sae2023-bank-4B02\LV1\Dev\Code\DailyBankV1 -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+Framework arguments:  -product org.eclipse.epp.package.java.product -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product -data C:\Users\KHALIL\Downloads\Nouveau dossier\DailyBank -product org.eclipse.epp.package.java.product
 
-!ENTRY ch.qos.logback.classic 1 0 2023-05-15 11:16:22.229
+!ENTRY ch.qos.logback.classic 1 0 2023-05-15 13:53:23.919
 !MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
 
-!ENTRY ch.qos.logback.classic 1 0 2023-05-15 11:16:22.984
-!MESSAGE Logback config file: C:\Users\Rayan\Documents\GitHub\sae2023-bank-4B02\LV1\Dev\Code\DailyBankV1\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.1.0.20221015-0744.xml
+!ENTRY ch.qos.logback.classic 1 0 2023-05-15 13:53:24.727
+!MESSAGE Logback config file: C:\Users\KHALIL\Downloads\Nouveau dossier\DailyBank\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.1.100.20230106-1511.xml
 
-!ENTRY org.eclipse.jface 2 0 2023-05-15 11:16:24.120
+!ENTRY org.eclipse.jface 2 0 2023-05-15 13:53:25.862
 !MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
-!SUBENTRY 1 org.eclipse.jface 2 0 2023-05-15 11:16:24.120
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-05-15 13:53:25.862
 !MESSAGE A conflict occurred for CTRL+SHIFT+T:
 Binding(CTRL+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
@@ -91,7 +91,7 @@ Binding(CTRL+SHIFT+T,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
-!SUBENTRY 1 org.eclipse.jface 2 0 2023-05-15 11:16:24.120
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-05-15 13:53:25.862
 !MESSAGE A conflict occurred for ALT+SHIFT+R:
 Binding(ALT+SHIFT+R,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
@@ -110,9 +110,9 @@ Binding(ALT+SHIFT+R,
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
 
-!ENTRY org.eclipse.egit.ui 2 0 2023-05-15 11:16:26.437
+!ENTRY org.eclipse.egit.ui 2 0 2023-05-15 13:53:27.984
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
-user global configuration and to define the default location to store repositories: 'C:\Users\Rayan'. If this is
+user global configuration and to define the default location to store repositories: 'C:\Users\KHALIL'. If this is
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.

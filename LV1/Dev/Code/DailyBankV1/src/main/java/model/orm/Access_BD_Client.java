@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.DebugGraphics;
+
 import model.data.Client;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -58,7 +60,7 @@ public class Access_BD_Client {
 				pst.setInt(1, idAg);
 				pst.setInt(2, idNumCli);
 
-			} else if (!debutNom.equals("")) {
+			} else if (!debutNom.equals("") || !debutPrenom.equals("")) {
 				debutNom = debutNom.toUpperCase() + "%";
 				debutPrenom = debutPrenom.toUpperCase() + "%";
 				query = "SELECT * FROM Client where idAg = ?";

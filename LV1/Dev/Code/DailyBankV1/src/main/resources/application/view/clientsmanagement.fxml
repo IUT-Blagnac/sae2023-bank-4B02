@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.ClientsManagementController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.ClientsManagementController">
    <right>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <top>
@@ -87,7 +87,7 @@
             <FlowPane BorderPane.alignment="CENTER">
                <children>
                   <Label text="Numéro" />
-                  <TextField fx:id="txtNum" prefColumnCount="5">
+                  <TextField fx:id="txtNum" onKeyTyped="#doRechercher" prefColumnCount="5">
                      <FlowPane.margin>
                         <Insets left="5.0" />
                      </FlowPane.margin>
@@ -97,7 +97,7 @@
                         <Insets left="5.0" />
                      </FlowPane.margin>
                   </Label>
-                  <TextField fx:id="txtNom" layoutX="69.0" layoutY="10.0" prefColumnCount="10">
+                  <TextField fx:id="txtNom" layoutX="69.0" layoutY="10.0" onKeyTyped="#doRechercher" prefColumnCount="10">
                      <FlowPane.margin>
                         <Insets left="5.0" />
                      </FlowPane.margin>
@@ -107,7 +107,7 @@
                         <Insets left="5.0" />
                      </FlowPane.margin>
                   </Label>
-                  <TextField fx:id="txtPrenom" layoutX="199.0" layoutY="10.0" prefColumnCount="10">
+                  <TextField fx:id="txtPrenom" layoutX="199.0" layoutY="10.0" onKeyTyped="#doRechercher" prefColumnCount="10">
                      <FlowPane.margin>
                         <Insets left="5.0" />
                      </FlowPane.margin>

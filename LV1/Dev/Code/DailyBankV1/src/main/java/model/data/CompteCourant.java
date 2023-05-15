@@ -64,12 +64,12 @@ public class CompteCourant {
      */
     @Override
     public String toString() {
-        String s = "" + String.format("%05d", this.idNumCompte) + " : Solde=" + String.format("%12.02f", this.solde)
-                + "  ,  Découvert Autorise=" + String.format("%8d", this.debitAutorise);
+        String s = "N°" + Integer.toString(this.idNumCompte) + "  Solde : " + this.solde
+                + "  Découvert Autorisé : " + Integer.toString(this.debitAutorise) + "  Statut : ";
         if (this.estCloture == null) {
-            s = s + " (Cloture)";
+            s = s + " Cloturé";
         } else {
-            s = s + (this.estCloture.equals("N") ? " (Ouvert)" : " (Cloture)");
+            s = s + (this.estCloture.equals("N") ? " Ouvert" : " Cloturé");
         }
         return s;
     }

@@ -16,6 +16,11 @@ import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
 
+/**
+ * Controller JavaFX de la view ComptesManagement.
+ *
+ */
+
 public class ComptesManagementController {
 
 	// Etat courant de l'application
@@ -41,7 +46,6 @@ public class ComptesManagementController {
 	}
 
 	private void configure() {
-		String info;
 
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 
@@ -51,9 +55,7 @@ public class ComptesManagementController {
 		this.lvComptes.getFocusModel().focus(-1);
 		this.lvComptes.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());
 
-		info = this.clientDesComptes.nom + "  " + this.clientDesComptes.prenom + "  (id : "
-				+ this.clientDesComptes.idNumCli + ")";
-		this.lblInfosClient.setText(info);
+		this.lblInfosClient.setText("Infos client : " + this.clientDesComptes.toString());
 
 		this.loadList();
 		this.validateComponentState();
@@ -81,7 +83,7 @@ public class ComptesManagementController {
 	@FXML
 	private Button btnModifierCompte;
 	@FXML
-	private Button btnSupprCompte;
+	private Button btnClotureCompte;
 
 	@FXML
 	private void doCancel() {
@@ -104,16 +106,16 @@ public class ComptesManagementController {
 	}
 
 	@FXML
-	private void doSupprimerCompte() {
+	private void doCloturerCompte() {
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			CompteCourant cpt = this.oListCompteCourant.get(selectedIndice);
+			this.cmDialogController.cloturerCompte(cpt);
+		}
+		this.loadList();
+		this.validateComponentState();
 	}
 
-	
-	/*
-	 * RAYAN SELLOU 4B
-	 * Cette méthode est appelée lors de l'appui sur le bouton "Nouveau Compte" dans la fenêtre principale de l'application.
-	 * Elle ouvre la fenêtre de création d'un nouveau compte courant, permet à l'utilisateur de saisir les informations nécessaires
-	 * et ajoute le compte créé à la liste des comptes courants.
-	 */
 	@FXML
 	private void doNouveauCompte() {
 		CompteCourant compte;
@@ -121,6 +123,7 @@ public class ComptesManagementController {
 		if (compte != null) {
 			this.oListCompteCourant.add(compte);
 		}
+		this.loadList();
 	}
 
 	private void loadList() {
@@ -133,11 +136,12 @@ public class ComptesManagementController {
 	private void validateComponentState() {
 		// Non implémenté => désactivé
 		this.btnModifierCompte.setDisable(true);
-		this.btnSupprCompte.setDisable(true);
+		this.btnClotureCompte.setDisable(true);
 
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			this.btnVoirOpes.setDisable(false);
+			this.btnClotureCompte.setDisable(false);
 		} else {
 			this.btnVoirOpes.setDisable(true);
 		}

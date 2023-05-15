@@ -202,6 +202,15 @@ public class DailyBankMainFrameController {
 	}
 
 	/*
+	 * Action menu Employé. Demande au contrôleur de dialogue de lancer la gestion
+	 * des employés
+	 */
+	@FXML
+	private void doEmployeOption() {
+		this.dbmfDialogController.gestionEmploye();
+	}
+
+	/*
 	 * Se déconnecter de la bd oracle. Demande au contrôleur de dialogue de se
 	 * déconnecter.
 	 */

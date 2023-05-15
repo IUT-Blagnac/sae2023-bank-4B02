@@ -11,8 +11,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.OperationsManagementController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.OperationsManagementController">
    <right>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <center>
@@ -29,22 +30,34 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btnDebit" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doDebit" text="Enregistrer Débit" GridPane.rowIndex="1">
+                        <Button fx:id="btnCredit" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doCredit" style="-fx-background-radius: 15; -fx-border-width: 3; -fx-border-color: skyblue; -fx-border-radius: 15;" text="Créditer" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
                         </Button>
-                        <Button fx:id="btnCredit" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doCredit" text="Enregistrer Crédit" GridPane.rowIndex="2">
+                        <Button fx:id="btnDebit" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doDebit" style="-fx-background-radius: 15; -fx-border-width: 3; -fx-border-color: skyblue; -fx-border-radius: 15;" text="Débiter" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
                         </Button>
-                        <Button disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doAutre" GridPane.rowIndex="3">
+                        <Button fx:id="btnVirement" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doVirement" style="-fx-background-radius: 15; -fx-border-width: 3; -fx-border-color: skyblue; -fx-border-radius: 15;" text="Virement" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
                         </Button>
                      </children>
+                     <VBox.margin>
+                        <Insets bottom="90.0" />
+                     </VBox.margin>
                   </GridPane>
                </children>
                <BorderPane.margin>
@@ -59,10 +72,13 @@
          <bottom>
             <HBox BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#doCancel" prefHeight="31.0" prefWidth="214.0" text="Retour gestion comptes">
+                  <Button mnemonicParsing="false" onAction="#doCancel" prefHeight="7.0" prefWidth="247.0" style="-fx-background-radius: 15; -fx-border-color: red; -fx-border-width: 3; -fx-border-radius: 15;" text="Retour gestion comptes">
                      <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                        <Insets bottom="15.0" left="30.0" top="10.0" />
                      </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
                   </Button>
                </children>
             </HBox>
@@ -89,17 +105,23 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane styleClass="borderlight">
+            <AnchorPane prefHeight="40.0" prefWidth="403.0" styleClass="borderlight">
                <children>
-                  <Label fx:id="lblInfosClient" layoutX="24.0" layoutY="14.0" maxWidth="1.7976931348623157E308" styleClass="bold" text="Infos clients" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  <Label fx:id="lblInfosClient" alignment="CENTER" layoutX="1.0" layoutY="-3.0" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="420.0" styleClass="bold" text="Infos clients" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="10.0">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font></Label>
                </children>
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
             </AnchorPane>
-            <AnchorPane styleClass="borderlight" GridPane.columnIndex="1">
+            <AnchorPane prefHeight="56.0" prefWidth="431.0" styleClass="borderlight" GridPane.columnIndex="1">
                <children>
-                  <Label fx:id="lblInfosCompte" layoutX="68.0" layoutY="47.0" maxWidth="1.7976931348623157E308" styleClass="bold" text="Infos Compte" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                  <Label fx:id="lblInfosCompte" alignment="CENTER" layoutY="6.0" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="421.0" styleClass="bold" text="Infos Compte" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="10.0">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font></Label>
                </children>
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

@@ -19,6 +19,11 @@ import model.data.Client;
 import model.data.CompteCourant;
 import model.data.Operation;
 
+/**
+ * Controller JavaFX de la view OperationsManagement.
+ *
+ */
+
 public class OperationsManagementController {
 
 	// Etat courant de l'application
@@ -79,6 +84,8 @@ public class OperationsManagementController {
 	private Button btnDebit;
 	@FXML
 	private Button btnCredit;
+	@FXML
+	private Button btnVirement;
 
 	@FXML
 	private void doCancel() {
@@ -87,23 +94,35 @@ public class OperationsManagementController {
 
 	@FXML
 	private void doDebit() {
-
 		Operation op = this.omDialogController.enregistrerDebit();
 		if (op != null) {
 			this.updateInfoCompteClient();
 			this.validateComponentState();
 		}
 	}
-	/*RAYAN SELLOU 4B
-	 * Ici on créer la fonction permettant de gérer les crédits
-	 * Cette méthode permet de gérer les crédits d'un compte client.  
-	 * @implNote Cette méthode est appelée lorsque l'utilisateur clique sur le bouton de crédit. 
-	 * @implSpec Cette méthode utilise un objet de type Operation pour enregistrer le crédit dans le compte client. 
-	 * 
-	 */
+
 	@FXML
 	private void doCredit() {
-		Operation op = this.omDialogController.enregistrerCredit();
+		Operation op = this.omDialogController.enregistrerCredit(false);
+		if (op != null) {
+			this.updateInfoCompteClient();
+			this.validateComponentState();
+		}
+	}
+	
+	/**
+	 * Effectue un virement sur le compte client.
+	 *
+	 * @author KHALIL Ahmad
+	 * 
+	 * Cette méthode est appelée lorsqu'on souhaite effectuer un virement sur le compte client.
+	 * Elle utilise la méthode enregistrerCredit(true) de l'objet omDialogController pour enregistrer le virement.
+	 * Si le virement est enregistré avec succès (opération différente de null), elle met à jour les informations du compte client
+	 * en appelant la méthode updateInfoCompteClient() et met à jour l'état des composants en appelant la méthode validateComponentState().
+	 */
+	@FXML
+	private void doVirement() {
+		Operation op = this.omDialogController.enregistrerCredit(true);
 		if (op != null) {
 			this.updateInfoCompteClient();
 			this.validateComponentState();
@@ -115,9 +134,9 @@ public class OperationsManagementController {
 	}
 
 	private void validateComponentState() {
-		// Non implémenté => désactivé
 		this.btnCredit.setDisable(false);
 		this.btnDebit.setDisable(false);
+		this.btnVirement.setDisable(false);
 	}
 
 	private void updateInfoCompteClient() {
@@ -130,15 +149,11 @@ public class OperationsManagementController {
 		this.compteConcerne = opesEtCompte.getLeft();
 		listeOP = opesEtCompte.getRight();
 
-		String info;
-		info = this.clientDuCompte.nom + "  " + this.clientDuCompte.prenom + "  (id : " + this.clientDuCompte.idNumCli
-				+ ")";
-		this.lblInfosClient.setText(info);
+		this.lblInfosClient.setText("N°Client : " + this.clientDuCompte.idNumCli + " | N°Compte : "
+				+ this.compteConcerne.idNumCompte + " | N°Agence : " + this.clientDuCompte.idAg);
 
-		info = "Cpt. : " + this.compteConcerne.idNumCompte + "  "
-				+ String.format(Locale.ENGLISH, "%12.02f", this.compteConcerne.solde) + "  /  "
-				+ String.format(Locale.ENGLISH, "%8d", this.compteConcerne.debitAutorise);
-		this.lblInfosCompte.setText(info);
+		this.lblInfosCompte.setText("Solde : " + this.compteConcerne.solde + " | Découvert Autorisé : "
+				+ Integer.toString(this.compteConcerne.debitAutorise));
 
 		this.oListOperations.clear();
 		this.oListOperations.addAll(listeOP);

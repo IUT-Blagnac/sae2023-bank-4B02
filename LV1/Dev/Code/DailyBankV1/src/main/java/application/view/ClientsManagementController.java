@@ -51,6 +51,7 @@ public class ClientsManagementController {
 		this.lvClients.getFocusModel().focus(-1);
 		this.lvClients.getSelectionModel().selectedItemProperty().addListener(e -> this.validateComponentState());
 		this.validateComponentState();
+		this.doRechercher();
 	}
 
 	public void displayDialog() {
@@ -96,26 +97,15 @@ public class ClientsManagementController {
 			} else {
 				numCompte = Integer.parseInt(nc);
 				if (numCompte < 0) {
-					this.txtNum.setText("");
 					numCompte = -1;
 				}
 			}
 		} catch (NumberFormatException nfe) {
-			this.txtNum.setText("");
 			numCompte = -1;
 		}
 
 		String debutNom = this.txtNom.getText();
 		String debutPrenom = this.txtPrenom.getText();
-
-		if (numCompte != -1) {
-			this.txtNom.setText("");
-			this.txtPrenom.setText("");
-		} else {
-			if (debutNom.equals("") && !debutPrenom.equals("")) {
-				this.txtPrenom.setText("");
-			}
-		}
 
 		// Recherche des clients en BD. cf. AccessClient > getClients(.)
 		// numCompte != -1 => recherche sur numCompte

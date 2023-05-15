@@ -21,19 +21,52 @@ import model.orm.Access_BD_Operation;
 import model.orm.exception.ApplicationException;
 import model.orm.exception.DatabaseConnexionException;
 
+/**
+ * Cette classe est utilisée pour gérer les opérations d'un compte bancaire pour
+ * un client spécifique. Elle affiche une interface utilisateur pour ajouter,
+ * supprimer ou modifier des opérations.
+ */
 public class OperationsManagement {
 
+	/**
+	 * La fenêtre principale de l'application.
+	 */
 	private Stage primaryStage;
+
+	/**
+	 * L'état actuel de l'application.
+	 */
 	private DailyBankState dailyBankState;
+
+	/**
+	 * Le contrôleur associé à cette instance de la classe.
+	 */
 	private OperationsManagementController omcViewController;
+
+	/**
+	 * Le client dont les opérations sont en cours de gestion.
+	 */
 	private Client clientDuCompte;
+
+	/**
+	 * Le compte bancaire en cours de gestion.
+	 */
 	private CompteCourant compteConcerne;
 
+	/**
+	 * Constructeur de la classe OperationsManagement.
+	 * 
+	 * @param _parentStage la fenêtre parente de l'application
+	 * @param _dbstate     l'état actuel de l'application
+	 * @param client       le client associé au compte bancaire
+	 * @param compte       le compte bancaire en cours de gestion
+	 */
 	public OperationsManagement(Stage _parentStage, DailyBankState _dbstate, Client client, CompteCourant compte) {
 
 		this.clientDuCompte = client;
 		this.compteConcerne = compte;
 		this.dailyBankState = _dbstate;
+
 		try {
 			FXMLLoader loader = new FXMLLoader(
 					OperationsManagementController.class.getResource("operationsmanagement.fxml"));
@@ -58,10 +91,20 @@ public class OperationsManagement {
 		}
 	}
 
+	/**
+	 * Affiche la fenêtre de gestion des opérations.
+	 */
 	public void doOperationsManagementDialog() {
 		this.omcViewController.displayDialog();
 	}
 
+	/**
+	 * Permet d'afficher la fenêtre d'édition pour enregistrer une opération de type
+	 * débit sur le compte courant associé à l'instance de cette classe.
+	 * 
+	 * @return L'opération créée si l'utilisateur a validé l'enregistrement, sinon
+	 *         null.
+	 */
 	public Operation enregistrerDebit() {
 
 		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dailyBankState);
@@ -85,24 +128,21 @@ public class OperationsManagement {
 		}
 		return op;
 	}
-	
-	
-	/*
-	 * RAYAN SELLOU 4B
-	 * Cette méthode permet d'enregistrer une opération de crédit en ouvrant une fenêtre de dialogue pour l'édition des informations de l'opération.
-	 * L'opération de crédit est ensuite enregistrée dans la base de données associée au compte courant concerné.
-	 * @return L'opération de crédit enregistrée, ou null si l'utilisateur a annulé l'opération.
-	 */
-	public Operation enregistrerCredit() {
 
+	public Operation enregistrerCredit(boolean isVirement) {
 		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dailyBankState);
-		Operation op = oep.doOperationEditorDialog(this.compteConcerne, CategorieOperation.CREDIT);
+		Operation op = oep.doOperationEditorDialog(this.compteConcerne,
+				(isVirement) ? CategorieOperation.VIREMENT : CategorieOperation.CREDIT);
 		if (op != null) {
 			try {
 				Access_BD_Operation ao = new Access_BD_Operation();
-
-				ao.insertCredit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
-
+				if (isVirement) {
+					ao.insertDebit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+					ao.insertCredit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp, op.idNumCompte);
+				}
+				else {
+					ao.insertCredit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp, -1);
+				}
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
 				ed.doExceptionDialog();
@@ -117,6 +157,14 @@ public class OperationsManagement {
 		return op;
 	}
 
+	/**
+	 * Récupère la liste des opérations enregistrées sur le compte courant associé à
+	 * l'instance de cette classe, ainsi que le solde actuel de ce compte.
+	 * 
+	 * @return Un objet PairsOfValue contenant une paire (CompteCourant,
+	 *         ArrayList<Operation>) représentant respectivement le compte courant
+	 *         associé et la liste des opérations enregistrées sur ce compte.
+	 */
 	public PairsOfValue<CompteCourant, ArrayList<Operation>> operationsEtSoldeDunCompte() {
 		ArrayList<Operation> listeOP = new ArrayList<>();
 
@@ -143,4 +191,3 @@ public class OperationsManagement {
 		return new PairsOfValue<>(this.compteConcerne, listeOP);
 	}
 }
-

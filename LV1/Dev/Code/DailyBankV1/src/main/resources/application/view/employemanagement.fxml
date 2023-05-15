@@ -12,8 +12,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.ClientsManagementController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.EmployeManagementController">
    <right>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <top>
@@ -21,15 +22,11 @@
                <BorderPane.margin>
                   <Insets right="10.0" top="20.0" />
                </BorderPane.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
             </Button>
          </top>
-         <bottom>
-            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doNouveauClient" text="Nouveau client" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets bottom="10.0" right="10.0" top="10.0" />
-               </BorderPane.margin>
-            </Button>
-         </bottom>
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
@@ -42,24 +39,34 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btnComptesClient" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doComptesClient" text="Comptes client">
+                        <Button fx:id="btnInfos" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#checkInfo" style="-fx-border-color: grey; -fx-border-width: 5; -fx-border-radius: 15; -fx-background-radius: 15;" text="Informations" textFill="#1d430e">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
                         </Button>
-                        <Button fx:id="btnModifClient" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doModifierClient" text="Modifier client" GridPane.rowIndex="2">
+                        <Button fx:id="btnMAJ" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doModifierEmploye" style="-fx-border-color: grey; -fx-border-width: 5; -fx-border-radius: 15; -fx-background-radius: 15;" text="Mettre à jour" textFill="#1d430e" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
                         </Button>
-                        <Button fx:id="btnDesactClient" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doDesactiverClient" text="Désactiver client" GridPane.rowIndex="3">
-                           <GridPane.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </GridPane.margin>
+                        <Button layoutX="10.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-border-color: grey; -fx-border-width: 5; -fx-border-radius: 15; -fx-background-radius: 15;" textFill="#1d430e" visible="false" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font></Button>
+                        <Button fx:id="btnSupprimer" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteEmploye" style="-fx-border-color: grey; -fx-border-width: 5; -fx-border-radius: 15; -fx-background-radius: 15;" text="Supprimer" textFill="#1d430e" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
                         </Button>
-                        <Button layoutX="10.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" visible="false" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </children>
@@ -68,6 +75,16 @@
                </BorderPane.margin>
             </VBox>
          </center>
+         <bottom>
+            <Button fx:id="btnAjouter" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doNouveauEmploye" style="-fx-border-color: grey; -fx-border-width: 5; -fx-border-radius: 15; -fx-background-radius: 15;" text="Ajouter" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets bottom="8.0" right="10.0" />
+               </BorderPane.margin>
+            </Button>
+         </bottom>
       </BorderPane>
    </right>
    <center>
@@ -79,6 +96,9 @@
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
                   </Button>
                </children>
             </HBox>
@@ -86,31 +106,49 @@
          <top>
             <FlowPane BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Numéro" />
+                  <Label text="Numéro">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Label>
                   <TextField fx:id="txtNum" onKeyTyped="#doRechercher" prefColumnCount="5">
                      <FlowPane.margin>
                         <Insets left="5.0" />
                      </FlowPane.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </TextField>
                   <Label layoutX="10.0" layoutY="15.0" text="Nom">
                      <FlowPane.margin>
                         <Insets left="5.0" />
                      </FlowPane.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Label>
                   <TextField fx:id="txtNom" layoutX="69.0" layoutY="10.0" onKeyTyped="#doRechercher" prefColumnCount="10">
                      <FlowPane.margin>
                         <Insets left="5.0" />
                      </FlowPane.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </TextField>
                   <Label layoutX="161.0" layoutY="15.0" text="Prénom">
                      <FlowPane.margin>
                         <Insets left="5.0" />
                      </FlowPane.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Label>
                   <TextField fx:id="txtPrenom" layoutX="199.0" layoutY="10.0" onKeyTyped="#doRechercher" prefColumnCount="10">
                      <FlowPane.margin>
                         <Insets left="5.0" />
                      </FlowPane.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </TextField>
                </children>
                <BorderPane.margin>
@@ -119,7 +157,7 @@
             </FlowPane>
          </top>
          <center>
-            <ListView fx:id="lvClients" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <ListView fx:id="listeEmploye" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
                </BorderPane.margin>

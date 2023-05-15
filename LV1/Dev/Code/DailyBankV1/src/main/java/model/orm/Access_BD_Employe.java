@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.data.Employe;
 import model.orm.exception.DataAccessException;
@@ -79,5 +80,183 @@ public class Access_BD_Employe {
 		} catch (SQLException e) {
 			throw new DataAccessException(Table.Employe, Order.SELECT, "Erreur accès", e);
 		}
+	}
+	
+	public ArrayList<Employe> getlisteEmploye(int idEmploye, String debutNom, String debutPrenom) throws DataAccessException, DatabaseConnexionException {
+
+		ArrayList<Employe> alResult = new ArrayList<>();
+
+		try {
+			Connection con = LogToDatabase.getConnexion();
+
+			PreparedStatement pst;
+
+			String query;
+			if (idEmploye != -1) {
+				query = "SELECT * FROM EMPLOYE WHERE IDEMPLOYE = ? ORDER BY NOM";
+				pst = con.prepareStatement(query);
+				pst.setInt(1, idEmploye);
+
+			} else if (!debutNom.equals("")  || !debutPrenom.equals("")) {
+				debutNom = debutNom.toUpperCase() + "%";
+				debutPrenom = debutPrenom.toUpperCase() + "%";
+				query = "SELECT * FROM EMPLOYE WHERE UPPER(nom) like ?" + " AND UPPER(prenom) like ? ORDER BY NOM";
+				pst = con.prepareStatement(query);
+				pst.setString(1, debutNom);
+				pst.setString(2, debutPrenom);
+			} else {
+				query = "SELECT * FROM EMPLOYE ORDER BY NOM";
+				pst = con.prepareStatement(query);
+			}
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				int idEmploye1 = rs.getInt("idemploye");
+				String nom = rs.getString("nom");
+				String prenom = rs.getString("prenom");
+				String droitsAccess = rs.getString("droitsaccess");
+				String login = rs.getString("login");
+				String motPasse = rs.getString("motpasse");
+				int idAg = rs.getInt("idag");
+
+				alResult.add(new Employe(idEmploye1, nom, prenom, droitsAccess, login, motPasse, idAg));
+			}
+			rs.close();
+			pst.close();
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Employe, Order.SELECT, "Erreur accès", e);
+		}
+
+		return alResult;
+	}
+	
+	public void insertEmploye(Employe pfEmploye) throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+		try {
+
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "INSERT INTO Employe VALUES (seq_id_employe.NEXTVAL, ?, ?, ?, ?, ?, ?)";
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, pfEmploye.nom);
+			pst.setString(2, pfEmploye.prenom);
+			pst.setString(3, pfEmploye.droitsAccess);
+			pst.setString(4, pfEmploye.login);
+			pst.setString(5, pfEmploye.motPasse);
+			pst.setInt(6, pfEmploye.idAg);
+
+			System.err.println(query);
+			System.out.println(pfEmploye);
+			System.out.println(pfEmploye);
+			int result = pst.executeUpdate();
+			pst.close();
+
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.Client, Order.INSERT,
+						"Insert anormal (insert de moins ou plus d'une ligne)", null, result);
+			}
+
+			query = "SELECT seq_id_employe.CURRVAL from DUAL";
+
+			System.err.println(query);
+			PreparedStatement pst2 = con.prepareStatement(query);
+
+			ResultSet rs = pst2.executeQuery();
+			rs.next();
+			int numEmpBase = rs.getInt(1);
+
+			con.commit();
+			rs.close();
+			pst2.close();
+
+			pfEmploye.idEmploye = numEmpBase;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DataAccessException(Table.Employe, Order.INSERT, "Erreur accès", e);
+		}
+	}
+	
+	public void updateEmploye(Employe pfEmploye)
+			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+		try {
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "UPDATE EMPLOYE SET " + "nom = " + "? , " + "prenom = " + "? , " + "droitsaccess = "
+					+ "? , " + "login = " + "? , " + "motPasse = " + "? , " + "idag = " + "? " + " "
+					+ "WHERE idemploye = ? ";
+
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, pfEmploye.nom);
+			pst.setString(2, pfEmploye.prenom);
+			pst.setString(3, pfEmploye.droitsAccess);
+			pst.setString(4, pfEmploye.login);
+			pst.setString(5, pfEmploye.motPasse);
+			pst.setInt(6, pfEmploye.idAg);
+			pst.setInt(7, pfEmploye.idEmploye);
+
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+			pst.close();
+			if (result != 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.Employe, Order.UPDATE,
+						"Update anormal (update de moins ou plus d'une ligne)", null, result);
+			}
+			con.commit();
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Employe, Order.UPDATE, "Erreur accès", e);
+		}
+	}
+	
+	public void deleteEmploye(Employe pfEmploye) throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+		try {
+			Connection con = LogToDatabase.getConnexion();
+
+			String query = "DELETE FROM EMPLOYE WHERE IDEMPLOYE = ?";
+
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setInt(1, pfEmploye.idEmploye);
+
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+			pst.close();
+			if (result < 1) {
+				con.rollback();
+				throw new RowNotFoundOrTooManyRowsException(Table.Employe, Order.DELETE,
+						"Delete impossible de la ligne : Access_BD_Employe.deleteEmploye", null, result);
+			}
+			con.commit();
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Employe, Order.DELETE, "Erreur accès", e);
+		}
+		
+	}
+	
+	public boolean checkIdAgence(int pfIdAg) throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
+		Connection con = LogToDatabase.getConnexion();
+
+		String query = "SELECT IDAG FROM AGENCEBANCAIRE WHERE IDAG = ?";
+		PreparedStatement pst;
+		try {
+			pst = con.prepareStatement(query);
+			pst.setInt(1, pfIdAg);
+			
+			System.err.println(query);
+
+			int result = pst.executeUpdate();
+			pst.close();
+			if (result < 1) {
+				return false;
+			}
+			else {
+				return true;
+			}
+				
+		} catch (SQLException e) {
+			System.out.println("Exception SQL : Access_BD_Employe.checkIdAgence");
+		}
+		return false;
 	}
 }

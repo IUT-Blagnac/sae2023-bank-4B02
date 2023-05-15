@@ -93,7 +93,7 @@ public class CompteEditorPaneController {
 		this.txtIdNumCompte.setText("" + this.compteEdite.idNumCompte);
 		this.txtIdAgence.setText("" + this.dailyBankState.getEmployeActuel().idAg);
 		this.txtDecAutorise.setText("" + this.compteEdite.debitAutorise);
-		this.txtSolde.setText(String.format(Locale.ENGLISH, "%10.02f", this.compteEdite.solde));
+		this.txtSolde.setText("" + this.compteEdite.solde);
 
 		this.compteResultat = null;
 
@@ -117,7 +117,7 @@ public class CompteEditorPaneController {
 				if (val < 0) {
 					throw new NumberFormatException();
 				}
-				this.compteEdite.debitAutorise = val;
+				this.compteEdite.debitAutorise = - val;
 			} catch (NumberFormatException nfe) {
 				this.txtDecAutorise.setText("" + this.compteEdite.debitAutorise);
 			}
@@ -136,10 +136,10 @@ public class CompteEditorPaneController {
 				}
 				this.compteEdite.solde = val;
 			} catch (NumberFormatException nfe) {
-				this.txtSolde.setText(String.format(Locale.ENGLISH, "%10.02f", this.compteEdite.solde));
+				this.txtSolde.setText("" + this.compteEdite.solde);
 			}
 		}
-		this.txtSolde.setText(String.format(Locale.ENGLISH, "%10.02f", this.compteEdite.solde));
+		this.txtSolde.setText("" + this.compteEdite.solde);
 		return null;
 	}
 
@@ -189,11 +189,20 @@ public class CompteEditorPaneController {
 			this.primaryStage.close();
 			break;
 		}
-
 	}
 
 	private boolean isSaisieValide() {
-
-		return true;
+		Double solde = Double.parseDouble(this.txtSolde.getText().trim());
+		int decouvert = Integer.parseInt(this.txtDecAutorise.getText().trim());
+		String info = "";
+		if (solde < 0) {
+			info += "Le premier dépot ne peut pas être inférieur à 0 !\n";
+		}
+		if (info.equals("")) {
+			return true;
+		} else {
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, info, AlertType.WARNING);
+			return false;
+		}
 	}
 }
