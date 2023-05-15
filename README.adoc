@@ -30,6 +30,11 @@ endif::[]
 
 toc::[]
 
+== Membres de l'équipe
+- KHALIL Ahmad
+- SELLOU Rayan
+- ALMASRI Marwan
+
 == Livrables et liens vers documents
 
 |===
@@ -64,9 +69,9 @@ detaillez contraintes orga (contrainte sur qui fait quoi, jalons de livraisons, 
 | 1       | Chef d’Agence | CRUD employé            | U                       |Ahmad F     |            |            |
 | 1       | Chef d’Agence | CRUD employé            | D                       |Ahmad F     |            |            |
 | 1       | Guichetier    | Compte                  | Créer                   |Rayan F     |            |            |
-| 1       | Guichetier    | Compte                  | Créditer/Débiter        |Rayan D     |            |            |
-| 1       | Guichetier    | Compte                  | Effectuer un virement   |Ahmad D     |            |            |
-| 1       | Guichetier    | Compte                  | Clôturer                |Marwan D    |            |            |
+| 1       | Guichetier    | Compte                  | Créditer/Débiter        |Rayan F     |            |            |
+| 1       | Guichetier    | Compte                  | Effectuer un virement   |Ahmad F     |            |            |
+| 1       | Guichetier    | Compte                  | Clôturer                |Marwan F    |            |            |
 | 2       | Chef d’Agence | Compte                  | Débit exceptionnel      |            |            |            |
 | 2       | Chef d’Agence | Emprunt                 | Simuler emprunt         |            |            |            |
 | 2       | Chef d’Agence | Emprunt                 | Simuler assurance       |            |            |            |
