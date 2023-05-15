@@ -128,11 +128,19 @@ public class OperationsManagement {
 		}
 		return op;
 	}
-
+	/** RAYAN SELLOU 4B
+	 * Enregistre une opération de crédit.
+	 *
+	 * @param isVirement Indique si l'opération est un virement.(AHMAD KHALIL 4B)
+	 * @return L'opération enregistrée, ou null si l'enregistrement a échoué ou a été annulé.
+	 */
 	public Operation enregistrerCredit(boolean isVirement) {
+		//Ouvre et affiche une fenêtre d'édition d'opération 
+		//et récupère l'opération saisie
 		OperationEditorPane oep = new OperationEditorPane(this.primaryStage, this.dailyBankState);
 		Operation op = oep.doOperationEditorDialog(this.compteConcerne,
 				(isVirement) ? CategorieOperation.VIREMENT : CategorieOperation.CREDIT);
+		//Vérifie si une opération a été saisie
 		if (op != null) {
 			try {
 				Access_BD_Operation ao = new Access_BD_Operation();
@@ -144,11 +152,13 @@ public class OperationsManagement {
 					ao.insertCredit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp, -1);
 				}
 			} catch (DatabaseConnexionException e) {
+				//gestion des exceptions de connexion à la BDD
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
 				ed.doExceptionDialog();
 				this.primaryStage.close();
 				op = null;
 			} catch (ApplicationException ae) {
+				//gestion des exceptions d'application
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, ae);
 				ed.doExceptionDialog();
 				op = null;

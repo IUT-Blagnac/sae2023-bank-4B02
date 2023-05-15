@@ -80,7 +80,7 @@ public class ComptesManagement {
         om.doOperationsManagementDialog();
     }
 
-    /**
+    /**RAYAN SELLOU 4B
      * Crée un nouveau compte courant pour le client actuel en ouvrant une boîte de dialogue d'édition de compte.
      * Enregistre temporairement le compte en mémoire jusqu'à ce qu'une implémentation de la base de données soit ajoutée.
      * 
@@ -90,9 +90,11 @@ public class ComptesManagement {
         CompteCourant compte;
         CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dailyBankState);
         compte = cep.doCompteEditorDialog(this.clientDesComptes, null, EditionMode.CREATION);
+        
+        //Vérifie si un compte a été créé.   
         if (compte != null) {
             try {
-            	
+            	//accède à la BDD et ajoute le compte courant à cette dernière
             	Access_BD_CompteCourant ac = new Access_BD_CompteCourant();
             	ac.addCompte(compte);
             	
