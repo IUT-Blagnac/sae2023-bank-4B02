@@ -208,6 +208,20 @@ public class Access_BD_CompteCourant {
 		}
 	}
 
+	/**
+	 * @author ALMASRI Marwan
+	 * Cette méthode permet de clôturer un compte courant en modifiant la valeur de son attribut ESTCLOTURE dans la base de données.
+	 *
+	 * @param cc Le compte courant à clôturer.
+	 * @throws RowNotFoundOrTooManyRowsException La requête modifie 0 ou plus de 1
+	 *                                           ligne
+	 * @throws DataAccessException               Erreur d'accès aux données (requête
+	 *                                           mal formée ou autre)
+	 * @throws DatabaseConnexionException        Erreur de connexion
+	 * @throws ManagementRuleViolation           Erreur sur le solde courant par
+	 *                                           rapport au débitAutorisé (solde <
+	 *                                           débitAutorisé)
+	 */
 	public void cloturerCompte(CompteCourant cc) throws RowNotFoundOrTooManyRowsException, DataAccessException,
 	DatabaseConnexionException, ManagementRuleViolation {
 		try {

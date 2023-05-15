@@ -137,6 +137,14 @@ public class ComptesManagement {
         return listeCpt;
     }
 
+    /**
+     * @author ALMASRI MARWAN
+     * Cette méthode permet de clôturer le compte courant spécifié en appelant la méthode cloturerCompte() de la classe Access_BD_CompteCourant.
+     * Si un objet CompteCourant valide est fourni en paramètre, la méthode procède à la clôture du compte courant et peut lever une ApplicationException aléatoirement (à des fins de test).
+     * Si une erreur de connexion à la base de données se produit, la méthode affiche une boîte de dialogue d'erreur et ferme la fenêtre principale. Si une ApplicationException est levée, la méthode affiche une boîte de dialogue d'erreur sans fermer la fenêtre principale.
+     *
+     * @param cpt Le compte courant à clôturer.
+     */
 	public void cloturerCompte(CompteCourant cpt) {
         if (cpt != null) {
             try {
