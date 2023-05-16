@@ -190,12 +190,12 @@ Les chefs d'agence ont accès aux mêmes fonctionnalités que les guichetiers, a
 |====
 
 >|Cas de test 4+|Test-02-02-01
->|Titre 4+|Création d'un nouvel employé
+>|Titre 4+|Création d'un nouvel employé (CRUD - C)
 >|Objectif 4+| Vérifier qu'il est possible de créer un nouvel employé
 
 5+|
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|All_G_C.1 ^|Cliquer sur le bouton "Nouvel employé". ^|La fenêtre de création des employés s'ouvre. ^| aucune ^|OK
+^|All_G_C.1 ^|Cliquer sur le bouton "Ajouter". ^|La fenêtre de création des employés s'ouvre. ^| aucune ^|OK
 ^|All_G_C.2 ^|Compléter les champs spécifiés et valider. ^|Un nouvel employé est créé. ^|aucune ^|OK
 
 
@@ -208,12 +208,12 @@ Compléter et si on ne valide pas, ...
 |====
 
 >|Cas de test 4+|Test-02-02-02
->|Titre 4+|Consultation des informations d'un employé
+>|Titre 4+|Consultation des informations d'un employé (CRUD - R)
 >|Objectif 4+| Vérifier qu'il est possible de consulter les informations d'un employé
 
 5+|
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|All_G_C.1 ^|Cliquer sur le bouton "Info Employé". ^|La page des informations de l'employé s’affiche. ^| Un employé actif est sélectionné ^|OK
+^|All_G_C.1 ^|Cliquer sur le bouton "Informations". ^|La page des informations de l'employé s’affiche. ^| Un employé actif est sélectionné ^|OK
 
 
 5+|
@@ -225,13 +225,13 @@ Compléter et si on ne valide pas, ...
 |====
 
 >|Cas de test 4+|Test-02-02-03
->|Titre 4+|Modification d'un employé
+>|Titre 4+|Modification d'un employé (CRUD - U)
 >|Objectif 4+| Vérifier qu'il est possible de modifier un employé
 
 5+|
 
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|All_G_C.3 ^|Cliquer sur le bouton "Metre à jour". ^|La fenêtre de modification des données de l'employé s'ouvre. ^|Il faut être connecté à un compte Chef d'Agence. L'employé est sélectionné. L'employé sélectionné n'est pas un Chef d'Agence. ^|OK
+^|All_G_C.3 ^|Cliquer sur le bouton "Mettre à jour". ^|La fenêtre de modification des données de l'employé s'ouvre. ^|Il faut être connecté à un compte Chef d'Agence. L'employé est sélectionné. L'employé sélectionné n'est pas un Chef d'Agence. ^|OK
 ^|All_G_C.4 ^|Modifier les champs souhaités et confirmer (en appuyant sur le boutton "Modifier"). ^|Retour sur les informations de l'employé. L'employé est modifié. ^|La fenêtre modifier employé est active ^|OK
 ^|All_G_C.5 ^|Modifier les champs souhaités et annuler (en appuyant sur le boutton annuler). ^|Retour sur les informations de l'employé. L'employé est inchangé. ^|La fenêtre modifier employé est active ^|OK
 
@@ -240,7 +240,7 @@ Compléter et si on ne valide pas, ...
 |====
 
 >|Cas de test 4+|Test-02-02-04
->|Titre 4+|Supprimer un employé
+>|Titre 4+|Supprimer un employé (CRUD  - D)
 >|Objectif 4+| Vérifier qu'il est possible de supprimer un employé
 
 5+|
