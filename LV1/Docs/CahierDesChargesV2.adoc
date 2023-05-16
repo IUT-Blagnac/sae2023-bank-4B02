@@ -39,24 +39,22 @@ Les banques françaises font face à des exigences croissantes de la part de leu
 
 === Objectifs
 L'objectif de ce projet est de développer une application de gestion des comptes clients et les employés. Cette application sera déployée dans les 100 agences que compte le réseau de la banque DailyBank, dans le cadre de la restructuration de ses services bancaires. L'application doit permettre de gérer des comptes bancaires de dépôt pour des clients préalablement créés et de débiter ou créditer un compte soit par virement, soit par une personne physique se présentant devant un guichet. Le développement de cette application permettra de répondre au problème de l'obsolescence des outils actuels de gestion des comptes clients ainsi que des employés de la banque DailyBank, ainsi qu'à la nécessité de moderniser et de digitaliser les services bancaires pour satisfaire les attentes des clients en termes d'instantanéité et de rapidité. En outre, l'application permettra de simplifier la gestion des comptes clients pour les employés des agences, de réduire les erreurs et les risques de fraude, et d'améliorer la qualité de service offerte aux clients.
-Sources :
 
-== Analyse de l'existant 
+== Analyse des besoins
+
+=== Version existante (V0)
 
 Dans la version existante (V0) de l'application de gestion des comptes clients de DailyBank, le guichetier dispose de plusieurs fonctionnalités. Il peut modifier les informations d'un client telles que son adresse ou son numéro de téléphone. Il a également la possibilité de créer un nouveau client en entrant ses informations personnelles dans l'application. Il peut consulter les informations d'un compte client, notamment le solde et l'historique des transactions. Enfin, il peut effectuer un débit sur un compte client, c'est-à-dire retirer de l'argent.
 
 Quant au chef d'agence, il a la possibilité de rendre un client inactif dans l'application, ce qui signifie que le compte ne pourra plus être utilisé pour effectuer des transactions. Ces fonctionnalités sont limitées et ne permettent pas une gestion complète et optimisée des comptes clients de la banque. Il est donc nécessaire de développer une nouvelle version de l'application pour répondre aux nouveaux besoins de DailyBank dans le cadre de la restructuration de ses services bancaires. Voici le diagramme de cas d'utilisation qui présente les fonctionnalités citées qui sont présentes dans la version existante :
 
 image::../../LV0/Docs/UseCaseV0.png[]
-
-== Analyse des besoins
-
-=== Version existante (V0)
   - Le guichetier peut modifier les informations d'un client telles que son adresse ou son numéro de téléphone.
   - Le guichetier peut créer un nouveau client en entrant ses informations personnelles dans l'application.
   - Le guichetier peut consulter les informations d'un compte client, notamment le solde et l'historique des transactions.
   - Le guichetier peut effectuer un débit sur un compte client, c'est-à-dire retirer de l'argent.
   - Le chef d'agence peut rendre un client inactif dans l'application, ce qui signifie que le compte ne pourra plus être utilisé pour effectuer des transactions.
+  
 
 === Version à développer (V1)
 - L'application doit permettre aux guichetiers de créditer/débiter un compte client en entrant le montant de la transaction.
