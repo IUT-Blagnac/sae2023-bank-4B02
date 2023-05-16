@@ -153,9 +153,9 @@ autorisé est de -100 euros.
 
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
 ^|All_G_CB.3 ^|Cliquer sur le bouton "Comptes client". ^|La page des comptes du client s'affiche. ^|Un client actif est sélectionné ^|OK
-^|All_G_CB.4 ^|Sélectionner le compte à clôturer et cliquer sur le bouton "Clôturer". ^|La fenêtre de confirmation de clôture s'affiche. ^|Le compte à clôturer est sélectionné ^|OK
-^|All_G_CB.5 ^|Confirmer la clôture du compte. ^|Le compte est clôturé et n'apparaît plus sur la page des comptes du client. ^|La fenêtre de confirmation de clôture est active ^|OK
-^|All_G_CB.6 ^|Annuler la clôture du compte. ^|Le compte n'est pas clôturé et reste sur la page des comptes du client. ^|La fenêtre de confirmation de clôture est active ^|OK
+^|All_G_CB.4 ^|Sélectionner le compte à clôturer et cliquer sur le bouton "Clôturer le compte". ^|La fenêtre de confirmation de clôture s'affiche. ^|Le compte à clôturer est sélectionné ^|OK
+^|All_G_CB.5 ^|Confirmer la clôture du compte (appuyer sur confirmer). ^|Le compte est clôturé et n'apparaît plus sur la page des comptes du client. ^|La fenêtre de confirmation de clôture est active ^|OK
+^|All_G_CB.6 ^|Annuler la clôture du compte (appuyer sur annuler). ^|Le compte n'est pas clôturé et reste sur la page des comptes du client. ^|La fenêtre de confirmation de clôture est active ^|OK
 
 |====
 
