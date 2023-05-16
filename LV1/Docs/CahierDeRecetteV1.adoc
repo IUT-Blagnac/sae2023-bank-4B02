@@ -231,9 +231,9 @@ Compléter et si on ne valide pas, ...
 5+|
 
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|All_G_C.3 ^|Cliquer sur le bouton "Modifier employé". ^|La fenêtre de modification des données de l'employé s'ouvre. ^|L'employé est sélectionné ^|OK
-^|All_G_C.4 ^|Modifier les champs souhaités et confirmer. ^|Retour sur les informations de l'employé. L'employé est modifié. ^|La fenêtre modifier employé est active ^|OK
-^|All_G_C.5 ^|Modifier les champs souhaités et annuler. ^|Retour sur les informations de l'employé. L'employé est inchangé. ^|La fenêtre modifier employé est active ^|OK
+^|All_G_C.3 ^|Cliquer sur le bouton "Metre à jour". ^|La fenêtre de modification des données de l'employé s'ouvre. ^|Il faut être connecté à un compte Chef d'Agence. L'employé est sélectionné. L'employé sélectionné n'est pas un Chef d'Agence. ^|OK
+^|All_G_C.4 ^|Modifier les champs souhaités et confirmer (en appuyant sur le boutton "Modifier"). ^|Retour sur les informations de l'employé. L'employé est modifié. ^|La fenêtre modifier employé est active ^|OK
+^|All_G_C.5 ^|Modifier les champs souhaités et annuler (en appuyant sur le boutton annuler). ^|Retour sur les informations de l'employé. L'employé est inchangé. ^|La fenêtre modifier employé est active ^|OK
 
 |====
 
