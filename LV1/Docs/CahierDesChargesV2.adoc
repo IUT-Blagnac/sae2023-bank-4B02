@@ -44,7 +44,9 @@ L'objectif de ce projet est de développer une application de gestion des compte
 
 === Version existante (V0)
 
-Dans la version existante (V0) de l'application de gestion des comptes clients de DailyBank, le guichetier dispose de plusieurs fonctionnalités. Il peut modifier les informations d'un client telles que son adresse ou son numéro de téléphone. Il a également la possibilité de créer un nouveau client en entrant ses informations personnelles dans l'application. Il peut consulter les informations d'un compte client, notamment le solde et l'historique des transactions. Enfin, il peut effectuer un débit sur un compte client, c'est-à-dire retirer de l'argent.
+Nous avons au départ une version V0 existante sur Java ainsi que la BD, avec les UseCase V0 et les diagrammes de classe V0.
+
+Dans cette version existante (V0) de l'application de gestion des comptes clients de DailyBank, le guichetier dispose de plusieurs fonctionnalités. Il peut modifier les informations d'un client telles que son adresse ou son numéro de téléphone. Il a également la possibilité de créer un nouveau client en entrant ses informations personnelles dans l'application. Il peut consulter les informations d'un compte client, notamment le solde et l'historique des transactions. Enfin, il peut effectuer un débit sur un compte client, c'est-à-dire retirer de l'argent.
 
 Quant au chef d'agence, il a la possibilité de rendre un client inactif dans l'application, ce qui signifie que le compte ne pourra plus être utilisé pour effectuer des transactions. Ces fonctionnalités sont limitées et ne permettent pas une gestion complète et optimisée des comptes clients de la banque. Il est donc nécessaire de développer une nouvelle version de l'application pour répondre aux nouveaux besoins de DailyBank dans le cadre de la restructuration de ses services bancaires. Voici le diagramme de cas d'utilisation qui présente les fonctionnalités citées qui sont présentes dans la version existante :
 
