@@ -195,8 +195,8 @@ Les chefs d'agence ont accès aux mêmes fonctionnalités que les guichetiers, a
 
 5+|
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|All_G_C.1 ^|Cliquer sur le bouton "Ajouter". ^|La fenêtre de création des employés s'ouvre. ^| aucune ^|OK
-^|All_G_C.2 ^|Compléter les champs spécifiés et valider. ^|Un nouvel employé est créé. ^|aucune ^|OK
+^|All_G_C.1 ^|Cliquer sur le bouton "Ajouter". ^|La fenêtre de création des employés s'ouvre. ^| Il faut être connecté à un compte Chef d'Agence ^|OK
+^|All_G_C.2 ^|Compléter les champs spécifiés et valider (en appuyant sur le boutton "Valider"). ^|Un nouvel employé est créé. ^|Il faut être connecté à un compte Chef d'Agence ^|OK
 
 
 5+|
@@ -213,7 +213,7 @@ Compléter et si on ne valide pas, ...
 
 5+|
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|All_G_C.1 ^|Cliquer sur le bouton "Informations". ^|La page des informations de l'employé s’affiche. ^| Un employé actif est sélectionné ^|OK
+^|All_G_C.1 ^|Cliquer sur le bouton "Informations". ^|La page des informations de l'employé s’affiche. ^| Il faut être connecté à un compte Chef d'Agence. Un employé actif est sélectionné. ^|OK
 
 
 5+|
