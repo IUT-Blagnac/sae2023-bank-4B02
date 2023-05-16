@@ -185,9 +185,11 @@ Les chefs d'agence ont accès aux mêmes fonctionnalités que les guichetiers, a
 
 |====
 
+==== 2.2 Gestion des employés :
+
 |====
 
->|Cas de test 4+|Test-02-01-02
+>|Cas de test 4+|Test-02-02-01
 >|Titre 4+|Création d'un nouvel employé
 >|Objectif 4+| Vérifier qu'il est possible de créer un nouvel employé
 
@@ -205,7 +207,7 @@ Compléter et si on ne valide pas, ...
 
 |====
 
->|Cas de test 4+|Test-02-01-03
+>|Cas de test 4+|Test-02-02-02
 >|Titre 4+|Consultation des informations d'un employé
 >|Objectif 4+| Vérifier qu'il est possible de consulter les informations d'un employé
 
@@ -222,7 +224,7 @@ Compléter et si on ne valide pas, ...
 
 |====
 
->|Cas de test 4+|Test-02-01-04
+>|Cas de test 4+|Test-02-02-03
 >|Titre 4+|Modification d'un employé
 >|Objectif 4+| Vérifier qu'il est possible de modifier un employé
 
@@ -237,7 +239,7 @@ Compléter et si on ne valide pas, ...
 
 |====
 
->|Cas de test 4+|Test-01-01-01
+>|Cas de test 4+|Test-02-02-04
 >|Titre 4+|Supprimer un employé
 >|Objectif 4+| Vérifier qu'il est possible de créer un nouveau client
 
