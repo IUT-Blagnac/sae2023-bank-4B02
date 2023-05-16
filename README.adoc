@@ -51,13 +51,14 @@ detaillez contraintes orga (contrainte sur qui fait quoi, jalons de livraisons, 
 | 17/05   | Doc. Tec. V1     |    Ahmad    |    link:LV1/Docs/DocumentTechniqueV1.adoc[DocTechV1]        |       
 | 16/05   | Doc User V1      |    Ahmad    |    link:LV1/Docs/DocumentUtilisateurV1.adoc[DocUserV1]      |       
 | 17/05   | Recette V1       |    Rayan    |    link:LV1/Docs/CahierDeRecetteV1.adoc[CahierDeTestV1]     |       
-| 16/05   | Suivi projet V1  |             |                                                             |       
-| 26/05   | Gantt V2 réalisé |             |                                                             |       
-| 26/05   | Doc. Util. V2    |             |                                                             |       
-| 26/05   | Doc. Tec. V2     |             |                                                             |       
-| 26/05   | Code V2          |             |                                                             |       
-| 26/05   | Recette V2       |             |                                                             |        
-| 26/05   | `jar` projet     |             |                                                             |        
+| 16/05   | Suivi projet V1  |    Tous     |                                                             |       
+| 26/05   | Gantt V2 réalisé |    Rayan    |                                                             |       
+| 26/05   | Doc. Util. V2    |    Marwan   |                                                             |       
+| 26/05   | Doc. Tec. V2     |    Marwan   |                                                             |       
+| 26/05   | Code V2          |    Tous     |                                                             |       
+| 26/05   | Cahier Test v2 + Recette|    Ahmad    |                                                |        
+| 26/05   | `jar` projet     |    Tous     |                                                             |        
+| 26/05   | Chiffrage Projet |             |                                                             |     
 |===
 
 == Répartition des tâches et état d'avancement
