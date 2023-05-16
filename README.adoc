@@ -46,7 +46,7 @@ affinez l'analyse de l'existant par rapport à ce qui vous a été fourni en ent
 detaillez contraintes orga (contrainte sur qui fait quoi, jalons de livraisons, organisation de l'équipe ...)    
 | Sem.19  | Gantt V1 Prévu   |    Marwan   | link:LV1/Docs/GANTTV1Prevu.pdf[GANTT V1 Prévu]              |     retrvaillez la mise en page, reprenez les durées (temps/homme), focalisez vous sur la V1 (le reste de la planif viendra après), assurez vous de n'avoir oublier aucune tache pour V1.Vérifier prédécesseur (ex: pour GANTT réalisé, entrant necessaire = GANTT planifié), ajoutez jalons livraison.   
 | 16/05   | CdC V2final      |    Marwan   |    link:LV1/Docs/CahierDesChargesV2.adoc[Cahier des charges V2] |        
-| 16/05   | Gantt V1 Réalisé |    Marwan   |                                                             |        
+| 16/05   | Gantt V1 Réalisé |    Marwan   |     link:LV1/Docs/GANTTREALISEV1.pdf[GANTT V1 Réalisé]      |        
 | 16/05   | Gantt V2 Prevu   |    Rayan    |                                                             |       
 | 17/05   | Doc. Tec. V1     |    Ahmad    |    link:LV1/Docs/DocumentTechniqueV1.adoc[DocTechV1]        |       
 | 16/05   | Doc User V1      |    Ahmad    |    link:LV1/Docs/DocumentUtilisateurV1.adoc[DocUserV1]      |       
