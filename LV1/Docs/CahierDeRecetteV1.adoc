@@ -96,16 +96,32 @@ Compléter et si on ne valide pas, ...
 
 |====
 
->|Cas de test 4+|Test-01-02-01
+>|Cas de test 4+|Test-01-02-02
 >|Titre 4+|Consultation d'un compte
 >|Objectif 4+| Vérifier qu'il est possible de consulter un compte
 
 5+|
 
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|All_G_CB.1 ^|Cliquer sur le bouton "Comptes client". ^|La page des comptes du client s’affiche. ^|Un client actif est sélectionné ^|OK
-^|All_G_CB.2 ^|Sélectionner le bouton "Voir opérations". ^|La page des opérations du compte s’affiche. ^|Un compte actif est sélectionné ^|OK
+^|All_G_CB.3 ^|Cliquer sur le bouton "Comptes client". ^|La page des comptes du client s’affiche. ^|Un client actif est sélectionné ^|OK
+^|All_G_CB.4 ^|Sélectionner le bouton "Voir opérations". ^|La page des opérations du compte s’affiche. ^|Un compte actif est sélectionné ^|OK
 ...
+
+|====
+
+|====
+
+|Cas de test 4+|Test-01-02-03
+|Titre 4+|Clôturer un compte
+|Objectif 4+| Vérifier qu'il est possible de clôturer un compte
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_CB.5 ^|Cliquer sur le bouton "Comptes client". ^|La page des comptes du client s'affiche. ^|Un client actif est sélectionné ^|OK
+^|All_G_CB.6 ^|Sélectionner le compte à clôturer et cliquer sur le bouton "Clôturer le compte". ^|La fenêtre de confirmation de clôture s'affiche. ^|Le compte à clôturer est sélectionné ^|OK
+^|All_G_CB.7 ^|Confirmer la clôture du compte (appuyer sur confirmer). ^|Le compte est clôturé et n'apparaît plus sur la page des comptes du client. ^|La fenêtre de confirmation de clôture est active ^|OK
+^|All_G_CB.8 ^|Annuler la clôture du compte (appuyer sur annuler). ^|Le compte n'est pas clôturé et reste sur la page des comptes du client. ^|La fenêtre de confirmation de clôture est active ^|OK
 
 |====
 
@@ -144,14 +160,14 @@ autorisé est de -100 euros.
 5+|
 
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|All_G_COP.1 ^|Cliquer sur le bouton "Comptes client". ^|La page des comptes du client s’affiche. ^| Un client actif est sélectionné ^|OK
-^|All_G_COP.1 ^|Cliquer sur le bouton "Voir opérations". ^|La page de gestion des opérations du compte s’affiche. ^| Un compte actif est sélectionné ^|OK
-^|All_G_COP.1 ^|Cliquer sur le bouton "Créditer". ^|La page d'enregistrement du crédit s’affiche. ^| Un compte actif est sélectionné ^|OK
-^|All_G_COP.2  ^|Rentrer un montant 50 dans le champ "Montant". ^|Le nouveau solde est +50euros. On a créé une nouvelle opération dans la liste des opérations avec le bon montant et la bonne date ^| Le montant est un chiffre/nombre, et est postif. Le compte sélectionné a un solde de 0.
+^|All_G_COP.5 ^|Cliquer sur le bouton "Comptes client". ^|La page des comptes du client s’affiche. ^| Un client actif est sélectionné ^|OK
+^|All_G_COP.6 ^|Cliquer sur le bouton "Voir opérations". ^|La page de gestion des opérations du compte s’affiche. ^| Un compte actif est sélectionné ^|OK
+^|All_G_COP.7 ^|Cliquer sur le bouton "Créditer". ^|La page d'enregistrement du crédit s’affiche. ^| Un compte actif est sélectionné ^|OK
+^|All_G_COP.8  ^|Rentrer un montant 50 dans le champ "Montant". ^|Le nouveau solde est +50euros. On a créé une nouvelle opération dans la liste des opérations avec le bon montant et la bonne date ^| Le montant est un chiffre/nombre, et est postif. Le compte sélectionné a un solde de 0.
  ^|OK
-^|All_G_COP.3  ^|Rentrer un montant 150 dans le champ "Montant". ^|Le nouveau solde est -50 euros. On a créé une nouvelle opération dans la liste des opérations avec le bon montant et la bonne date ^| Le montant est un chiffre/nombre, et est postif. Le compte sélectionné a un solde de -200 euros.
+^|All_G_COP.9  ^|Rentrer un montant 150 dans le champ "Montant". ^|Le nouveau solde est -50 euros. On a créé une nouvelle opération dans la liste des opérations avec le bon montant et la bonne date ^| Le montant est un chiffre/nombre, et est postif. Le compte sélectionné a un solde de -200 euros.
  ^|OK
-^|All_G_COP.4  ^|Rentrer un montant 1000000 dans le champ "Montant". ^|Blocage ! + pop-up ^| Le montant est un chiffre/nombre, et est postif.
+^|All_G_COP.10  ^|Rentrer un montant 1000000 dans le champ "Montant". ^|Blocage ! + pop-up ^| Le montant est un chiffre/nombre, et est postif.
  ^|OK
   
  
@@ -166,34 +182,16 @@ autorisé est de -100 euros.
 5+|
 
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|All_G_COP.1 ^|Cliquer sur le bouton "Comptes client". ^|La page des comptes du client s’affiche. ^| Un client actif est sélectionné ^|OK
-^|All_G_COP.1 ^|Cliquer sur le bouton "Voir opérations". ^|La page de gestion des opérations du compte s’affiche. ^| Un compte actif est sélectionné ^|OK
-^|All_G_COP.1 ^|Cliquer sur le bouton "Virement". ^|La page d'enregistrement du virement s’affiche. ^| Un compte actif est sélectionné ^|OK
-^|All_G_COP.2  ^|Rentrer un montant 50 dans le champ "Montant". ^|Le nouveau solde est -50euros. On a créé une nouvelle opération dans la liste des opérations avec le bon montant. ^| Le montant est un chiffre/nombre, et est postif. Le compte sélectionné a un solde de positif. Le montant rentré dois être inférieur au solde actuel du compte.
+^|All_G_COP.11 ^|Cliquer sur le bouton "Comptes client". ^|La page des comptes du client s’affiche. ^| Un client actif est sélectionné ^|OK
+^|All_G_COP.12 ^|Cliquer sur le bouton "Voir opérations". ^|La page de gestion des opérations du compte s’affiche. ^| Un compte actif est sélectionné ^|OK
+^|All_G_COP.13 ^|Cliquer sur le bouton "Virement". ^|La page d'enregistrement du virement s’affiche. ^| Un compte actif est sélectionné ^|OK
+^|All_G_COP.14  ^|Rentrer un montant 50 dans le champ "Montant". ^|Le nouveau solde est -50euros. On a créé une nouvelle opération dans la liste des opérations avec le bon montant. ^| Le montant est un chiffre/nombre, et est postif. Le compte sélectionné a un solde de positif. Le montant rentré dois être inférieur au solde actuel du compte.
  ^|OK
-^|All_G_COP.4  ^|Rentrer un montant 150 dans le champ "Montant". ^|Blocage ! + pop-up ^| Le montant est un chiffre/nombre, et est postif. Le compte a un solde inférieur au montant rentré pour le virement.
+^|All_G_COP.15  ^|Rentrer un montant 150 dans le champ "Montant". ^|Blocage ! + pop-up ^| Le montant est un chiffre/nombre, et est postif. Le compte a un solde inférieur au montant rentré pour le virement.
  ^|OK
   
  
 |====
-
-|====
-
-|Cas de test 4+|Test-01-03-04
-|Titre 4+|Clôturer un compte
-|Objectif 4+| Vérifier qu'il est possible de clôturer un compte
-
-5+|
-
-^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|All_G_CB.3 ^|Cliquer sur le bouton "Comptes client". ^|La page des comptes du client s'affiche. ^|Un client actif est sélectionné ^|OK
-^|All_G_CB.4 ^|Sélectionner le compte à clôturer et cliquer sur le bouton "Clôturer le compte". ^|La fenêtre de confirmation de clôture s'affiche. ^|Le compte à clôturer est sélectionné ^|OK
-^|All_G_CB.5 ^|Confirmer la clôture du compte (appuyer sur confirmer). ^|Le compte est clôturé et n'apparaît plus sur la page des comptes du client. ^|La fenêtre de confirmation de clôture est active ^|OK
-^|All_G_CB.6 ^|Annuler la clôture du compte (appuyer sur annuler). ^|Le compte n'est pas clôturé et reste sur la page des comptes du client. ^|La fenêtre de confirmation de clôture est active ^|OK
-
-|====
-
-
 
 === 2. Fonctionnalités des chefs d'agence :
 [.text-justify]
@@ -229,8 +227,8 @@ Les chefs d'agence ont accès aux mêmes fonctionnalités que les guichetiers, a
 
 5+|
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|All_G_C.1 ^|Cliquer sur le bouton "Ajouter". ^|La fenêtre de création des employés s'ouvre. ^| Il faut être connecté à un compte Chef d'Agence ^|OK
-^|All_G_C.2 ^|Compléter les champs spécifiés et valider (en appuyant sur le boutton "Valider"). ^|Un nouvel employé est créé. ^|Il faut être connecté à un compte Chef d'Agence ^|OK
+^|All_G_E.1 ^|Cliquer sur le bouton "Ajouter". ^|La fenêtre de création des employés s'ouvre. ^| Il faut être connecté à un compte Chef d'Agence ^|OK
+^|All_G_E.2 ^|Compléter les champs spécifiés et valider (en appuyant sur le boutton "Valider"). ^|Un nouvel employé est créé. ^|Il faut être connecté à un compte Chef d'Agence ^|OK
 
 
 5+|
@@ -247,7 +245,7 @@ Compléter et si on ne valide pas, ...
 
 5+|
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|All_G_C.1 ^|Cliquer sur le bouton "Informations". ^|La page des informations de l'employé s’affiche. ^| Il faut être connecté à un compte Chef d'Agence. Un employé actif est sélectionné. ^|OK
+^|All_G_E.3 ^|Cliquer sur le bouton "Informations". ^|La page des informations de l'employé s’affiche. ^| Il faut être connecté à un compte Chef d'Agence. Un employé actif est sélectionné. ^|OK
 
 
 5+|
@@ -265,9 +263,9 @@ Compléter et si on ne valide pas, ...
 5+|
 
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|All_G_C.3 ^|Cliquer sur le bouton "Mettre à jour". ^|La fenêtre de modification des données de l'employé s'ouvre. ^|Il faut être connecté à un compte Chef d'Agence. L'employé est sélectionné. L'employé sélectionné n'est pas un Chef d'Agence. ^|OK
-^|All_G_C.4 ^|Modifier les champs souhaités et confirmer (en appuyant sur le boutton "Modifier"). ^|Retour sur les informations de l'employé. L'employé est modifié. ^|La fenêtre modifier employé est active ^|OK
-^|All_G_C.5 ^|Modifier les champs souhaités et annuler (en appuyant sur le boutton annuler). ^|Retour sur les informations de l'employé. L'employé est inchangé. ^|La fenêtre modifier employé est active ^|OK
+^|All_G_E.4 ^|Cliquer sur le bouton "Mettre à jour". ^|La fenêtre de modification des données de l'employé s'ouvre. ^|Il faut être connecté à un compte Chef d'Agence. L'employé est sélectionné. L'employé sélectionné n'est pas un Chef d'Agence. ^|OK
+^|All_G_E.5 ^|Modifier les champs souhaités et confirmer (en appuyant sur le boutton "Modifier"). ^|Retour sur les informations de l'employé. L'employé est modifié. ^|La fenêtre modifier employé est active ^|OK
+^|All_G_E.6 ^|Modifier les champs souhaités et annuler (en appuyant sur le boutton annuler). ^|Retour sur les informations de l'employé. L'employé est inchangé. ^|La fenêtre modifier employé est active ^|OK
 
 |====
 
@@ -279,7 +277,7 @@ Compléter et si on ne valide pas, ...
 
 5+|
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|All_G_C.1 ^|Cliquer sur le bouton "Supprimer". ^|La fenêtre de gestion d'employés s'ouvre. ^| Il faut être connecté à un compte Chef d'Agence. L'employé est sélectionné. L'employé sélectionné n'est pas un Chef d'Agence. ^|OK
+^|All_G_E.7 ^|Cliquer sur le bouton "Supprimer". ^|La fenêtre de gestion d'employés s'ouvre. ^| Il faut être connecté à un compte Chef d'Agence. L'employé est sélectionné. L'employé sélectionné n'est pas un Chef d'Agence. ^|OK
 
 
 
