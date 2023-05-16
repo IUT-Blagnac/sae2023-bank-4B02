@@ -245,8 +245,8 @@ Compléter et si on ne valide pas, ...
 
 5+|
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|All_G_C.1 ^|Cliquer sur le bouton "Supprimer". ^|La fenêtre de suppression d'employés s'ouvre. ^| Il faut être connecté à un compte Cheg d'Agence ^|OK
-^|All_G_C.2 ^|Compléter les champs spécifiés et valider. ^|Un nouveau client est créé. ^|aucune ^|OK
+^|All_G_C.1 ^|Cliquer sur le bouton "Supprimer". ^|La fenêtre de gestion d'employés s'ouvre. ^| Il faut être connecté à un compte Chef d'Agence. L'employé est sélectionné. L'employé sélectionné n'est pas un Chef d'Agence. ^|OK
+
 
 
 5+|
