@@ -79,3 +79,6 @@ image::ressources/UseCaseV1.PNG[]
 
 === Contraintes organisationnelles
 - Travail en équipe de 3 à 4 étudiants.
+- Délais de livraisons à respecter.
+- Répartition du travail de manière égale.
+- Faire des checks de temps en temps pour voir où en sont les tâches de chacun.
