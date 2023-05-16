@@ -79,6 +79,20 @@ Compléter et si on ne valide pas, ...
 
 ==== 1.2 Gestion des comptes bancaires :
 
+|====
+
+>|Cas de test 4+|Test-01-02-01
+>|Titre 4+|Création d'un compte
+>|Objectif 4+| Vérifier qu'il est possible de créer un compte
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_CB.1 ^|Cliquer sur le bouton "Nouveau Compte". ^|La page de création de compte s’affiche. ^|Un client actif est sélectionné ^|OK
+^|All_G_CB.2 ^|Sélectionner le bouton "Voir opérations". ^|La page des opérations du compte s’affiche. ^|Un compte actif est sélectionné ^|OK
+...
+
+|====
 
 |====
 
