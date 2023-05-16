@@ -192,11 +192,10 @@ public class CompteEditorPaneController {
 	}
 
 	private boolean isSaisieValide() {
-		Double solde = Double.parseDouble(this.txtSolde.getText().trim());
 		int decouvert = Integer.parseInt(this.txtDecAutorise.getText().trim());
 		String info = "";
-		if (solde < 0) {
-			info += "Le premier dépot ne peut pas être inférieur à 0 !\n";
+		if(decouvert > 0) {
+			info += "Le découvert ne peut pas être supérieur à 0 !\n";
 		}
 		if (info.equals("")) {
 			return true;

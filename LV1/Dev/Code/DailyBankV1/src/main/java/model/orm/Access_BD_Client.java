@@ -76,7 +76,6 @@ public class Access_BD_Client {
 				pst = con.prepareStatement(query);
 				pst.setInt(1, idAg);
 			}
-			System.err.println(query + " nom : " + debutNom + " prenom : " + debutPrenom + "#");
 
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
@@ -190,8 +189,6 @@ public class Access_BD_Client {
 			pst.setString(6, "" + client.estInactif.charAt(0));
 			pst.setInt(7, client.idAg);
 
-			System.err.println(query);
-
 			int result = pst.executeUpdate();
 			pst.close();
 
@@ -203,7 +200,6 @@ public class Access_BD_Client {
 
 			query = "SELECT seq_id_client.CURRVAL from DUAL";
 
-			System.err.println(query);
 			PreparedStatement pst2 = con.prepareStatement(query);
 
 			ResultSet rs = pst2.executeQuery();
@@ -251,8 +247,6 @@ public class Access_BD_Client {
 			pst.setString(5, client.telephone);
 			pst.setString(6, "" + client.estInactif.charAt(0));
 			pst.setInt(7, client.idNumCli);
-
-			System.err.println(query);
 
 			int result = pst.executeUpdate();
 			pst.close();

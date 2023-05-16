@@ -100,12 +100,15 @@ public class OperationsManagementController {
 			this.validateComponentState();
 		}
 	}
-	
-	/**RAYAN SELLOU 4B
-	 * Ici on créer la fonction permettant de gérer les crédits
-	 * Cette méthode permet de gérer les crédits d'un compte client.  
-	 * @implNote Cette méthode est appelée lorsque l'utilisateur clique sur le bouton de crédit. 
-	 * @implSpec Cette méthode utilise un objet de type Operation pour enregistrer le crédit dans le compte client. 
+
+	/**
+	 * RAYAN SELLOU 4B Ici on créer la fonction permettant de gérer les crédits
+	 * Cette méthode permet de gérer les crédits d'un compte client.
+	 * 
+	 * @implNote Cette méthode est appelée lorsque l'utilisateur clique sur le
+	 *           bouton de crédit.
+	 * @implSpec Cette méthode utilise un objet de type Operation pour enregistrer
+	 *           le crédit dans le compte client.
 	 * 
 	 */
 	@FXML
@@ -116,16 +119,19 @@ public class OperationsManagementController {
 			this.validateComponentState();
 		}
 	}
-	
+
 	/**
 	 * Effectue un virement sur le compte client.
 	 *
 	 * @author KHALIL Ahmad
 	 * 
-	 * Cette méthode est appelée lorsqu'on souhaite effectuer un virement sur le compte client.
-	 * Elle utilise la méthode enregistrerCredit(true) de l'objet omDialogController pour enregistrer le virement.
-	 * Si le virement est enregistré avec succès (opération différente de null), elle met à jour les informations du compte client
-	 * en appelant la méthode updateInfoCompteClient() et met à jour l'état des composants en appelant la méthode validateComponentState().
+	 *         Cette méthode est appelée lorsqu'on souhaite effectuer un virement
+	 *         sur le compte client. Elle utilise la méthode enregistrerCredit(true)
+	 *         de l'objet omDialogController pour enregistrer le virement. Si le
+	 *         virement est enregistré avec succès (opération différente de null),
+	 *         elle met à jour les informations du compte client en appelant la
+	 *         méthode updateInfoCompteClient() et met à jour l'état des composants
+	 *         en appelant la méthode validateComponentState().
 	 */
 	@FXML
 	private void doVirement() {
@@ -141,9 +147,15 @@ public class OperationsManagementController {
 	}
 
 	private void validateComponentState() {
-		this.btnCredit.setDisable(false);
-		this.btnDebit.setDisable(false);
-		this.btnVirement.setDisable(false);
+		if (this.compteConcerne.estCloture.equals("N")) {
+			this.btnCredit.setDisable(false);
+			this.btnDebit.setDisable(false);
+			this.btnVirement.setDisable(false);
+		} else {
+			this.btnCredit.setDisable(true);
+			this.btnDebit.setDisable(true);
+			this.btnVirement.setDisable(true);
+		}
 	}
 
 	private void updateInfoCompteClient() {
@@ -157,7 +169,7 @@ public class OperationsManagementController {
 		listeOP = opesEtCompte.getRight();
 
 		this.lblInfosClient.setText("N°Client : " + this.clientDuCompte.idNumCli + " | N°Compte : "
-				+ this.compteConcerne.idNumCompte + " | N°Agence : " + this.clientDuCompte.idAg);
+				+ this.compteConcerne.idNumCompte + " | Etat : " + (this.compteConcerne.estCloture.equals("N") ? "Ouvert" : "Cloturé"));
 
 		this.lblInfosCompte.setText("Solde : " + this.compteConcerne.solde + " | Découvert Autorisé : "
 				+ Integer.toString(this.compteConcerne.debitAutorise));

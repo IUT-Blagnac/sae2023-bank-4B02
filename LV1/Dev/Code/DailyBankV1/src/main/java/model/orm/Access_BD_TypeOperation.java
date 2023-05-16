@@ -36,8 +36,6 @@ public class Access_BD_TypeOperation {
 			Connection con = LogToDatabase.getConnexion();
 			String query = "SELECT * FROM TypeOperation ORDER BY idTypeOp";
 
-			System.err.println(query);
-
 			PreparedStatement pst = con.prepareStatement(query);
 
 			ResultSet rs = pst.executeQuery();

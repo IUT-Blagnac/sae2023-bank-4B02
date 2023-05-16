@@ -108,23 +108,30 @@ public class ComptesManagementController {
 	}
 
 	/**
-	 * @author ALMASRI MARWAN
-	 * Cette méthode est appelée lorsqu'un utilisateur souhaite clôturer le compte courant sélectionné dans la liste.
-	 * Elle récupère l'indice de l'élément sélectionné dans la liste, et clôture le compte courant correspondant en appelant la méthode cloturerCompte() du contrôleur de dialogue.
-	 * Ensuite, elle recharge la liste de comptes courants et valide l'état des composants de l'interface utilisateur.
+	 * @author ALMASRI MARWAN Cette méthode est appelée lorsqu'un utilisateur
+	 *         souhaite clôturer le compte courant sélectionné dans la liste. Elle
+	 *         récupère l'indice de l'élément sélectionné dans la liste, et clôture
+	 *         le compte courant correspondant en appelant la méthode
+	 *         cloturerCompte() du contrôleur de dialogue. Ensuite, elle recharge la
+	 *         liste de comptes courants et valide l'état des composants de
+	 *         l'interface utilisateur.
 	 */
 	@FXML
 	private void doCloturerCompte() {
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			CompteCourant cpt = this.oListCompteCourant.get(selectedIndice);
-			if(cpt.solde==0) {
-				this.cmDialogController.cloturerCompte(cpt);
+			if (cpt.solde == 0) {
+				boolean rep = AlertUtilities.confirmYesCancel(this.primaryStage, "Action impossible",
+						"Voulez vous vraiment cloturer le compte ? ", null, AlertType.CONFIRMATION);
+				if (rep) {
+					this.cmDialogController.cloturerCompte(cpt);
 				}
-			else {
-					AlertUtilities.showAlert(this.primaryStage, "Impossible de clôturer (Solde non nulle).", "", "Erreur", AlertType.INFORMATION);
-				}
+			} else {
+				AlertUtilities.showAlert(this.primaryStage, "Action impossible",
+						"Impossible de cloturer le compte (solde non nul)", "", AlertType.INFORMATION);
 			}
+		}
 		this.loadList();
 		this.validateComponentState();
 	}

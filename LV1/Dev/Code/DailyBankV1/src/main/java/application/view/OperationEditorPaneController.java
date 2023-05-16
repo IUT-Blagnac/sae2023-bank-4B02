@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import application.DailyBankState;
+import application.tools.AlertUtilities;
 import application.tools.CategorieOperation;
 import application.tools.ConstantesIHM;
 import javafx.collections.FXCollections;
@@ -14,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.CompteCourant;
@@ -52,6 +54,12 @@ public class OperationEditorPaneController {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 	}
 
+	/**
+	 * Affiche une boîte de dialogue pour l'enregistrement d'une opération sur un compte.
+	 * @param cpte le compte courant concerné
+	 * @param mode la catégorie de l'opération (DEBIT, CREDIT, VIREMENT)
+	 * @return l'opération résultante après l'enregistrement
+	 */
 	public Operation displayDialog(CompteCourant cpte, CategorieOperation mode) {
 		this.categorieOperation = mode;
 		this.compteEdite = cpte;
@@ -91,7 +99,7 @@ public class OperationEditorPaneController {
 			info = "Compte n°" + this.compteEdite.idNumCompte + "  Solde : " + this.compteEdite.solde
 					+ "  Découvert Autorisé : " + Integer.toString(this.compteEdite.debitAutorise);
 			this.lblMessage.setText(info);
-			this.lblNomOp.setText("Compte destinataire");
+			this.lblNomOp.setText("Comptes destinataires\npossible (ouvert)");
 			this.btnOk.setText("Effectuer virement");
 			this.btnCancel.setText("Annuler");
 
@@ -154,12 +162,19 @@ public class OperationEditorPaneController {
 	@FXML
 	private Label lblNomOp;
 
+	/**
+	 * Annule l'opération en cours et ferme la fenêtre de dialogue.
+	 */
 	@FXML
 	private void doCancel() {
 		this.operationResultat = null;
 		this.primaryStage.close();
 	}
 
+	/**
+	 * Effectue l'ajout de l'opération en cours en fonction de la catégorie sélectionnée.
+	 * Les règles de validation varient en fonction de la catégorie.
+	 */
 	@FXML
 	private void doAjouter() {
 		switch (this.categorieOperation) {
@@ -270,9 +285,6 @@ public class OperationEditorPaneController {
 					break; // Sort de la boucle dès que le premier chiffre est trouvé
 				}
 			}
-			System.out.println("Id " + idNumCpt);
-			System.out.println("Id " + idNumCpt);
-			System.out.println("Id " + idNumCpt);
 			if (idNumCpt != -1) {
 				this.operationResultat = new Operation(-1, montant2, null, null, idNumCpt, "Virement Compte à Compte");
 				this.primaryStage.close();

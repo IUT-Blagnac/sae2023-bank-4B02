@@ -47,6 +47,11 @@ public class EmployeEditorPane {
 	    }
 	}
 	
+	/**
+	 * @author KHALIL Ahmad
+	 * 
+	 * Lancer la gestion des employés.
+	 */
 	public Employe doEmployeEditorDialog(Employe pfEmploye, EditionMode em) {
 	    return this.cepcViewController.displayDialog(pfEmploye, em);
 	}

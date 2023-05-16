@@ -47,8 +47,6 @@ public class Access_BD_Employe {
 
 			ResultSet rs = pst.executeQuery();
 
-			System.err.println(query);
-
 			if (rs.next()) {
 				int idEmployeTrouve = rs.getInt("idEmploye");
 				String nom = rs.getString("nom");
@@ -158,7 +156,6 @@ public class Access_BD_Employe {
 
 			query = "SELECT seq_id_employe.CURRVAL from DUAL";
 
-			System.err.println(query);
 			PreparedStatement pst2 = con.prepareStatement(query);
 
 			ResultSet rs = pst2.executeQuery();
@@ -194,8 +191,6 @@ public class Access_BD_Employe {
 			pst.setInt(6, pfEmploye.idAg);
 			pst.setInt(7, pfEmploye.idEmploye);
 
-			System.err.println(query);
-
 			int result = pst.executeUpdate();
 			pst.close();
 			if (result != 1) {
@@ -217,8 +212,6 @@ public class Access_BD_Employe {
 
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setInt(1, pfEmploye.idEmploye);
-
-			System.err.println(query);
 
 			int result = pst.executeUpdate();
 			pst.close();
@@ -243,8 +236,6 @@ public class Access_BD_Employe {
 			pst = con.prepareStatement(query);
 			pst.setInt(1, pfIdAg);
 			
-			System.err.println(query);
-
 			int result = pst.executeUpdate();
 			pst.close();
 			if (result < 1) {

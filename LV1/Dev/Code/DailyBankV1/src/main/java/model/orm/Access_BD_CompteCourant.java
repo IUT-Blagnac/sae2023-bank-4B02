@@ -55,8 +55,6 @@ public class Access_BD_CompteCourant {
 				pst.setInt(1, idNumCli);
 			}
 
-			System.err.println(query);
-
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
 				int idNumCompte = rs.getInt("idNumCompte");
@@ -98,8 +96,6 @@ public class Access_BD_CompteCourant {
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setInt(1, idNumCompte);
 
-			System.err.println(query);
-
 			ResultSet rs = pst.executeQuery();
 
 			if (rs.next()) {
@@ -140,8 +136,6 @@ public class Access_BD_CompteCourant {
 			pst.setDouble(2, cc.solde);
 			pst.setInt(3, cc.idNumCli);
 			pst.setString(4, cc.estCloture);
-
-			System.err.println(query);
 
 			int result = pst.executeUpdate();
 			pst.close();
@@ -193,8 +187,6 @@ public class Access_BD_CompteCourant {
 			pst.setInt(1, cc.debitAutorise);
 			pst.setInt(2, cc.idNumCompte);
 
-			System.err.println(query);
-
 			int result = pst.executeUpdate();
 			pst.close();
 			if (result != 1) {
@@ -227,12 +219,10 @@ public class Access_BD_CompteCourant {
 		try {
 			Connection con = LogToDatabase.getConnexion();
 
-			String query = "UPDATE COMPTECOURANT SET ESTCLOTURE = 'N' WHERE IDNUMCOMPTE = ?";
+			String query = "UPDATE COMPTECOURANT SET ESTCLOTURE = 'O' WHERE IDNUMCOMPTE = ?";
 
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setInt(1, cc.idNumCompte);
-
-			System.err.println(query);
 
 			int result = pst.executeUpdate();
 			pst.close();
