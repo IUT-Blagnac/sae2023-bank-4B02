@@ -114,12 +114,11 @@ public class CompteEditorPaneController {
 			try {
 				int val;
 				val = Integer.parseInt(this.txtDecAutorise.getText().trim());
-				if (val < 0) {
+				if (val > 0) {
 					throw new NumberFormatException();
 				}
-				this.compteEdite.debitAutorise = - val;
+				this.compteEdite.debitAutorise = val;
 			} catch (NumberFormatException nfe) {
-				this.txtDecAutorise.setText("" + this.compteEdite.debitAutorise);
 			}
 		}
 		return null;
@@ -136,10 +135,8 @@ public class CompteEditorPaneController {
 				}
 				this.compteEdite.solde = val;
 			} catch (NumberFormatException nfe) {
-				this.txtSolde.setText("" + this.compteEdite.solde);
 			}
 		}
-		this.txtSolde.setText("" + this.compteEdite.solde);
 		return null;
 	}
 
@@ -193,9 +190,16 @@ public class CompteEditorPaneController {
 
 	private boolean isSaisieValide() {
 		int decouvert = Integer.parseInt(this.txtDecAutorise.getText().trim());
+		double solde = Double.parseDouble(this.txtSolde.getText());
 		String info = "";
 		if(decouvert > 0) {
 			info += "Le découvert ne peut pas être supérieur à 0 !\n";
+		}
+		if (solde < 0) {
+			info += "Le premier dépôt doit être > à 0 !";
+		}
+		if(decouvert < - 9999) {
+			info += "Le découvert maximale est de -9999 !\n";
 		}
 		if (info.equals("")) {
 			return true;

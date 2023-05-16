@@ -97,8 +97,15 @@ public class EmployeEditorPaneController {
 			this.txtPrenom.setDisable(false);
 			this.txtLogin.setDisable(false);
 			this.txtMdp.setDisable(false);
+			if(this.employeEdite.droitsAccess.equals("guichetier")) {
 			this.btnGuichetier.setSelected(true);
-			this.txtIdAg.setDisable(false);
+			this.btnChefAg.setSelected(false);
+			}
+			else {
+				this.btnChefAg.setSelected(true);
+				this.btnGuichetier.setSelected(false);
+			}
+			this.txtIdAg.setDisable(true);
 			this.lblMessage.setText("Mettez à jour les informations de l'employé");
 			this.butOk.setText("Modifier");
 			this.txtIdempl.setText("" + this.employeEdite.idEmploye);
@@ -106,6 +113,7 @@ public class EmployeEditorPaneController {
 			this.txtPrenom.setText(this.employeEdite.prenom);
 			this.txtLogin.setText(this.employeEdite.login);
 			this.txtMdp.setText(this.employeEdite.motPasse);
+			this.txtIdAg.setText(String.valueOf(this.employeEdite.idAg));
 			break;
 		case SUPPRESSION:
 			break;

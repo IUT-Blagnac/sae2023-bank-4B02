@@ -1,8 +1,6 @@
 package application.view;
 
 import java.util.ArrayList;
-import java.util.Locale;
-
 import application.DailyBankState;
 import application.control.OperationsManagement;
 import application.tools.NoSelectionModel;
@@ -39,6 +37,7 @@ public class OperationsManagementController {
 	private Client clientDuCompte;
 	private CompteCourant compteConcerne;
 	private ObservableList<Operation> oListOperations;
+	ArrayList<Operation> listeOP;
 
 	// Manipulation de la fenêtre
 	public void initContext(Stage _containingStage, OperationsManagement _om, DailyBankState _dbstate, Client client,
@@ -113,7 +112,7 @@ public class OperationsManagementController {
 	 */
 	@FXML
 	private void doCredit() {
-		Operation op = this.omDialogController.enregistrerCredit(false);
+		Operation op = this.omDialogController.enregistrerCredit();
 		if (op != null) {
 			this.updateInfoCompteClient();
 			this.validateComponentState();
@@ -125,25 +124,18 @@ public class OperationsManagementController {
 	 *
 	 * @author KHALIL Ahmad
 	 * 
-	 *         Cette méthode est appelée lorsqu'on souhaite effectuer un virement
-	 *         sur le compte client. Elle utilise la méthode enregistrerCredit(true)
-	 *         de l'objet omDialogController pour enregistrer le virement. Si le
-	 *         virement est enregistré avec succès (opération différente de null),
-	 *         elle met à jour les informations du compte client en appelant la
-	 *         méthode updateInfoCompteClient() et met à jour l'état des composants
-	 *         en appelant la méthode validateComponentState().
+	 * Cette méthode est appelée lorsqu'on souhaite effectuer un virement sur le compte client. Elle utilise la méthode enregistrerVirement()
+	 * de la classe omDialogController pour enregistrer le virement. Si le virement est enregistré avec succès (opération différente de null),
+	 * elle met à jour les informations du compte client en appelant la méthode updateInfoCompteClient() et met à jour l'état des composants
+	 * en appelant la méthode validateComponentState().
 	 */
 	@FXML
 	private void doVirement() {
-		Operation op = this.omDialogController.enregistrerCredit(true);
+		Operation op = this.omDialogController.enregistrerVirement();
 		if (op != null) {
 			this.updateInfoCompteClient();
 			this.validateComponentState();
 		}
-	}
-
-	@FXML
-	private void doAutre() {
 	}
 
 	private void validateComponentState() {
@@ -164,12 +156,12 @@ public class OperationsManagementController {
 
 		opesEtCompte = this.omDialogController.operationsEtSoldeDunCompte();
 
-		ArrayList<Operation> listeOP;
 		this.compteConcerne = opesEtCompte.getLeft();
-		listeOP = opesEtCompte.getRight();
+		this.listeOP = opesEtCompte.getRight();
 
-		this.lblInfosClient.setText("N°Client : " + this.clientDuCompte.idNumCli + " | N°Compte : "
-				+ this.compteConcerne.idNumCompte + " | Etat : " + (this.compteConcerne.estCloture.equals("N") ? "Ouvert" : "Cloturé"));
+		this.lblInfosClient.setText(
+				"N°Client : " + this.clientDuCompte.idNumCli + " | N°Compte : " + this.compteConcerne.idNumCompte
+						+ " | Etat : " + (this.compteConcerne.estCloture.equals("N") ? "Ouvert" : "Cloturé"));
 
 		this.lblInfosCompte.setText("Solde : " + this.compteConcerne.solde + " | Découvert Autorisé : "
 				+ Integer.toString(this.compteConcerne.debitAutorise));

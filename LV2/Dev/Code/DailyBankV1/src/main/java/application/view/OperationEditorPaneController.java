@@ -120,7 +120,6 @@ public class OperationEditorPaneController {
 					}
 				}
 			}
-
 			this.cbTypeOpe.setItems(listTypesComptesPossibles);
 			this.cbTypeOpe.getSelectionModel().select(0);
 			break;
@@ -214,6 +213,11 @@ public class OperationEditorPaneController {
 				this.txtMontant.requestFocus();
 				return;
 			}
+			if(montant > 999999) {
+				AlertUtilities.showAlert(this.primaryStage, "Opération impossible",
+						"Le montant doit être inférieur à 1 000 000 !", "", AlertType.INFORMATION);
+				return;
+			}
 			String typeOp = this.cbTypeOpe.getValue();
 			this.operationResultat = new Operation(-1, montant, null, null, this.compteEdite.idNumCli, typeOp);
 			this.primaryStage.close();
@@ -243,6 +247,11 @@ public class OperationEditorPaneController {
 				this.txtMontant.requestFocus();
 				return;
 			}
+			if(montant1 > 999999) {
+				AlertUtilities.showAlert(this.primaryStage, "Opération impossible",
+						"Le montant doit être inférieur à 1 000 000 !", "", AlertType.INFORMATION);
+				return;
+			}
 			typeOp = this.cbTypeOpe.getValue();
 			this.operationResultat = new Operation(-1, montant1, null, null, this.compteEdite.idNumCli, typeOp);
 			this.primaryStage.close();
@@ -270,6 +279,11 @@ public class OperationEditorPaneController {
 				this.txtMontant.getStyleClass().add("borderred");
 				this.lblMontant.getStyleClass().add("borderred");
 				this.txtMontant.requestFocus();
+				return;
+			}
+			if(montant2 > 999999) {
+				AlertUtilities.showAlert(this.primaryStage, "Opération impossible",
+						"Le montant doit être inférieur à 1 000 000 !", "", AlertType.INFORMATION);
 				return;
 			}
 			String cptChoisi = this.cbTypeOpe.getValue();
