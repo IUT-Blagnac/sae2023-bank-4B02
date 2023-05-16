@@ -241,11 +241,11 @@ Compléter et si on ne valide pas, ...
 
 >|Cas de test 4+|Test-02-02-04
 >|Titre 4+|Supprimer un employé
->|Objectif 4+| Vérifier qu'il est possible de créer un nouveau client
+>|Objectif 4+| Vérifier qu'il est possible de supprimer un employé
 
 5+|
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|All_G_C.1 ^|Cliquer sur le bouton "Supprimer". ^|La fenêtre de suppression d'employés s'ouvre. ^| La fenêtre de suppression d'employés est active ^|OK
+^|All_G_C.1 ^|Cliquer sur le bouton "Supprimer". ^|La fenêtre de suppression d'employés s'ouvre. ^| Il faut être connecté à un compte Cheg d'Agence ^|OK
 ^|All_G_C.2 ^|Compléter les champs spécifiés et valider. ^|Un nouveau client est créé. ^|aucune ^|OK
 
 
