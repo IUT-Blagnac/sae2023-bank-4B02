@@ -89,7 +89,7 @@ Compléter et si on ne valide pas, ...
 
 ^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
 ^|All_G_CB.1 ^|Cliquer sur le bouton "Nouveau Compte". ^|La page de création de compte s’affiche. ^|Un client actif est sélectionné ^|OK
-^|All_G_CB.2 ^|Sélectionner le bouton "Voir opérations". ^|La page des opérations du compte s’affiche. ^|Un compte actif est sélectionné ^|OK
+^|All_G_CB.2 ^|Compléter les champs spécifiés et valider (en appuyant sur le boutton "Ajouter"). ^|Un nouveau compte est créé. On a créé un nouveau compte dans la liste des comptes du client sélectionné. ^|Un compte actif est sélectionné ^|OK
 ...
 
 |====
