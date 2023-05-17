@@ -77,10 +77,10 @@ detaillez contraintes orga (contrainte sur qui fait quoi, jalons de livraisons, 
 | 2       | Chef d’Agence | Emprunt                 | Simuler emprunt         |            |            |            |
 | 2       | Chef d’Agence | Emprunt                 | Simuler assurance       |            |            |            |
 | 2       | Guichetier    | Compte                  | Relevé PDF              |            |            |            |
-| 2       | Guichetier    | CRUD Prélèvement        | C                       |            |            |            |
-| 2       | Guichetier    | CRUD Prélèvement        | R                       |            |            |            |
-| 2       | Guichetier    | CRUD Prélèvement        | U                       |            |            |            |
-| 2       | Guichetier    | CRUD Prélèvement        | D                       |            |            |            |
+| 2       | Guichetier    | CRUD Prélèvement        | C                       |            |            |Ahmad D     |
+| 2       | Guichetier    | CRUD Prélèvement        | R                       |            |            |Ahmad D     |
+| 2       | Guichetier    | CRUD Prélèvement        | U                       |            |            |Ahmad D     |
+| 2       | Guichetier    | CRUD Prélèvement        | D                       |            |            |Ahmad D     |
 | 2       | Batch         | Prélèvements automatiques |                       |            |            |            |
 | 2       | Batch         | Reléves mensuels        |                         |            |            |            |
 |=======================
