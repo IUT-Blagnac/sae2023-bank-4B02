@@ -68,6 +68,9 @@ Première chose à faire dans l'application, se connecter soit en tant que guich
 image::ressources/docUtil1.PNG[]
 
 === Créer un compte bancaire
+
+- Conditions : le découvert autorisé doit être <= 0 et le montant du premier dépôt doit être >= 0.
+
 - Une fois connectée, rendez vous dans -> 'Gestion' -> 'Clients' comme ci-dessous.
 
 image::ressources/docUtil2.PNG[]
@@ -85,6 +88,8 @@ image::ressources/docUtil4.PNG[]
 image::ressources/docUtil5.PNG[]
 
 === Créditer / Débiter un compte
+
+- Conditions : Le solde de noit pas dépasser le découvert autorisé lors d'un débit. Le montant maximal est de 999 999 pour un crédit / débit (limite de la base de données).
 
 - Une fois connectée, rendez vous dans -> 'Gestion' -> 'Clients' comme ci-dessous.
 
@@ -108,6 +113,8 @@ image::ressources/docUtil8.PNG[]
 
 === Cloturer un compte
 
+- Conditions : le solde du compte à cloturer doit être à 0.
+
 - Une fois connectée, rendez vous dans -> 'Gestion' -> 'Clients' comme ci-dessous.
 
 image::ressources/docUtil2.PNG[]
@@ -121,6 +128,9 @@ image::ressources/docUtil3.PNG[]
 image::ressources/docUtil9.PNG[]
 
 === Effectuer un virement
+
+- Conditions : le solde ne doit pas dépasser le découvert autorisé et le montant maximal est de 999 999 (limite de la base de données).
+
 - Une fois connectée, rendez vous dans -> 'Gestion' -> 'Clients' comme ci-dessous.
 
 image::ressources/docUtil2.PNG[]
@@ -143,6 +153,8 @@ image::ressources/docUtil10.PNG[]
 
 === Créer un employé
 
+- Conditions : les champs saisies doivent êtres valide, le numéro d'agence doit exister dans la base de données.
+
 - Une fois connectée, rendez vous dans -> 'Gestion' -> 'Employe' comme ci-dessous.
 
 image::ressources/docUtil11.png[]
@@ -157,6 +169,8 @@ image::ressources/docUtil13.PNG[]
 
 === Voir un employé
 
+- Conditions : un chef d'agence ne peut pas voir les LOGINS d'un autre chef d'agence mais peut voir ceux des guichetiers
+
 - Une fois connectée, rendez vous dans -> 'Gestion' -> 'Employe' comme ci-dessous.
 
 image::ressources/docUtil11.png[]
@@ -166,6 +180,8 @@ image::ressources/docUtil11.png[]
 image::ressources/docUtil14.PNG[]
 
 === Mettre à jour un employé
+
+- Conditions : un chef d'agence ne peut pas modifier un autre chef d'agence mais peut modifier un guichetier
 
 - Une fois connectée, rendez vous dans -> 'Gestion' -> 'Employe' comme ci-dessous.
 
@@ -180,6 +196,8 @@ image::ressources/docUtil15.PNG[]
 image::ressources/docUtil16.PNG[]
 
 === Supprimer un employé
+
+- Conditions : un chef d'agence ne peut pas supprimer un autre chef d'agence mais peut supprimer un guichetier
 
 - Une fois connectée, rendez vous dans -> 'Gestion' -> 'Employe' comme ci-dessous.
 
