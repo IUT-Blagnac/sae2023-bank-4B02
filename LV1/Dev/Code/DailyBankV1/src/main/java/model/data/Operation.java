@@ -1,6 +1,9 @@
 package model.data;
 
-import java.sql.Date;
+import java.text.ParseException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /*
  * Attributs mis en public car cette classe ne fait que "véhiculer" des données.
@@ -72,8 +75,7 @@ public class Operation {
      */
     @Override
     public String toString() {
-        return this.dateOp + " : " + String.format("%25s", this.idTypeOp) + " "
-                + String.format("%10.02f", this.montant);
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return "Type : " + this.idTypeOp + "  |  Montant : " + this.montant + "  |  Date : " + dateFormat.format(this.dateOp);
     }
-
 }
