@@ -83,100 +83,209 @@ L'architecture de l'application DailyBank comprend plusieurs packages :
 - model.data : contient des classes Java qui correspondent directement aux tables de la base de données. Chaque table est associée à une classe, permettant une gestion efficace des données et une cohérence entre l'application et la base de données.
 - model.orm : classes par lesquels l'accès à la base de donnée est établie
 - model.orm.exception : rassemble les classes d'exceptions liées à l'accès à la base de données. Ces classes permettent de gérer les erreurs et les situations exceptionnelles lors des opérations avec la base de données, assurant ainsi une gestion appropriée des problèmes d'accès aux données.
- 
+
+== Configurer et lancer l'application
+
+=== Pré-requis nécéssaires 
+Pour pouvoir lancer l'application, assurez vous d'avoir java installé sur l'ordinateur, vous pouvez vérifier cela en lançant une invite de commande et en tapant la commande : 
+
+- java -version 
+
+Si JAVA n'est pas installé, rendez vous sur https://www.java.com/fr/download/ pour le télécharger.
+
+- Lancer l'exécutable
+Deux options : 
+
+- Lancez une invite de commande et tappez la commande suivante : java -jar DailyBankV1.jar
+
+- Double cliquez sur l'application (fichier nommée DailyBankV1.jar)
+
+Si vous souhaitez lancer le projet depuis éclipse, il se nécéssaire d'installer le JDK 17. Il vous faudra aussi installer JavaFX depuis l'écplise MarketPlace (version recommandée : 3.8.0).
+
+=== Se connecter
+
+Pour lancer l'application, il sera nécéssaire de se connecter soit en tant que guichetier soit en tant que chef d'agence. Pour se connecter : 
+
+- Appuyez sur le bouton 'connexion' comme ci-dessus puis entrer l'identifiant et le mot de passe.
+
+image::ressources/docUtil1.PNG[]
+
+=== Configurez la base de données
+
+Pour créer la base de données : 
+
+- Copiez le script de création de la base de données située dans le fichier "scriptCreaBase.txt" qui se trouve dans le backpage "basededonnee"
+- Collez ce script dans votre logiciel de base de données (ex : SQL Developper) puis exécutez le
+
+Pour faire le lien avec la base de données : 
+
+- Ouvrir la classe "LogToDatabase.java" située dans le package model.orm
+- à la ligne 23 et 24, entrez le nom d'utilisateur et le mot de passe d'accès à votre base de données
+- sauvegardez la classe et voilà le lien sera établie
+
+
 == Fonctionnalités développées
+
 === Créer un compte bancaire (SELLOU Rayan)
-Permet à un employé de créer un compte bancaire qui sera enregistré dans la base de données.
+Permet à un employé de créer un compte bancaire qui sera enregistré dans la base de données. 
+
+- Conditions : le découvert autorisé doit être <= 0 et le montant du premier dépôt doit être >= 0.
 
 Classes utilisées : 
 
-- ComptesManagement.java
-- ComptesManagementController.java
-- CompteEditorPane.java
-- CompteEditorPaneController.java
-- Acces_BD_CompteCourant.java
-- ComptesCourant.java
-- ComptesManagement.fxml
+package Application.control :
+
+- ComptesManagement -> la méthode *creerNouveauCompte* appelée par doNouveauCompte (ComptesManagementController)
+
+- CompteEditorPane -> *constructeur de CompteEditorPane* && la méthode *doCompteEditorDialog* appelée par creerNouveauCompte (ComptesManagement)
+
+package Application.view :
+
+- ComptesManagementController -> la méthode *doNouveauCompte* appelée par comptesmanagement.fxml (bouton nouveau compte sur la scène)
+
+- ComptesEditorPaneController -> la méthode *displayDialog* appelée par doCompteEditorDialog (CompteEditorPane)
+
+package Model.orm :
+
+- Access_BD_CompteCourant -> la méthode *addCompte* appelée par creerNouveauCompte (ComptesManagement)
+
 
 === Créditer / Débiter un compte (SELLOU Rayan)
-Permet de créditer / débiter un compte bancaire, son solde sera actualisé dans la base de données.
+Permet de créditer / débiter un compte bancaire, son solde sera actualisé dans la base de données. 
+
+- Conditions : Le solde de noit pas dépasser le découvert autorisé lors d'un débit. Le montant maximal est de 999 999 pour un crédit / débit (limite de la base de données).
 
 Classe utilisées : 
 
-- OperationEditorPane.java
-- OperationManagement.java
-- CategorieOperation.java
-- OperationEditorPaneController.java
-- OperationManagementController.java
-- Operation.java
-- TypeOperation.java
-- Access_BD_Operation.java
-- Acces_BD_TypeOperation.java
-- OperationEditorPane.fxml
-- operationManagement.fxml
+package Application.control :
+
+- OperationsManagement -> la méthode *enregistrerCredit/Debit* appelée par doCredit/Debit (OperationsManagementController)
+
+- OperationEditorPane -> *constructeur de CompteEditorPane* && la méthode *doCompteEditorDialog* appelée par enregistrerCredit/Debit (OperationsManagement)
+
+package Application.view :
+
+- OperationsManagementController -> la méthode *doCredit/Debit* appelée par operationsmanagement.fxml(bouton Crédit/Débit sur la scène)
+
+- OperationEditorPaneController -> la méthode *displayDialog* appelée par doOperationEditorDialog (OperationEditorPane)
+
+package Model.orm :
+
+- Access_BD_Operation -> la méthode *insertCredit/Debit* appelée par enregistrerCredit/Debit (OperationsManagement)
 
 
 === Cloturer un compte (ALMASRI Marwan)
-Change l'état d'un compte ouvert en un compte fermé, son état sera actualisé dans la base de données.
+Change l'état d'un compte ouvert en un compte fermé, son état sera actualisé dans la base de données. 
 
-Classe utilisées : 
+- Conditions : le solde du compte à cloturer doit être à 0.
 
-- CompteManagement.java
-- CompteManagementController.java
-- Acces_BD_CompteCourant.java
-- comptesManagement.fxml
+Classe utilisées :
+
+package Application.control :
+
+- ComptesManagement -> la méthode *cloturerCompte* appelée par doCloturerCompte (ComptesManagementController)
+
+package Application.view :
+
+- ComptesManagementController -> la méthode *doCloturerCompte* appelée par comptesmanagement.fxml (bouton cloturer sur la scène)
+
+package Model.orm :
+
+- Access_BD_CompteCourant -> la méthode *cloturerCompte* appelée par cloturerCompte (ComptesManagement)
+
 
 === Effectuer un virement (KHALIL Ahmad)
-Débite le compte sur lequel l'opération est effectué et crédite le compte destinataire du virement, les soldes des deux comptes devra être actualisé dans la base de données.
+Débite le compte sur lequel l'opération est effectué et crédite le compte destinataire du virement, les soldes des deux comptes devra être actualisé dans la base de données. 
+
+- Conditions : le solde ne doit pas dépasser le découvert autorisé et le montant maximal est de 999 999 (limite de la base de données).
 
 Classe utilisées :
 
-- OperationEditorPane.java
-- OperationManagement.java
-- OperationManagementController.java
-- OpérationEditorPaneController.java
-- CategorieOperation.java
-- Operation.java
-- Access_BD_Operation.java *
-- operationManagement.fxml
+package Application.control :
+
+- OperationsManagement -> la méthode *enregistrerVirement* appelée par doVirement (OperationsManagementController)
+- OperationEditorPane -> *constructeur de OperationEditorPane* && la méthode *doOperationEditorDialog* appelée par enregistrerVirement (OperationsManagement)
+
+package Application.view :
+
+- OperationsManagementController -> la méthode *doVirement* appelée par operationsmanagement.fxml (bouton virement sur la scène)
+- OperationEditorPaneController -> la méthode *displayDialog* appelée par doOperationEditorDialog (OperationEditorPane)
+
+package Model.orm :
+
+- Access_BD_Operation -> la méthode *insertVirement* appelée par enregistrerVirement (OperationsManagement)
+
 
 === CRUD Employé - Create (KHALIL Ahmad)
-Permet de créer un nouvel employé. L'employé sera également crée dans la base de données.
+Permet de créer un nouvel employé. L'employé sera également crée dans la base de données. 
+
+- Conditions : les champs saisies doivent êtres valide, le numéro d'agence doit exister dans la base de données.
 
 Classe utilisées :
 
-- EmployeEditorPane.java
-- EmployeManagement.java
-- EmployeEditorPaneController.java
-- EmployeManagementController.java
-- Employe.java
-- Access_BD_Employe.java
-- employeeditpane.fxml
-- employemanagement.fxml
+package Application.control :
+
+- EmployeManagement -> la méthode *nouveauEmploye* appelée par doNouveauEmploye (EmployeManagementController)
+- EmployeEditorPane -> *constructeur de EmployeEditorPane* && la méthode *doEmployeEditorDialog* appelée par nouveauEmploye (EmployeManagement)
+
+package Application.view :
+
+- EmployeManagementController -> la méthode *doNouveauEmploye* appelée par employemanagement.fxml (bouton ajouter sur la scène)
+- EmployeEditorPaneController -> la méthode *displayDialog* appelée par doEmployeEditorDialog (EmployeEditorPane)
+
+package Model.orm :
+
+- Access_BD_Employe -> la méthode *insertEmploye* appelée par nouveauEmploye (EmployeManagement)
 
 === CRUD Employé - Read (ALMASRI Marwan)
+
+- Conditions : un chef d'agence ne peut pas voir les LOGINS d'un autre chef d'agence mais peut voir ceux des guichetiers
+
 Permet de visualiser les informations d'un employés.
 
 Classe utilisées :
 
-- EmployeManagementController.java
+- EmployeManagementController.java -> checkInfo appelée par employemanagement.fxml (bouton information sur la scène)
 
 === CRUD Employé - UPDATE (KHALIL Ahmad)
 Permet de mettre à jour les informations d'un employés, les champs mises à jour le seront également dans la base de données.
 
+- Conditions : un chef d'agence ne peut pas modifier un autre chef d'agence mais peut modifier un guichetier
+
 Classe utilisées :
 
-- EmployeEditorPane.java
-- EmployeManagement.java
-- EmployeEditorPaneController.java
-- EmployeManagementController.java
-- Employe.java
-- Access_BD_Employe.java
-- employeeditpane.fxml
-- employemanagement.fxml
+package Application.control :
+
+- EmployeManagement -> la méthode *modifierEmploye* appelée par doModifierEmploye (EmployeManagementController)
+- EmployeEditorPane -> *constructeur de EmployeEditorPane* && la méthode *doEmployeEditorDialog* appelée par modifierEmploye (EmployeManagement)
+
+package Application.view :
+
+- EmployeManagementController -> la méthode *doModifierEmploye* appelée par employemanagement.fxml (bouton modifier sur la scène)
+- EmployeEditorPaneController -> la méthode *displayDialog* appelée par doEmployeEditorDialog (EmployeEditorPane)
+
+package Model.orm :
+
+- Access_BD_Employe -> la méthode *updateEmploye* appelée par modifierEmploye (EmployeManagement)
 
 === CRUD Employé - DELETE (KHALIL Ahmad)
-Supprime de manière définitive un employé, une alerte de confirmation est affichée lorsque un employé appuie sur ce bouton, à noter que les chefs d'agence ont le droit de supprimer seulement les guichetiers, pour supprimer un chef d'agence, il faudra les droits d'administrateur (V2). L'employé devra également être supprimé dans la base de données.
+Supprime de manière définitive un employé, une alerte de confirmation est affichée lorsque un employé appuie sur ce bouton, à noter que les chefs d'agence ont le droit de supprimer seulement les guichetiers, pour supprimer un chef d'agence, il faudra les droits d'administrateur (V2). L'employé devra également être supprimé dans la base de données. 
+
+- Conditions : un chef d'agence ne peut pas supprimer un autre chef d'agence mais peut supprimer un guichetier
+
+Classe utilisées :
+
+package Application.control :
+
+- EmployeManagement -> la méthode *deleteEmploye* appelée par deleteEmploye (EmployeManagementController)
+
+package Application.view :
+
+- EmployeManagementController -> la méthode *deleteEmploye* appelée par employemanagement.fxml (bouton supprimer sur la scène)
+
+package Model.orm :
+
+- Access_BD_Employe -> la méthode *deleteEmploye* appelée par deleteEmploye (EmployeManagement)
 
 Classe utilisées :
 
