@@ -49,7 +49,7 @@ detaillez contraintes orga (contrainte sur qui fait quoi, jalons de livraisons, 
 | 16/05   | Gantt V1 Réalisé |    Marwan   |     link:LV1/Docs/GANTTREALISEV1.pdf[GANTT V1 Réalisé]      |    manque durée (heure/homme), affichage des prédécesseurs. Découpage des taches OK, enchainement OK, mais les taches de la V2 n'étaient pas nécessaire. Améliorer le format (lisibilité)    
 | 16/05   | Gantt V2 Prevu   |    Rayan    |   link:LV1/Docs/GANTTPREVUV2.pdf[GANTT V2 PREVU]        |      idem au dessus 
 | 17/05   | Doc. Tec. V1     |    Ahmad    |    link:LV1/Docs/DocumentTechniqueV1.adoc[DocTechV1]        |       
-| 16/05   | Doc User V1      |    Ahmad    |    link:LV1/Docs/DocumentUtilisateurV1.adoc[DocUserV1]      |       
+| 16/05   | Doc User V1      |    Ahmad    |    link:LV1/Docs/DocumentUtilisateurV1.adoc[DocUserV1]      |  procédure installation OK, y a t il des pré-requis de l'environement ? Description des fonctions OK, mais manque initiales du developpeur. Manque jeu de test     
 | 17/05   | Recette V1       |    Rayan    |    link:LV1/Docs/CahierDeRecetteV1.adoc[CahierDeTestV1]     |       
 | 16/05   | Suivi projet V1  |    Tous     |                                                             |       
 | 26/05   | Gantt V2 réalisé |    Rayan    |                                                             |       
