@@ -51,7 +51,7 @@ detaillez contraintes orga (contrainte sur qui fait quoi, jalons de livraisons, 
 | 17/05   | Doc. Tec. V1     |    Ahmad    |    link:LV1/Docs/DocumentTechniqueV1.adoc[DocTechV1]        |       
 | 16/05   | Doc User V1      |    Ahmad    |    link:LV1/Docs/DocumentUtilisateurV1.adoc[DocUserV1]      |  procédure installation OK, y a t il des pré-requis de l'environement ? Description des fonctions OK, mais manque initiales du developpeur. Manque jeu de test     
 | 17/05   | Recette V1       |    Rayan    |    link:LV1/Docs/CahierDeRecetteV1.adoc[CahierDeTestV1]     |       
-| 16/05   | Suivi projet V1  |    Tous     |                                                             |       
+| 16/05   | Suivi projet V1  |    Tous     |                                                             | commits pas assez commentés, readme OK, arbo GIT OK. board des issues pas en ligne avec GANTT, il manque beaucoup d'issues. le board ne semble pas maintenu a jour. Comment faites vous pour connaitre en temps réel l'avancement du projet ?       
 | 26/05   | Gantt V2 réalisé |    Rayan    |                                                             |       
 | 26/05   | Doc. Util. V2    |    Marwan   |                                                             |       
 | 26/05   | Doc. Tec. V2     |    Marwan   |                                                             |       
