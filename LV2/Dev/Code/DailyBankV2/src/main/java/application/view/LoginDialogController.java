@@ -12,7 +12,6 @@ import model.data.Employe;
 
 /**
  * Controller JavaFX de la view logindialog.
- *
  */
 public class LoginDialogController {
 

@@ -14,7 +14,6 @@ import model.orm.exception.ApplicationException;
 
 /**
  * Controller JavaFX de la view ExceptionDialog.
- *
  */
 
 public class ExceptionDialogController {

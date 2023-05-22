@@ -56,26 +56,26 @@ public class DailyBankMainFrame extends Application {
 			 * // En mise au point : // Forcer une connexion existante pour rentrer dans
 			 * l'appli en mode connecté
 			 */
-//			try {
-//				Employe e;
-//				Access_BD_Employe ae = new Access_BD_Employe();
-//
-//				e = ae.getEmploye("Tuff", "Lejeune");
-//
-//				if (e == null) {
-//					System.out.println("\n\nPB DE CONNEXION\n\n");
-//				} else {
-//					this.dailyBankState.setEmployeActuel(e);
-//				}
-//			} catch (DatabaseConnexionException e) {
-//				ExceptionDialog ed = new ExceptionDialog(primaryStage, this.dailyBankState, e);
-//				ed.doExceptionDialog();
-//				this.dailyBankState.setEmployeActuel(null);
-//			} catch (ApplicationException ae) {
-//				ExceptionDialog ed = new ExceptionDialog(primaryStage, this.dailyBankState, ae);
-//				ed.doExceptionDialog();
-//				this.dailyBankState.setEmployeActuel(null);
-//			}
+			try {
+				Employe e;
+				Access_BD_Employe ae = new Access_BD_Employe();
+
+				e = ae.getEmploye("Tuff", "Lejeune");
+
+				if (e == null) {
+					System.out.println("\n\nPB DE CONNEXION\n\n");
+				} else {
+					this.dailyBankState.setEmployeActuel(e);
+				}
+			} catch (DatabaseConnexionException e) {
+				ExceptionDialog ed = new ExceptionDialog(primaryStage, this.dailyBankState, e);
+				ed.doExceptionDialog();
+				this.dailyBankState.setEmployeActuel(null);
+			} catch (ApplicationException ae) {
+				ExceptionDialog ed = new ExceptionDialog(primaryStage, this.dailyBankState, ae);
+				ed.doExceptionDialog();
+				this.dailyBankState.setEmployeActuel(null);
+			}
 
 			if (this.dailyBankState.getEmployeActuel() != null) {
 				this.dailyBankState.setEmployeActuel(this.dailyBankState.getEmployeActuel());

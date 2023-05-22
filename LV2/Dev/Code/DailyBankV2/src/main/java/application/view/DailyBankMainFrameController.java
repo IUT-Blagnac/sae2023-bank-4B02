@@ -17,7 +17,6 @@ import model.data.Employe;
 
 /**
  * Controller JavaFX de la view DailyBankMainFrame.
- *
  */
 
 public class DailyBankMainFrameController {

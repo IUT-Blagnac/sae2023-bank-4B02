@@ -21,7 +21,6 @@ import model.orm.exception.RowNotFoundOrTooManyRowsException;
 
 /**
  * Controller JavaFX de la view EmployeEditorPane.
- *
  */
 public class EmployeEditorPaneController {
 
@@ -37,8 +36,11 @@ public class EmployeEditorPaneController {
 	private EditionMode editionMode;
 	private Employe employeResultat;
 
-	// Manipulation de la fenêtre
-
+	/**
+	 * Initialise le contexte de la fenêtre.
+	 * @param _containingStage La fenêtre parente.
+	 * @param _dbstate L'état quotidien de la banque.
+	 */
 	public void initContext(Stage _containingStage, DailyBankState _dbstate) {
 		this.primaryStage = _containingStage;
 		this.dailyBankState = _dbstate;
@@ -46,6 +48,8 @@ public class EmployeEditorPaneController {
 	}
 	
 	/**
+	 * @author KHALIL Ahmad
+	 * 
 	 * Affiche la boîte de dialogue de modification d'un employé.
 	 *
 	 * @param pfEmploye L'employé à modifier
@@ -129,17 +133,25 @@ public class EmployeEditorPaneController {
 		return this.employeResultat;
 	}
 
+	/**
+	 * Configure la fenêtre en définissant l'action à effectuer lors de sa fermeture.
+	 */
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 	}
 
-	// Gestion du stage
-	private Object closeWindow(WindowEvent e) {
+	/**
+	 * Gère l'événement de fermeture de la fenêtre.
+	 * @param e L'événement de fermeture de la fenêtre.
+	 */
+	private void closeWindow(WindowEvent e) {
 		this.doCancel();
 		e.consume();
-		return null;
 	}
 
+	/**
+	 * Gère l'action d'annulation.
+	 */
 	@FXML
 	private void doCancel() {
 		this.employeResultat = null;

@@ -86,7 +86,7 @@ public class ComptesManagement {
      * 
      * @return le nouveau compte courant créé ou null si l'utilisateur a annulé la création
      */
-    public CompteCourant creerNouveauCompte() {
+    public void creerNouveauCompte() {
         CompteCourant compte;
         CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dailyBankState);
         compte = cep.doCompteEditorDialog(this.clientDesComptes, null, EditionMode.CREATION);
@@ -110,7 +110,6 @@ public class ComptesManagement {
                 ed.doExceptionDialog();
             }
         }
-        return compte;
     }
 
     /**

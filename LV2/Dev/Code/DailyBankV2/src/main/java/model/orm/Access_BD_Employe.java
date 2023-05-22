@@ -14,7 +14,7 @@ import model.orm.exception.RowNotFoundOrTooManyRowsException;
 import model.orm.exception.Table;
 
 /**
- * Classe d'accès aux Employe en BD Oracle.
+ * Classe d'accès aux employés en BD Oracle.
  */
 public class Access_BD_Employe {
 
@@ -80,6 +80,18 @@ public class Access_BD_Employe {
 		}
 	}
 	
+	/**
+	 * @author KHALIL Ahmad
+	 * 
+	 * Récupère une liste d'employés en fonction des critères spécifiés.
+	 *
+	 * @param idEmploye   L'ID de l'employé à rechercher (-1 pour ignorer ce critère).
+	 * @param debutNom    Le début du nom de l'employé à rechercher (chaîne vide pour ignorer ce critère).
+	 * @param debutPrenom Le début du prénom de l'employé à rechercher (chaîne vide pour ignorer ce critère).
+	 * @return Une liste d'employés correspondant aux critères spécifiés.
+	 * @throws DataAccessException          En cas d'erreur d'accès aux données.
+	 * @throws DatabaseConnexionException   En cas d'erreur de connexion à la base de données.
+	 */
 	public ArrayList<Employe> getlisteEmploye(int idEmploye, String debutNom, String debutPrenom) throws DataAccessException, DatabaseConnexionException {
 
 		ArrayList<Employe> alResult = new ArrayList<>();
@@ -128,6 +140,16 @@ public class Access_BD_Employe {
 		return alResult;
 	}
 	
+	/**
+	 * @author KHALIL Ahmad
+	 * 
+	 * Insère un nouvel employé dans la base de données.
+	 *
+	 * @param pfEmploye L'employé à insérer.
+	 * @throws RowNotFoundOrTooManyRowsException Si aucune ligne ou plusieurs lignes sont insérées lors de l'opération.
+	 * @throws DataAccessException              En cas d'erreur d'accès aux données.
+	 * @throws DatabaseConnexionException       En cas d'erreur de connexion à la base de données.
+	 */
 	public void insertEmploye(Employe pfEmploye) throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
 		try {
 
@@ -173,14 +195,22 @@ public class Access_BD_Employe {
 		}
 	}
 	
+	/**
+	 * @author KHALIL Ahmad
+	 * 
+	 * Met à jour un employé dans la base de données.
+	 *
+	 * @param pfEmploye L'employé à mettre à jour.
+	 * @throws RowNotFoundOrTooManyRowsException Si aucune ligne ou plusieurs lignes sont mises à jour lors de l'opération.
+	 * @throws DataAccessException              En cas d'erreur d'accès aux données.
+	 * @throws DatabaseConnexionException       En cas d'erreur de connexion à la base de données.
+	 */
 	public void updateEmploye(Employe pfEmploye)
 			throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
 		try {
 			Connection con = LogToDatabase.getConnexion();
 
-			String query = "UPDATE EMPLOYE SET " + "nom = " + "? , " + "prenom = " + "? , " + "droitsaccess = "
-					+ "? , " + "login = " + "? , " + "motPasse = " + "? , " + "idag = " + "? " + " "
-					+ "WHERE idemploye = ? ";
+			String query = "UPDATE EMPLOYE SET nom = ? , prenom = ?, droitsaccess = ?, login = ?, motPasse = ?, idag = ? WHERE idemploye = ? ";
 
 			PreparedStatement pst = con.prepareStatement(query);
 			pst.setString(1, pfEmploye.nom);
@@ -204,6 +234,16 @@ public class Access_BD_Employe {
 		}
 	}
 	
+	/**
+	 * @author KHALIL Ahmad
+	 * 
+	 * Supprime un employé de la base de données.
+	 *
+	 * @param pfEmploye L'employé à supprimer.
+	 * @throws RowNotFoundOrTooManyRowsException Si aucune ligne ou plusieurs lignes sont supprimées lors de l'opération.
+	 * @throws DataAccessException              En cas d'erreur d'accès aux données.
+	 * @throws DatabaseConnexionException       En cas d'erreur de connexion à la base de données.
+	 */
 	public void deleteEmploye(Employe pfEmploye) throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
 		try {
 			Connection con = LogToDatabase.getConnexion();
@@ -224,9 +264,19 @@ public class Access_BD_Employe {
 		} catch (SQLException e) {
 			throw new DataAccessException(Table.Employe, Order.DELETE, "Erreur accès", e);
 		}
-		
 	}
 	
+	/**
+	 * @author KHALIL Ahmad
+	 * 
+	 * Vérifie si un ID d'agence existe dans la base de données.
+	 *
+	 * @param pfIdAg L'ID de l'agence à vérifier.
+	 * @return true si l'ID d'agence existe, false sinon.
+	 * @throws RowNotFoundOrTooManyRowsException Si aucune ligne ou plusieurs lignes sont trouvées lors de la vérification.
+	 * @throws DataAccessException              En cas d'erreur d'accès aux données.
+	 * @throws DatabaseConnexionException       En cas d'erreur de connexion à la base de données.
+	 */
 	public boolean checkIdAgence(int pfIdAg) throws RowNotFoundOrTooManyRowsException, DataAccessException, DatabaseConnexionException {
 		Connection con = LogToDatabase.getConnexion();
 
@@ -246,8 +296,7 @@ public class Access_BD_Employe {
 			}
 				
 		} catch (SQLException e) {
-			System.out.println("Exception SQL : Access_BD_Employe.checkIdAgence");
+			throw new DataAccessException(Table.Employe, Order.SELECT, "Erreur accès", e);
 		}
-		return false;
 	}
 }

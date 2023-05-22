@@ -28,24 +28,16 @@ import model.orm.exception.DatabaseConnexionException;
  */
 public class OperationsManagement {
 
-	/**
-	 * La fenêtre principale de l'application.
-	 */
+	// La fenêtre principale de l'application.
 	private Stage primaryStage;
 
-	/**
-	 * L'état actuel de l'application.
-	 */
+	// L'état actuel de l'application.
 	private DailyBankState dailyBankState;
 
-	/**
-	 * Le contrôleur associé à cette instance de la classe.
-	 */
+	// Le contrôleur associé à cette instance de la classe.
 	private OperationsManagementController omcViewController;
 
-	/**
-	 * Le client dont les opérations sont en cours de gestion.
-	 */
+	// Le client dont les opérations sont en cours de gestion.
 	private Client clientDuCompte;
 
 	/**
@@ -196,6 +188,16 @@ public class OperationsManagement {
 		return op;
 	}
 
+	/**
+	 * @author KHALIL Ahmad
+	 * 
+	 * Affiche la fenêtre de gestion des prélèvements.
+	 */
+	public void afficherPrelevements() {
+		PrelevementsManagement plm = new PrelevementsManagement(this.primaryStage, this.dailyBankState, this.clientDuCompte, this.compteConcerne);
+		plm.doPrelevementsManagementDialog();
+	}
+	
 	/**
 	 * Récupère la liste des opérations enregistrées sur le compte courant associé à
 	 * l'instance de cette classe, ainsi que le solde actuel de ce compte.

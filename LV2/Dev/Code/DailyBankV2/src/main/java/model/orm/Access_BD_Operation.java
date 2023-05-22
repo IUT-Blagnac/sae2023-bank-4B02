@@ -234,7 +234,7 @@ public class Access_BD_Operation {
 	}
 	
 	/**
-	 * @author KHALIL Ahmad 4B
+	 * @author KHALIL Ahmad
 	 * 
 	 * Enregistrement d'un virement.
 	 *

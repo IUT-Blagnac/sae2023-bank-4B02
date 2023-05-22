@@ -19,7 +19,6 @@ import model.data.Operation;
 
 /**
  * Controller JavaFX de la view OperationsManagement.
- *
  */
 
 public class OperationsManagementController {
@@ -39,7 +38,20 @@ public class OperationsManagementController {
 	private ObservableList<Operation> oListOperations;
 	ArrayList<Operation> listeOP;
 
-	// Manipulation de la fenêtre
+	/**
+	 * Initialise le contexte de la fenêtre. Définit les différents attributs
+	 * utilisés par la fenêtre avec les valeurs passées en paramètres. Appelle la
+	 * méthode configure() pour effectuer la configuration initiale de la fenêtre.
+	 * 
+	 * @param _containingStage la fenêtre principale qui contient cette fenêtre de
+	 *                         dialogue
+	 * @param _om              le controller OperationsManagement utilisé pour
+	 *                         effectuer les opérations sur les comptes
+	 * @param _dbstate         l'état bancaire quotidien utilisé pour les
+	 *                         informations de compte
+	 * @param client           le client associé au compte
+	 * @param compte           le compte courant concerné
+	 */
 	public void initContext(Stage _containingStage, OperationsManagement _om, DailyBankState _dbstate, Client client,
 			CompteCourant compte) {
 		this.primaryStage = _containingStage;
@@ -50,6 +62,13 @@ public class OperationsManagementController {
 		this.configure();
 	}
 
+	/**
+	 * Effectue la configuration initiale de la fenêtre. Configure la fermeture de
+	 * la fenêtre principale lors de la demande de fermeture. Initialise la liste
+	 * observable des opérations et la lie à la liste affichée dans la fenêtre. Met
+	 * à jour les informations du compte client. Valide l'état des composants en
+	 * fonction du compte.
+	 */
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 
@@ -60,15 +79,23 @@ public class OperationsManagementController {
 		this.validateComponentState();
 	}
 
+	/**
+	 * Affiche la fenêtre de dialogue et attend jusqu'à ce qu'elle soit fermée.
+	 */
 	public void displayDialog() {
 		this.primaryStage.showAndWait();
 	}
 
-	// Gestion du stage
-	private Object closeWindow(WindowEvent e) {
+	/**
+	 * Gère l'événement de fermeture de la fenêtre. Appelle la méthode doCancel()
+	 * pour effectuer les actions d'annulation. Consomme l'événement pour empêcher
+	 * la fermeture de la fenêtre.
+	 * 
+	 * @param e l'événement de fermeture de la fenêtre
+	 */
+	private void closeWindow(WindowEvent e) {
 		this.doCancel();
 		e.consume();
-		return null;
 	}
 
 	// Attributs de la scene + actions
@@ -86,11 +113,21 @@ public class OperationsManagementController {
 	@FXML
 	private Button btnVirement;
 
+	/**
+	 * Action exécutée lors de l'appui sur le bouton Annuler. Ferme la fenêtre
+	 * principale (primaryStage).
+	 */
 	@FXML
 	private void doCancel() {
 		this.primaryStage.close();
 	}
 
+	/**
+	 * Action exécutée lors de l'appui sur le bouton Débit. Enregistre une opération
+	 * de débit en utilisant le controller omDialogController. Si l'opération est
+	 * enregistrée avec succès, met à jour les informations du compte client et
+	 * remet l'état des composants à leur état initiale.
+	 */
 	@FXML
 	private void doDebit() {
 		Operation op = this.omDialogController.enregistrerDebit();
@@ -124,10 +161,13 @@ public class OperationsManagementController {
 	 *
 	 * @author KHALIL Ahmad
 	 * 
-	 * Cette méthode est appelée lorsqu'on souhaite effectuer un virement sur le compte client. Elle utilise la méthode enregistrerVirement()
-	 * de la classe omDialogController pour enregistrer le virement. Si le virement est enregistré avec succès (opération différente de null),
-	 * elle met à jour les informations du compte client en appelant la méthode updateInfoCompteClient() et met à jour l'état des composants
-	 * en appelant la méthode validateComponentState().
+	 *         Cette méthode est appelée lorsqu'on souhaite effectuer un virement
+	 *         sur le compte client. Elle utilise la méthode enregistrerVirement()
+	 *         de la classe omDialogController pour enregistrer le virement. Si le
+	 *         virement est enregistré avec succès (opération différente de null),
+	 *         elle met à jour les informations du compte client en appelant la
+	 *         méthode updateInfoCompteClient() et met à jour l'état des composants
+	 *         en appelant la méthode validateComponentState().
 	 */
 	@FXML
 	private void doVirement() {
@@ -138,6 +178,27 @@ public class OperationsManagementController {
 		}
 	}
 
+	/**
+	 * Effectue un virement sur le compte client.
+	 *
+	 * @author KHALIL Ahmad
+	 * 
+	 *         Cette méthode est appelée lorsque le bouton de gestion des
+	 *         prélèvements est appuyé par l'utilisateur.
+	 */
+	@FXML
+	private void doPrelevement() {
+		this.omDialogController.afficherPrelevements();
+		this.updateInfoCompteClient();
+		this.validateComponentState();
+	}
+
+	/**
+	 * Valide l'état des composants en fonction de l'état du compte concerné. Si le
+	 * compte est clôturé, les boutons de crédit, débit et virement sont désactivés.
+	 * Si le compte est ouvert, les boutons de crédit, débit et virement sont
+	 * activés.
+	 */
 	private void validateComponentState() {
 		if (this.compteConcerne.estCloture.equals("N")) {
 			this.btnCredit.setDisable(false);
@@ -150,6 +211,15 @@ public class OperationsManagementController {
 		}
 	}
 
+	/**
+	 * Met à jour les informations du compte client. Récupère les opérations et le
+	 * solde du compte à partir du controller omDialogController. Met à jour les
+	 * attributs compteConcerne et listeOP. Met à jour les labels lblInfosClient et
+	 * lblInfosCompte avec les informations du compte. Efface la liste
+	 * oListOperations et ajoute les nouvelles opérations. Appelle la méthode
+	 * validateComponentState() pour valider l'état des composants en fonction du
+	 * compte.
+	 */
 	private void updateInfoCompteClient() {
 
 		PairsOfValue<CompteCourant, ArrayList<Operation>> opesEtCompte;
@@ -158,7 +228,6 @@ public class OperationsManagementController {
 
 		this.compteConcerne = opesEtCompte.getLeft();
 		this.listeOP = opesEtCompte.getRight();
-
 		this.lblInfosClient.setText(
 				"N°Client : " + this.clientDuCompte.idNumCli + " | N°Compte : " + this.compteConcerne.idNumCompte
 						+ " | Etat : " + (this.compteConcerne.estCloture.equals("N") ? "Ouvert" : "Cloturé"));

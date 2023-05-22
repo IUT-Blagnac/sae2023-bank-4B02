@@ -3,7 +3,6 @@ package application.view;
 import java.util.regex.Pattern;
 
 import application.DailyBankState;
-import application.control.ExceptionDialog;
 import application.tools.AlertUtilities;
 import application.tools.ConstantesIHM;
 import application.tools.EditionMode;
@@ -17,13 +16,9 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
-import model.orm.exception.ApplicationException;
-import model.orm.exception.Order;
-import model.orm.exception.Table;
 
 /**
  * Controller JavaFX de la view ClientEditorPane.
- *
  */
 public class ClientEditorPaneController {
 

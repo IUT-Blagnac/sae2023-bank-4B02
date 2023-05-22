@@ -13,34 +13,34 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.OperationsManagementController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.PrelevementsManagementController">
    <right>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <center>
             <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btnCredit" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doCredit" style="-fx-background-radius: 15; -fx-border-width: 3; -fx-border-color: skyblue; -fx-border-radius: 15;" text="Créditer">
+                  <Button fx:id="btnSupprimer" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doSupprimer" style="-fx-background-radius: 15; -fx-border-width: 3; -fx-border-color: purple; -fx-border-radius: 15;" text="Supprimer">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="Corbel Bold" size="20.0" />
                      </font>
                      <VBox.margin>
                         <Insets bottom="5.0" right="5.0" top="30.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="btnDebit" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doDebit" style="-fx-background-radius: 15; -fx-border-width: 3; -fx-border-color: skyblue; -fx-border-radius: 15;" text="Débiter">
+                  <Button fx:id="btnMAJ" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doEditer" style="-fx-background-radius: 15; -fx-border-width: 3; -fx-border-color: blue; -fx-border-radius: 15;" text="Mettre à jour">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="Corbel Bold" size="20.0" />
                      </font>
                      <VBox.margin>
-                        <Insets bottom="5.0" right="5.0" top="5.0" />
+                        <Insets bottom="5.0" right="5.0" top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="btnVirement" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doVirement" style="-fx-background-radius: 15; -fx-border-width: 3; -fx-border-color: skyblue; -fx-border-radius: 15;" text="Virement">
+                  <Button fx:id="btnCreer" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doCreer" style="-fx-background-radius: 15; -fx-border-width: 3; -fx-border-color: green; -fx-border-radius: 15; -fx-background-color: white;" text="Créer ">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="Corbel Bold" size="20.0" />
                      </font>
                      <VBox.margin>
-                        <Insets bottom="5.0" right="5.0" top="5.0" />
+                        <Insets bottom="5.0" right="5.0" top="10.0" />
                      </VBox.margin>
                   </Button>
                </children>
@@ -56,7 +56,7 @@
          <bottom>
             <HBox BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#doCancel" prefHeight="7.0" prefWidth="247.0" style="-fx-background-radius: 15; -fx-border-color: red; -fx-border-width: 3; -fx-border-radius: 15;" text="Retour gestion comptes">
+                  <Button mnemonicParsing="false" onAction="#doCancel" prefHeight="46.0" prefWidth="252.0" style="-fx-background-radius: 15; -fx-border-color: red; -fx-border-width: 3; -fx-border-radius: 15;" text="Retour gestion opérations">
                      <HBox.margin>
                         <Insets bottom="15.0" left="30.0" top="10.0" />
                      </HBox.margin>
@@ -64,25 +64,25 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doPrelevement" prefHeight="45.0" prefWidth="231.0" style="-fx-background-radius: 15; -fx-border-width: 3; -fx-border-color: purple; -fx-border-radius: 15;" text="Gérer les prélèvements ">
+                  <Button fx:id="btnToutPrelever" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doExecuterAll" style="-fx-background-radius: 15; -fx-border-width: 3; -fx-border-color: black; -fx-border-radius: 15;" text="Exécuter tous les prélèvements">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="Corbel Bold" size="20.0" />
                      </font>
                      <HBox.margin>
-                        <Insets bottom="15.0" left="150.0" top="10.0" />
+                        <Insets bottom="15.0" left="90.0" top="10.0" />
                      </HBox.margin>
                   </Button>
                </children>
             </HBox>
          </bottom>
          <center>
-            <ListView fx:id="lvOperations" prefHeight="200.0" prefWidth="200.0" styleClass="courrierNew" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
-               </BorderPane.margin>
+            <ListView fx:id="lvPrelevements" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15;" BorderPane.alignment="CENTER">
                <padding>
                   <Insets bottom="10.0" />
                </padding>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </BorderPane.margin>
             </ListView>
          </center>
       </BorderPane>

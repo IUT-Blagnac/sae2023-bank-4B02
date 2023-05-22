@@ -38,11 +38,11 @@ public class Access_BD_CompteCourant {
 
 		ArrayList<CompteCourant> alResult = new ArrayList<>();
 		PreparedStatement pst;
-		
+
 		try {
 			Connection con = LogToDatabase.getConnexion();
 			String query;
-			if(isVirement && idNumCpt != -1) {
+			if (isVirement && idNumCpt != -1) {
 				query = "SELECT * FROM CompteCourant where IDNUMCLI = ? AND IDNUMCOMPTE <> ?";
 				query += " ORDER BY idNumCompte";
 				pst = con.prepareStatement(query);
@@ -123,9 +123,26 @@ public class Access_BD_CompteCourant {
 			throw new DataAccessException(Table.CompteCourant, Order.SELECT, "Erreur accès", e);
 		}
 	}
-	
+
+	/**
+	 * @author SELLOU Rayan
+	 * 
+	 *         Ajoute un compte courant dans la base de données.
+	 *
+	 * @param cc le compte courant à ajouter
+	 * @throws RowNotFoundOrTooManyRowsException si aucune ligne n'a été trouvée ou
+	 *                                           si plus d'une ligne a été trouvée
+	 *                                           lors de la mise à jour
+	 * @throws DataAccessException               en cas d'erreur d'accès aux données
+	 *                                           lors de l'opération
+	 * @throws DatabaseConnexionException        en cas d'erreur de connexion à la
+	 *                                           base de données
+	 * @throws ManagementRuleViolation           si une violation des règles de
+	 *                                           gestion est détectée lors de
+	 *                                           l'opération
+	 */
 	public void addCompte(CompteCourant cc) throws RowNotFoundOrTooManyRowsException, DataAccessException,
-	DatabaseConnexionException, ManagementRuleViolation {
+			DatabaseConnexionException, ManagementRuleViolation {
 		try {
 			Connection con = LogToDatabase.getConnexion();
 
@@ -146,10 +163,11 @@ public class Access_BD_CompteCourant {
 			}
 			con.commit();
 		} catch (SQLException e) {
-			throw new DataAccessException(Table.CompteCourant, Order.INSERT, "Erreur ACCES BD COMPTECOURANT ADDCOMPTE", e);
+			throw new DataAccessException(Table.CompteCourant, Order.INSERT, "Erreur ACCES BD COMPTECOURANT ADDCOMPTE",
+					e);
 		}
 	}
-	
+
 	/**
 	 * Mise à jour d'un CompteCourant.
 	 *
@@ -202,7 +220,9 @@ public class Access_BD_CompteCourant {
 
 	/**
 	 * @author ALMASRI Marwan
-	 * Cette méthode permet de clôturer un compte courant en modifiant la valeur de son attribut ESTCLOTURE dans la base de données.
+	 * 
+	 *         Cette méthode permet de clôturer un compte courant en modifiant la
+	 *         valeur de son attribut ESTCLOTURE dans la base de données.
 	 *
 	 * @param cc Le compte courant à clôturer.
 	 * @throws RowNotFoundOrTooManyRowsException La requête modifie 0 ou plus de 1
@@ -215,7 +235,7 @@ public class Access_BD_CompteCourant {
 	 *                                           débitAutorisé)
 	 */
 	public void cloturerCompte(CompteCourant cc) throws RowNotFoundOrTooManyRowsException, DataAccessException,
-	DatabaseConnexionException, ManagementRuleViolation {
+			DatabaseConnexionException, ManagementRuleViolation {
 		try {
 			Connection con = LogToDatabase.getConnexion();
 
@@ -234,7 +254,8 @@ public class Access_BD_CompteCourant {
 			con.commit();
 			con.close();
 		} catch (SQLException e) {
-			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur ACCES BD COMPTECOURANT ADDCOMPTE", e);
+			throw new DataAccessException(Table.CompteCourant, Order.UPDATE, "Erreur ACCES BD COMPTECOURANT ADDCOMPTE",
+					e);
 		}
 	}
 }

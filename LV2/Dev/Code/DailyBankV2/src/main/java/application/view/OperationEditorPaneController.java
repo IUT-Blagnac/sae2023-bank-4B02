@@ -1,6 +1,5 @@
 package application.view;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -20,14 +19,12 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.CompteCourant;
 import model.data.Operation;
-import model.data.TypeOperation;
 import model.orm.Access_BD_CompteCourant;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
 
 /**
  * Controller JavaFX de la view OperationEditorPane.
- *
  */
 
 public class OperationEditorPaneController {
@@ -43,13 +40,20 @@ public class OperationEditorPaneController {
 	private CompteCourant compteEdite;
 	private Operation operationResultat;
 
-	// Manipulation de la fenêtre
+	/**
+	 * Initialise le contexte de la fenêtre.
+	 * @param _containingStage La fenêtre parente.
+	 * @param _dbstate L'état quotidien de la banque.
+	 */
 	public void initContext(Stage _containingStage, DailyBankState _dbstate) {
 		this.primaryStage = _containingStage;
 		this.dailyBankState = _dbstate;
 		this.configure();
 	}
 
+	/**
+	 * Configure la fenêtre en définissant l'action à effectuer lors de sa fermeture.
+	 */
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 	}
