@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.OperationsManagementController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.OperationsManagementController">
    <right>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <center>
@@ -42,6 +42,11 @@
                      <VBox.margin>
                         <Insets bottom="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
+                  </Button>
+                  <Button fx:id="btnPDF" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doRelevePDF" style="-fx-background-radius: 15; -fx-border-width: 3; -fx-border-color: skyblue; -fx-border-radius: 15;" text="Relevé PDF">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
                   </Button>
                </children>
                <BorderPane.margin>

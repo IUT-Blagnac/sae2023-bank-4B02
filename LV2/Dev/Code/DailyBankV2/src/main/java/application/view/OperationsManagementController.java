@@ -1,13 +1,26 @@
 package application.view;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.*;
+
 import application.DailyBankState;
 import application.control.OperationsManagement;
+import application.tools.AlertUtilities;
 import application.tools.NoSelectionModel;
 import application.tools.PairsOfValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -239,5 +252,44 @@ public class OperationsManagementController {
 		this.oListOperations.addAll(listeOP);
 
 		this.validateComponentState();
+	}
+	
+	@FXML
+	private Button btnPDF;
+	
+	@FXML
+	private void doRelevePDF() {
+		Document document = new Document();
+
+		try {
+			
+			String nom = "ReleveComptes/RelevéCompteN°" + this.compteConcerne.idNumCompte + ".pdf";
+			
+			PdfWriter.getInstance(document, new FileOutputStream(nom));
+			document.open();
+			
+            Paragraph infoClient = new Paragraph("N°Client : " + this.compteConcerne.idNumCli + "  | Relevé du compte " + this.compteConcerne.toString() + "\n\n");
+			
+            document.add(infoClient);
+			document.add(new Paragraph("Liste des opérations :"));
+			
+			for (int i=0; i<listeOP.size(); i++) {
+				document.add(new Paragraph(listeOP.get(i).toString()));
+			}
+			
+			document.close();
+			try {
+				Desktop.getDesktop().open(new File(nom));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			AlertUtilities.showAlert(this.primaryStage, "Création du relevé réussie", "Le relevé du compte n°" + this.compteConcerne.idNumCompte + " a bien été crée\ndans le dossier ReleveComptes !", null, AlertType.INFORMATION);
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 }

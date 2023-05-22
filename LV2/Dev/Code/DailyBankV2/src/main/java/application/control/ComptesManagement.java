@@ -135,6 +135,13 @@ public class ComptesManagement {
         }
         return listeCpt;
     }
+    
+    /** @author RAYAN SELLOU 4B
+	 * Simule un emprunt
+	 * @param c Le client
+	 * @return Le client 
+	 * @see Client
+	 */
 
     /**
      * @author ALMASRI MARWAN

@@ -36,6 +36,7 @@ public class ComptesManagementController {
 	// Données de la fenêtre
 	private Client clientDesComptes;
 	private ObservableList<CompteCourant> oListCompteCourant;
+	
 
 	/**
 	 * Initialise le contexte de la fenêtre.
@@ -98,6 +99,8 @@ public class ComptesManagementController {
 	private Button btnModifierCompte;
 	@FXML
 	private Button btnClotureCompte;
+	
+
 
 	/**
 	 * Gère l'événement du bouton "Annuler".
@@ -177,6 +180,8 @@ public class ComptesManagementController {
 		this.oListCompteCourant.clear();
 		this.oListCompteCourant.addAll(listeCpt);
 	}
+	
+	
 
 	/**
 	 * Valide l'état des composants de l'interface utilisateur.
