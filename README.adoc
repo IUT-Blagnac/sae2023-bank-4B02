@@ -50,7 +50,8 @@ detaillez contraintes orga (contrainte sur qui fait quoi, jalons de livraisons, 
 | 16/05   | Gantt V2 Prevu   |    Rayan    |   link:LV1/Docs/GANTTPREVUV2.pdf[GANTT V2 PREVU]        |      idem au dessus 
 | 17/05   | Doc. Tec. V1     |    Ahmad    |    link:LV1/Docs/DocumentTechniqueV1.adoc[DocTechV1]        |       
 | 16/05   | Doc User V1      |    Ahmad    |    link:LV1/Docs/DocumentUtilisateurV1.adoc[DocUserV1]      |  procédure installation OK, y a t il des pré-requis de l'environement ? Description des fonctions OK, mais manque initiales du developpeur. Manque jeu de test     
-| 17/05   | Recette V1       |    Rayan    |    link:LV1/Docs/CahierDeRecetteV1.adoc[CahierDeTestV1]     |       
+| 17/05   | Recette V1       |    Rayan    |    link:LV1/Docs/CahierDeRecetteV1.adoc[CahierDeTestV1]     | 
+| 17/05   | Jar V1           |    Tous     |    link:LV1/Dev/JAR/[Jar V1]     |
 | 16/05   | Suivi projet V1  |    Tous     |                                                             | commits pas assez commentés, readme OK, arbo GIT OK. board des issues pas en ligne avec GANTT, il manque beaucoup d'issues. le board ne semble pas maintenu a jour. Comment faites vous pour connaitre en temps réel l'avancement du projet ?       
 | 26/05   | Gantt V2 réalisé |    Rayan    |                                                             |       
 | 26/05   | Doc. Util. V2    |    Marwan   |                                                             |       
@@ -64,25 +65,25 @@ detaillez contraintes orga (contrainte sur qui fait quoi, jalons de livraisons, 
 == Répartition des tâches et état d'avancement
 [options="header,footer"]
 |=======================
-| version | rôle          | use case                | cas...                  | Etudiant 1 | Etudiant 2 | Etudiant 3 | Etudiant 4
-| 1       | Chef d’Agence | CRUD employé            | C                       |            |            | Ahmad F    |
-| 1       | Chef d’Agence | CRUD employé            | R                       |            |Marwan F    |            |
-| 1       | Chef d’Agence | CRUD employé            | U                       |            |            |Ahmad F     |
-| 1       | Chef d’Agence | CRUD employé            | D                       |            |            |Ahmad F     |
-| 1       | Guichetier    | Compte                  | Créer                   |Rayan F     |            |            |
-| 1       | Guichetier    | Compte                  | Créditer/Débiter        |Rayan F     |            |            |
-| 1       | Guichetier    | Compte                  | Effectuer un virement   |            |            |Ahmad F     |
-| 1       | Guichetier    | Compte                  | Clôturer                |            |Marwan F    |            |
-| 2       | Chef d’Agence | Compte                  | Débit exceptionnel      |            |            |            |
-| 2       | Chef d’Agence | Emprunt                 | Simuler emprunt         |            |            |            |
-| 2       | Chef d’Agence | Emprunt                 | Simuler assurance       |            |            |            |
-| 2       | Guichetier    | Compte                  | Relevé PDF              |            |            |            |
-| 2       | Guichetier    | CRUD Prélèvement        | C                       |            |            |Ahmad D     |
-| 2       | Guichetier    | CRUD Prélèvement        | R                       |            |            |Ahmad D     |
-| 2       | Guichetier    | CRUD Prélèvement        | U                       |            |            |Ahmad D     |
-| 2       | Guichetier    | CRUD Prélèvement        | D                       |            |            |Ahmad D     |
-| 2       | Batch         | Prélèvements automatiques |                       |            |            |            |
-| 2       | Batch         | Reléves mensuels        |                         |            |            |            |
+| version |     rôle      |       use case        |        cas...        |  Rayan  |  Marwan |  Ahmad  
+|   1     | Chef d’Agence |    CRUD employé      |          C           |         |         |    F    
+|   1     | Chef d’Agence |    CRUD employé      |          R           |         |    F    |         
+|   1     | Chef d’Agence |    CRUD employé      |          U           |         |         |    F     
+|   1     | Chef d’Agence |    CRUD employé      |          D           |         |         |    F     
+|   1     |  Guichetier   |        Compte        |        Créer         |    F    |         |            
+|   1     |  Guichetier   |        Compte        |  Créditer/Débiter    |    F    |         |            
+|   1     |  Guichetier   |        Compte        | Effectuer un virement|         |         |    F     
+|   1     |  Guichetier   |        Compte        |       Clôturer       |         |    F    |            
+|   2     | Chef d’Agence |        Compte        |  Débit exceptionnel  |         |         |            
+|   2     | Chef d’Agence |       Emprunt        |   Simuler emprunt    |         |         |            
+|    2    | Chef d’Agence |       Emprunt        |   Simuler assurance  |         |         |            
+|   2     |  Guichetier   |        Compte        |      Relevé PDF      |         |         |            
+|   2     |  Guichetier   |  CRUD Prélèvement    |          C           |         |         |    F     
+|   2     |  Guichetier   |  CRUD Prélèvement    |          R           |         |         |    F     
+|   2     |  Guichetier   |  CRUD Prélèvement    |          U           |         |         |    F     
+|   2     |  Guichetier   |  CRUD Prélèvement    |          D           |         |         |    F     
+|   2     |     Batch     |Prélèvements automatiques |                    |         |         |            
+|   2     |     Batch     |    Reléves mensuels   |                     |         |         |            
 |=======================
 <<<<
 
