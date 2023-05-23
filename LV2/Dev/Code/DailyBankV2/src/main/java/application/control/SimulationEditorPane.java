@@ -6,28 +6,29 @@ import application.tools.EditionMode;
 import application.tools.StageManagement;
 import application.view.ClientsManagementController;
 import application.view.SimulationEditorPaneController;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 
 public class SimulationEditorPane {
 
 	private Stage primaryStage;
 	private SimulationEditorPaneController sepc;
+	// Etat courant de l'application
+	private DailyBankState dailyBankState;
 	
-	/**
-	 * Permet l'affichage de la fenêtre de la simulation d'emprunt et assurance pour les clients
-	 * @param _parentStage La fenêtre parente
-	 * @param _dbstate La banque
-	 * @see DailyBankState
-	 */
+	
+
+	
 	public SimulationEditorPane(Stage _parentStage, DailyBankState _dbstate) {
 
 		try {
-			FXMLLoader loader = new FXMLLoader(ClientsManagementController.class.getResource("simulereditorpane.fxml"));
+			FXMLLoader loader = new FXMLLoader(SimulationEditorPaneController.class.getResource("simulationeditorpane.fxml"));
 			BorderPane root = loader.load();
 
 			Scene scene = new Scene(root, root.getPrefWidth()+20, root.getPrefHeight()+10);
@@ -42,7 +43,7 @@ public class SimulationEditorPane {
 			this.primaryStage.setResizable(false);
 
 			this.sepc = loader.getController();
-			this.sepc.initContext(this.primaryStage, _dbstate);
+			this.sepc.initContext(this.primaryStage,this, _dbstate);
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import application.DailyBankState;
 import application.control.ComptesManagement;
 import application.tools.AlertUtilities;
+import application.tools.ConstantesIHM;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -99,6 +100,8 @@ public class ComptesManagementController {
 	private Button btnModifierCompte;
 	@FXML
 	private Button btnClotureCompte;
+	@FXML
+	private Button btnSimulation;
 	
 
 
@@ -188,6 +191,10 @@ public class ComptesManagementController {
 	 */
 	private void validateComponentState() {
 		// Non implémenté => désactivé
+		this.btnSimulation.setDisable(true);
+		if(ConstantesIHM.isAdmin(this.dailyBankState.getEmployeActuel())) {
+			this.btnSimulation.setDisable(false);
+		}
 		this.btnModifierCompte.setDisable(true);
 		this.btnClotureCompte.setDisable(true);
 
@@ -198,5 +205,10 @@ public class ComptesManagementController {
 		} else {
 			this.btnVoirOpes.setDisable(true);
 		}
+	}
+	
+	@FXML
+	private void doSimulerEmprunt() {
+		this.cmDialogController.SimulationEditor();
 	}
 }

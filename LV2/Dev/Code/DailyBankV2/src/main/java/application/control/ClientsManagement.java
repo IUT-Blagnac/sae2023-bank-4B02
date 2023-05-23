@@ -173,8 +173,5 @@ public class ClientsManagement {
 	    return listeCli;
 	}
 	
-	public void SimulationEditor() {
-		SimulationEditorPane cep = new SimulationEditorPane(this.primaryStage, this.dailyBankState);
-		cep.doSimulerEditorDialog();
-	}
+	
 }

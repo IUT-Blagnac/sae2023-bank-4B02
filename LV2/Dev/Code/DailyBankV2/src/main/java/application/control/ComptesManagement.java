@@ -171,4 +171,9 @@ public class ComptesManagement {
             }
         }
 	}
+	
+	public void SimulationEditor() {
+		SimulationEditorPane cep = new SimulationEditorPane(this.primaryStage, this.dailyBankState);
+		cep.doSimulerEditorDialog();
+	}
 }

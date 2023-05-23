@@ -3,13 +3,25 @@ package application.view;
 import java.net.URL;
 import java.util.ResourceBundle;
 import application.DailyBankState;
+import application.control.SimulationEditorPane;
+import application.tools.AlertUtilities;
+import application.tools.ConstantesIHM;
+import application.tools.EditionMode;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import model.data.Client;
+import model.data.CompteCourant;
+import model.data.Employe;
+import model.data.Prelevement;
+
 import java.lang.Math;
 
 
@@ -23,12 +35,17 @@ public class SimulationEditorPaneController implements Initializable {
 	private Stage primaryStage;
 
 	// Données de la fenêtre
+	private EditionMode editionMode;
+	private SimulationEditorPane sep;
 
 	// Manipulation de la fenêtre
-	public void initContext(Stage _primaryStage, DailyBankState _dbstate) {
+	public void initContext(Stage _primaryStage,SimulationEditorPane sep, DailyBankState _dbstate) {
+		
 		this.primaryStage = _primaryStage;
 		this.dbs = _dbstate;
+		this.sep = sep;
 		this.configure();
+		
 	}
 
 	private void configure() {
@@ -36,11 +53,8 @@ public class SimulationEditorPaneController implements Initializable {
 	}
 
 	public void displayDialog() {
-		this.butOk.setText("Simulation emprunt");
-		this.butCancel.setText("Annuler");
 		this.primaryStage.showAndWait();
 	}
-
 
 
 	// Gestion du stage
@@ -51,6 +65,9 @@ public class SimulationEditorPaneController implements Initializable {
 	}
 
 	// Attributs de la scene + actions
+	@FXML
+	private Label lblMessage;
+	
 	@FXML
 	private TextField montant;
 
@@ -71,14 +88,15 @@ public class SimulationEditorPaneController implements Initializable {
 
 	@FXML
 	private TextField DureeMois;
-
-
-
+	
+	@FXML
+	private Button butAssurance;
+	
+	@FXML
+	private Button butEmprunt;
 
 	@FXML
-	private Button butOk;
-	@FXML
-	private Button butCancel;
+	private Button btnCancel;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

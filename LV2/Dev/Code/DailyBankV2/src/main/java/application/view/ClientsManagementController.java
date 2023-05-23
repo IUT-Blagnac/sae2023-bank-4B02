@@ -106,8 +106,7 @@ public class ClientsManagementController {
 	private Button btnModifClient;
 	@FXML
 	private Button btnComptesClient;
-	@FXML
-	private Button Simulation;
+	
 
 	/**
 	 * Ferme la fenêtre principale.
@@ -183,10 +182,6 @@ public class ClientsManagementController {
 		}
 	}
 	
-	@FXML
-	private void SimulerEmprunt() {
-		this.cmDialogController.SimulationEditor();
-	}
 
 	/**
 	 * Désactive le client sélectionné.
@@ -216,10 +211,7 @@ public class ClientsManagementController {
 	 */
 	private void validateComponentState() {
 		// Non implémenté => désactivé
-		this.Simulation.setDisable(true);
-		if(ConstantesIHM.isAdmin(this.dailyBankState.getEmployeActuel())) {
-			this.Simulation.setDisable(false);
-		}
+		
 		this.btnDesactClient.setDisable(true);
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
