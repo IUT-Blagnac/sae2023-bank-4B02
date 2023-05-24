@@ -1,0 +1,208 @@
+= Document Utilisateur DailyBank - Version : 1.0 - Date : 10 mai 2023 Groupe 4B02 - Rédigé par Ahmad KHALIL
+:icons: font
+:models: models
+:experimental:
+:incremental:
+:numbered:
+:toc: macro
+:window: _blank
+:correction!:
+
+// Useful definitions
+:asciidoc: http://www.methods.co.nz/asciidoc[AsciiDoc]
+:icongit: icon:git[]
+:git: http://git-scm.com/[{icongit}]
+:plantuml: https://plantuml.com/fr/[plantUML]
+
+ifndef::env-github[:icons: font]
+// Specific to GitHub
+ifdef::env-github[]
+:correction:
+:!toc-title:
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+:icongit: Git
+endif::[]
+
+Équipe de développement :
+- Chef de projet : Marwan ALMASRI
+- Développeurs : Ahmad KHALIL, Rayan SELLOU, Marwan ALMASRI
+
+toc::[]
+
+== Présentation de l'application
+=== Contexte général
+Dans le cadre de la restructuration de ses services bancaires, la banque DailyBank souhaite développer une application de gestion des comptes clients et employés, qui sera déployée dans ses 100 agences. L'objectif est de moderniser et de digitaliser les services bancaires pour répondre aux attentes des clients en termes d'instantanéité et de rapidité, tout en simplifiant la gestion des comptes pour les employés des agences. L'application, nommée DailyBank, sera développée en Java-Oracle pour remplacer les outils obsolètes actuels.
+
+Dans un contexte plus général, l'évolution technologique a incité les banques à investir dans la numérisation de leurs services pour améliorer l'accessibilité et l'expérience client. La banque BankUniv, consciente de la concurrence des néobanques et des nouvelles attentes des clients, vise à offrir des services numériques efficaces et innovants. La pandémie de Covid-19 a également renforcé la demande des clients pour des services bancaires à distance.
+
+=== Rôle de l'application
+L'application DailyBank a pour objectif de fournir une solution complète de gestion des comptes clients et employés pour la banque DailyBank. En tant qu'outil essentiel dans la restructuration des services bancaires, l'application permettra de moderniser et de digitaliser les opérations bancaires, en offrant une plateforme conviviale et efficace pour les guichetiers et les directeurs d'agence. Son rôle principal est de permettre la gestion des comptes bancaires, en offrant des fonctionnalités telles que la création de comptes, les dépôts, les retraits, les virements et la consultation des soldes. L'application vise à simplifier les processus, à améliorer la qualité de service et à offrir une expérience client optimale en répondant aux besoins changeants des clients en matière de services bancaires numériques. En outre, elle contribuera à réduire les erreurs et les risques de fraude, en garantissant la sécurité des opérations effectuées. Ainsi, l'application DailyBank joue un rôle crucial dans la transformation numérique de la banque DailyBank, en fournissant une plateforme robuste et complète pour la gestion des comptes clients et en contribuant à maintenir la compétitivité de la banque sur le marché.
+
+== Guide d'installation de l'application
+=== Pré-requis nécéssaires 
+Pour pouvoir lancer l'application, assurez vous d'avoir java installé sur l'ordinateur, vous pouvez vérifier cela en lançant une invite de commande et en tapant la commande : 
+
+- java -version 
+
+Si JAVA n'est pas installé, rendez vous sur https://www.java.com/fr/download/ pour le télécharger.
+
+=== Lancer l'exécutable
+Deux options : 
+
+- Lancer une invite de commande et tappez la commande suivante : java -jar DailyBankV1.jar
+
+- Double cliquez sur l'application (fichier nommée DailyBankV1.jar)
+
+== Prise en main de l'application
+
+=== Se connecter
+
+Première chose à faire dans l'application, se connecter soit en tant que guichetier soit en tant que chef d'agence. Pour se connecter : 
+
+- Appuyer sur le bouton 'connexion' comme ci-dessus puis entrer l'identifiant et le mot de passe.
+
+image::ressources/docUtil1.PNG[]
+
+=== Créer un compte bancaire
+
+- Conditions : le découvert autorisé doit être <= 0 et le montant du premier dépôt doit être >= 0.
+
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Clients' comme ci-dessous.
+
+image::ressources/docUtil2.PNG[]
+
+- Selectionnez un client puis cliquer sur 'Comptes client'.
+
+image::ressources/docUtil3.PNG[]
+
+- Cliquez sur 'Nouveau Compte'.
+
+image::ressources/docUtil4.PNG[]
+
+- Entrer le solde et le découvert autorisé du compte puis cliquez sur 'Ajouter'.
+
+image::ressources/docUtil5.PNG[]
+
+=== Créditer / Débiter un compte
+
+- Conditions : Le solde de noit pas dépasser le découvert autorisé lors d'un débit. Le montant maximal est de 999 999 pour un crédit / débit (limite de la base de données).
+
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Clients' comme ci-dessous.
+
+image::ressources/docUtil2.PNG[]
+
+- Selectionnez un client puis cliquer sur 'Comptes client'.
+
+image::ressources/docUtil3.PNG[]
+
+- Selectionnez un client puis cliquer sur 'Voir opérations'.
+
+image::ressources/docUtil6.PNG[]
+
+- Appuyez sur 'Créditer' ou 'Débiter'.
+
+image::ressources/docUtil7.PNG[]
+
+- Selectionnez le type d'opération dans le menu, ensuite entrez un montant puis effectuer le Crédit / Débit.
+
+image::ressources/docUtil8.PNG[]
+
+=== Cloturer un compte
+
+- Conditions : le solde du compte à cloturer doit être à 0.
+
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Clients' comme ci-dessous.
+
+image::ressources/docUtil2.PNG[]
+
+- Selectionnez un client puis cliquer sur 'Comptes client'.
+
+image::ressources/docUtil3.PNG[]
+
+- Selectionnez un compte puis cliquez sur 'Cloturer le compte', le statut du compte passera de 'Ouvert' à 'Cloturé'.
+
+image::ressources/docUtil9.PNG[]
+
+=== Effectuer un virement
+
+- Conditions : le solde ne doit pas dépasser le découvert autorisé et le montant maximal est de 999 999 (limite de la base de données).
+
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Clients' comme ci-dessous.
+
+image::ressources/docUtil2.PNG[]
+
+- Selectionnez un client puis cliquer sur 'Comptes client'.
+
+image::ressources/docUtil3.PNG[]
+
+- Selectionnez un client puis cliquer sur 'Voir opérations'.
+
+image::ressources/docUtil6.PNG[]
+
+- Appuyez sur 'Virement'.
+
+image::ressources/docUtil7.PNG[]
+
+- Choisissez le compte destinataire dans le ménu déroulant, entrer le montant puis cliquez sur 'Effectuer virement'.
+
+image::ressources/docUtil10.PNG[]
+
+=== Créer un employé
+
+- Conditions : les champs saisies doivent êtres valide, le numéro d'agence doit exister dans la base de données.
+
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Employe' comme ci-dessous.
+
+image::ressources/docUtil11.png[]
+
+- Cliquez sur 'Ajouter'.
+
+image::ressources/docUtil12.PNG[]
+
+- Entrez les informations de l'employé puis cliquez sur 'Valider'
+
+image::ressources/docUtil13.PNG[]
+
+=== Voir un employé
+
+- Conditions : un chef d'agence ne peut pas voir les LOGINS d'un autre chef d'agence mais peut voir ceux des guichetiers
+
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Employe' comme ci-dessous.
+
+image::ressources/docUtil11.png[]
+
+- Selectionnez un employé puis cliquez sur 'Informations'.
+
+image::ressources/docUtil14.PNG[]
+
+=== Mettre à jour un employé
+
+- Conditions : un chef d'agence ne peut pas modifier un autre chef d'agence mais peut modifier un guichetier
+
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Employe' comme ci-dessous.
+
+image::ressources/docUtil11.png[]
+
+- Selectionnez un employé puis cliquez sur 'Mettre à jour'.
+
+image::ressources/docUtil15.PNG[]
+
+- Saisissez les informations à mettre à jour puis cliquez sur 'Modifier'.
+
+image::ressources/docUtil16.PNG[]
+
+=== Supprimer un employé
+
+- Conditions : un chef d'agence ne peut pas supprimer un autre chef d'agence mais peut supprimer un guichetier
+
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Employe' comme ci-dessous.
+
+image::ressources/docUtil11.png[]
+
+- Selectionnez un employé puis cliquez sur 'Supprimer'.
+
+image::ressources/docUtil17.PNG[]
