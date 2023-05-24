@@ -23,6 +23,9 @@ import model.data.Employe;
 import model.data.Prelevement;
 
 import java.lang.Math;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 
 public class SimulationEditorPaneController implements Initializable {
@@ -112,28 +115,30 @@ public class SimulationEditorPaneController implements Initializable {
 
 		String aff = "";
 
-		if (!montant.getText().isEmpty() && isNumber(this.montant) && !annee.getText().isEmpty() && isNumber(annee) && !TA.getText().isEmpty() && isNumber(TA)) {
+		if (!montant.getText().isEmpty() && isNumber(this.montant) && !annee.getText().isEmpty() && isNumber(annee) && !TA.getText().isEmpty() && isDouble(TA)) {
 
-			int numTA= Integer.parseInt(TA.getText());
+			double numTA = Double.parseDouble(TA.getText());
 			int numA= Integer.parseInt(annee.getText());
-			int numMontant= Integer.parseInt(montant.getText());
+			double numMontant= Double.parseDouble(montant.getText());
 
-			aff ="Année | Capital restant dû |Intérêts | Amortissement du capital | Annuité\n";
+			aff ="Année      |      Capital restant dû      |      Intérêts      |      Amortissement du capital      | Annuité\n";
 
-			int Capital=numMontant;
-			int interet=(Capital/100)*numTA;
-			int amor= (Capital/numA);
-			int annuite= amor+interet;
+			double Capital=numMontant;
+			double interet=(Capital/100)*numTA;
+			double amor= (Capital/numA);
+			double annuite= amor+interet;
 
 
-			int totI = 0;
-			int totC = 0;
-			int totA = 0;
+			double totI = 0;
+			double totC = 0;
+			double totA = 0;
 			for (int i =0 ; i<numA; i++) {
 				int bona =i+1;
 				totI += interet;
 				totC += amor;
 				totA += annuite;
+				
+				
 				aff = aff + "    "+ bona +"             |   " + Capital + "    |     " + interet + "     |               " + amor +"                  |   " + annuite + "\n";
 
 				Capital = Capital-amor;
@@ -146,65 +151,66 @@ public class SimulationEditorPaneController implements Initializable {
 
 			aff = aff + "    "+ " Total " +"   |   " + "       " + "    |     " + totI + "     |               " + totC +"                  |   " + totA + "\n";
 			txt.setText(aff);
-
-
-
+			
 		}
 
 	}
 
 
-
+	
 
 
 	@FXML
-	private void doAss() {
+    private void doAss() {
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        String aff = "";
 
-		String aff = "";
+        if (!montantAss.getText().isEmpty() && isNumber(montantAss) && !TauxAnnuel.getText().isEmpty() && isDouble(TauxAnnuel) && !DureeMois.getText().isEmpty() && isNumber(DureeMois)) {
 
-		if (!montantAss.getText().isEmpty() && isNumber(montantAss) && !TauxAnnuel.getText().isEmpty() && isFloat(TauxAnnuel) && !DureeMois.getText().isEmpty() && isNumber(DureeMois)) {
+            double numTA= Double.parseDouble(TauxAnnuel.getText());
+            int numA= Integer.parseInt(DureeMois.getText());
+            int numMontant= Integer.parseInt(montantAss.getText());
+            double Tapl = numTA/100/12;
+            double tour = numA;
+            numA = numA - numA - numA;
 
-			float numTA= Float.parseFloat(TauxAnnuel.getText());
-			int numA= Integer.parseInt(DureeMois.getText());
-			int numMontant= Integer.parseInt(montantAss.getText());
-			float Tapl = numTA/100/12;
-			float tour = numA;
-			numA = numA - numA - numA;
+            aff ="Num mois | Capital restant dû en début de période |Intérêts | Montant des intêrets | Montant du principal  |  Montant à rembourser (Mensualité) | Capital restant dû en fin de période \n";
 
-			aff ="Num mois | Capital restant dû en début de période |Intérêts | Montant des interet | Montant du princiapl  |  Montant à rembourser (Mensualité) | Capital restant du en fin de période \n";
+            double CapDeb = numMontant;
+            
 
-			double CapDeb = numMontant;
-			double interet = CapDeb*Tapl;
-
-			double MontantArembourser = numMontant * (Tapl/ (1-(Math.pow(1+Tapl, numA))));
-
-
-			double princ= MontantArembourser-interet;
-
-			double CapFin= CapDeb-princ;
+            double MontantArembourser = numMontant * (Tapl/ (1-(Math.pow(1+Tapl, numA))));
 
 
-			for (int i =0 ; i<tour; i++) {
-				int bona =i+1;
+            
 
-				aff = aff + "    "+ bona +"             |                   " + CapDeb + "             |                           " + interet + "     |               " + princ +"                  |   " + MontantArembourser + "  |    " + CapFin + "\n";
-
+            
 
 
+            for (int i =0 ; i<tour; i++) {
+                int bona =i+1;
+                double interet = CapDeb*Tapl;
+                double princ= MontantArembourser-interet;
+                double CapFin= CapDeb-princ;
+                aff = aff + "    "+ bona +"             |                   " + decimalFormat.format(CapDeb) + "             |                           " + decimalFormat.format(interet) + "     |               " + decimalFormat.format(princ) +"                  |   " + decimalFormat.format(MontantArembourser) + "  |    " + decimalFormat.format(CapFin) + "\n";
 
 
 
-				interet = CapDeb*Tapl;
-				CapFin = CapDeb -princ;
-				princ = MontantArembourser-interet;
-				CapDeb = CapFin;
 
 
-			}
-			txt.setText(aff);
-		}
 
+                interet = CapDeb*Tapl;
+                CapFin = CapDeb -princ;
+                princ = MontantArembourser-interet;
+                CapDeb = CapFin;
+
+
+            }
+            txt.setText(aff);
+        }
 	}
+
+	
 	private boolean isNumber(TextField message) {
 		try {
 			Integer.parseInt(message.getText());
@@ -221,9 +227,18 @@ public class SimulationEditorPaneController implements Initializable {
 		} catch(NumberFormatException e) {
 			return false;
 		}
+	
+	
+		
 	}
-
-
+	private boolean isDouble(TextField message) {
+		try {
+			Double.parseDouble(message.getText());
+			return true;
+		} catch(NumberFormatException e) {
+			return false;
+		}
+	}
 
 
 
