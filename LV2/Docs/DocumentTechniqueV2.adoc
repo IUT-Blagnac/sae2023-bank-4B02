@@ -70,7 +70,7 @@ image::../../LV1/Docs/ressources/dc-initialv1.svg[]
 
 Le diagramme de classes UML représente les différentes entités impliquées dans une banque, notamment les employés, les agences, les clients, les comptes courants, les opérations bancaires et les types d'opérations. Les relations entre ces entités sont également représentées, telles que la relation de possession entre un client et un compte courant, la relation de gestion entre un compte courant et une agence, et la relation de couverture entre un emprunt et une assurance. On retrouve également le chef d'agence qui est représenté comme un employé avec une relation d'association avec une agence bancaire (0..1 car il peut y avoir au maximum 1 chef d'agence par agence). Les clients inactifs sont également pris en compte avec un attribut booléen "estInactif" dans la classe Client. Il y a aussi l'attribut "estCloturé" dans la classe CompteCourant pour déterminer si le compte est clôturé ou non.
 
-=== Packages
+=== Packages et ressources utilisées
 
 image::../../LV1/Docs/ressources/imagePackages.PNG[]
 
@@ -83,6 +83,13 @@ L'architecture de l'application DailyBank comprend plusieurs packages :
 - model.data : contient des classes Java qui correspondent directement aux tables de la base de données. Chaque table est associée à une classe, permettant une gestion efficace des données et une cohérence entre l'application et la base de données.
 - model.orm : classes par lesquels l'accès à la base de donnée est établie
 - model.orm.exception : rassemble les classes d'exceptions liées à l'accès à la base de données. Ces classes permettent de gérer les erreurs et les situations exceptionnelles lors des opérations avec la base de données, assurant ainsi une gestion appropriée des problèmes d'accès aux données.
+
+Les ressources utilisées par ce projet sont multiples : 
+
+- maven pour la compilation, le jar, la javadoc ainsi que pour gérer les dépendances se trouvant dans le fichier pom.xml
+- un jdk version 17 est nécéssaire 
+- des fichiers FXML produits avec le logiciel SceneBuilder
+- une base de données
 
 == Configurer et lancer l'application
 
@@ -108,7 +115,7 @@ Pour lancer l'application, il sera nécéssaire de se connecter soit en tant que
 
 - Appuyez sur le bouton 'connexion' comme ci-dessus puis entrer l'identifiant et le mot de passe.
 
-image::ressources/docUtil1.PNG[]
+image::../../LV1/Docs/ressources/docUtil1.PNG[]
 
 === Configurez la base de données
 
@@ -130,6 +137,18 @@ Pour faire le lien avec la base de données :
 Permet à un employé de créer un compte bancaire qui sera enregistré dans la base de données. 
 
 - Conditions : le découvert autorisé doit être <= 0 et le montant du premier dépôt doit être >= 0.
+
+Partie du UseCase :
+
+image::ressources/useCase/creercompteCase.PNG[]
+
+Partie du diagramme de classe : 
+
+image::ressources/DC/creercompteDC.PNG[]
+
+Diagramme de séquence : 
+
+image::ressources/DSeq/creercompteDSeq.png[]
 
 Classes utilisées : 
 
@@ -155,6 +174,18 @@ Permet de créditer / débiter un compte bancaire, son solde sera actualisé dan
 
 - Conditions : Le solde de noit pas dépasser le découvert autorisé lors d'un débit. Le montant maximal est de 999 999 pour un crédit / débit (limite de la base de données).
 
+Partie du UseCase :
+
+image::ressources/useCase/creditdebitCase.PNG[]
+
+Partie du diagramme de classe : 
+
+image::ressources/DC/creditdebitDC.PNG[]
+
+Diagramme de séquence : 
+
+image::ressources/DSeq/creditdebitDSeq.png[]
+
 Classe utilisées : 
 
 package Application.control :
@@ -179,6 +210,18 @@ Change l'état d'un compte ouvert en un compte fermé, son état sera actualisé
 
 - Conditions : le solde du compte à cloturer doit être à 0.
 
+Partie du UseCase :
+
+image::ressources/useCase/cloturercase.PNG[]
+
+Partie du diagramme de classe : 
+
+image::ressources/DC/cloturerDC.PNG[]
+
+Diagramme de séquence : 
+
+image::ressources/DSeq/cloturerDSeq.png[]
+
 Classe utilisées :
 
 package Application.control :
@@ -198,6 +241,18 @@ package Model.orm :
 Débite le compte sur lequel l'opération est effectué et crédite le compte destinataire du virement, les soldes des deux comptes devra être actualisé dans la base de données. 
 
 - Conditions : le solde ne doit pas dépasser le découvert autorisé et le montant maximal est de 999 999 (limite de la base de données).
+
+Partie du UseCase :
+
+image::ressources/useCase/virementcase.PNG[]
+
+Partie du diagramme de classe : 
+
+image::ressources/DC/virementDC.PNG[]
+
+Diagramme de séquence : 
+
+image::ressources/DSeq/virementDSeq.png[]
 
 Classe utilisées :
 
@@ -221,6 +276,18 @@ Permet de créer un nouvel employé. L'employé sera également crée dans la ba
 
 - Conditions : les champs saisies doivent êtres valide, le numéro d'agence doit exister dans la base de données.
 
+Partie du UseCase :
+
+image::ressources/useCase/employeCcase.PNG[]
+
+Partie du diagramme de classe : 
+
+image::ressources/DC/employecrudDC.PNG[]
+
+Diagramme de séquence : 
+
+image::ressources/DSeq/employeCDSeq.png[]
+
 Classe utilisées :
 
 package Application.control :
@@ -239,11 +306,25 @@ package Model.orm :
 
 === CRUD Employé - Read (ALMASRI Marwan)
 
-- Conditions : un chef d'agence ne peut pas voir les LOGINS d'un autre chef d'agence mais peut voir ceux des guichetiers
-
 Permet de visualiser les informations d'un employés.
 
+- Conditions : un chef d'agence ne peut pas voir les LOGINS d'un autre chef d'agence mais peut voir ceux des guichetiers
+
+Partie du UseCase :
+
+image::ressources/useCase/employeRcase.PNG[]
+
+Partie du diagramme de classe : 
+
+image::ressources/DC/employecrudDC.PNG[]
+
+Diagramme de séquence : 
+
+image::ressources/DSeq/employeRDseq.png[]
+
 Classe utilisées :
+
+package Application.view :
 
 - EmployeManagementController.java -> checkInfo appelée par employemanagement.fxml (bouton information sur la scène)
 
@@ -251,6 +332,18 @@ Classe utilisées :
 Permet de mettre à jour les informations d'un employés, les champs mises à jour le seront également dans la base de données.
 
 - Conditions : un chef d'agence ne peut pas modifier un autre chef d'agence mais peut modifier un guichetier
+
+Partie du UseCase :
+
+image::ressources/useCase/employeUcase.PNG[]
+
+Partie du diagramme de classe : 
+
+image::ressources/DC/employecrudDC.PNG[]
+
+Diagramme de séquence : 
+
+image::ressources/DSeq/employeUDSeq.png[]
 
 Classe utilisées :
 
@@ -273,6 +366,18 @@ Supprime de manière définitive un employé, une alerte de confirmation est aff
 
 - Conditions : un chef d'agence ne peut pas supprimer un autre chef d'agence mais peut supprimer un guichetier
 
+Partie du UseCase :
+
+image::ressources/useCase/employeDcase.PNG[]
+
+Partie du diagramme de classe : 
+
+image::ressources/DC/employecrudDC.PNG[]
+
+Diagramme de séquence : 
+
+image::ressources/DSeq/employeDDSeq.png[]
+
 Classe utilisées :
 
 package Application.control :
@@ -286,10 +391,3 @@ package Application.view :
 package Model.orm :
 
 - Access_BD_Employe -> la méthode *deleteEmploye* appelée par deleteEmploye (EmployeManagement)
-
-Classe utilisées :
-
-- EmployeManagement.java
-- EmployeManagementController.java
-- Access_BD_Employe.java
-- employemanagement.fxml
