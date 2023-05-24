@@ -16,12 +16,12 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER_RIGHT">
          <children>
-            <Button fx:id="butAssurance" mnemonicParsing="false" onAction="#doAss" text="Simulation assurance">
+            <Button fx:id="butAssurance" mnemonicParsing="false" onAction="#doAssurance" text="Simulation assurance">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="butEmprunt" mnemonicParsing="false" onAction="#doSimul" text="Simulation emprunt">
+            <Button fx:id="butEmprunt" mnemonicParsing="false" onAction="#doEmprunt" text="Simulation emprunt">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
@@ -109,7 +109,7 @@
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin></Label>
-            <Label prefHeight="21.0" prefWidth="344.0" text="Informations emprunt" GridPane.rowIndex="5">
+            <Label prefHeight="21.0" prefWidth="344.0" text="Simulation Emprunt" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
@@ -117,7 +117,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label prefHeight="21.0" prefWidth="344.0" text="Informations assurance emprunt" GridPane.rowIndex="1">
+            <Label prefHeight="21.0" prefWidth="344.0" text="Simulation Assurance" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
@@ -126,6 +126,9 @@
                </font>
             </Label>
          </children>
+         <BorderPane.margin>
+            <Insets top="50.0" />
+         </BorderPane.margin>
       </GridPane>
    </top>
 </BorderPane>

@@ -19,3 +19,68 @@
 .borderred {
 	-fx-text-fill: red;
 }
+
+/* Body */
+body {
+    -fx-background-color: #f5f5f5;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.button:hover {
+    -fx-background-color: #0056b3;
+}
+
+/* Labels */
+.label {
+    -fx-font-size: 14px;
+}
+
+/* Text Fields */
+.text-field {
+    -fx-prompt-text-fill: #888888;
+}
+
+/* Text Area */
+.text-area {
+    -fx-prompt-text-fill: #888888;
+}
+
+/* Grid Pane */
+.grid-pane {
+    -fx-hgap: 10px;
+    -fx-vgap: 10px;
+}
+
+/* HBox */
+.hbox {
+    -fx-spacing: 10px;
+}
+
+/* Border Pane */
+.border-pane {
+    -fx-padding: 10px;
+}
+
+/* Title */
+.title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+/* Header */
+.header {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/* Footer */
+.footer {
+    -fx-alignment: center-right;
+    -fx-padding: 10px;
+}

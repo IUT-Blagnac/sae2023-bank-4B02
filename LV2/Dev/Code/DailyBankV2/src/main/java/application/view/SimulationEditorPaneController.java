@@ -32,7 +32,7 @@ public class SimulationEditorPaneController implements Initializable {
 
 	// Etat application
 	@SuppressWarnings("unused")
-	private DailyBankState dbs;
+	private DailyBankState dailyBankState;
 
 	// Fenêtre physique
 	private Stage primaryStage;
@@ -45,7 +45,7 @@ public class SimulationEditorPaneController implements Initializable {
 	public void initContext(Stage _primaryStage,SimulationEditorPane sep, DailyBankState _dbstate) {
 		
 		this.primaryStage = _primaryStage;
-		this.dbs = _dbstate;
+		this.dailyBankState = _dbstate;
 		this.sep = sep;
 		this.configure();
 		
@@ -67,7 +67,7 @@ public class SimulationEditorPaneController implements Initializable {
 		return null;
 	}
 
-	// Attributs de la scene + actions
+	// éléments de la scène
 	@FXML
 	private Label lblMessage;
 	
@@ -110,104 +110,108 @@ public class SimulationEditorPaneController implements Initializable {
 		this.primaryStage.close();
 	}
 
+	/** @autor RAYAN SELLOU
+	 * Effectue une simulation d'emprunt en générant un tableau d'amortissement
+	 * basé sur les valeurs saisies dans les champs de texte.
+	 * Affiche le résultat dans le TextArea.
+	 */
 	@FXML
-	private void doSimul() {
+	private void doEmprunt() {
 
-		String aff = "";
+	    String aff = "";
 
-		if (!montant.getText().isEmpty() && isNumber(this.montant) && !annee.getText().isEmpty() && isNumber(annee) && !TA.getText().isEmpty() && isDouble(TA)) {
+	    // Vérifie que les champs de texte ne sont pas vides et contiennent des valeurs numériques valides
+	    if (!montant.getText().isEmpty() && isNumber(this.montant) && !annee.getText().isEmpty() && isNumber(annee) && !TA.getText().isEmpty() && isDouble(TA)) {
 
-			double numTA = Double.parseDouble(TA.getText());
-			int numA= Integer.parseInt(annee.getText());
-			double numMontant= Double.parseDouble(montant.getText());
+	        double numTauxAnnuel = Double.parseDouble(TA.getText());
+	        int numAnnee= Integer.parseInt(annee.getText());
+	        double numMontant= Double.parseDouble(montant.getText());
 
-			aff ="Année      |      Capital restant dû      |      Intérêts      |      Amortissement du capital      | Annuité\n";
-
-			double Capital=numMontant;
-			double interet=(Capital/100)*numTA;
-			double amor= (Capital/numA);
-			double annuite= amor+interet;
-
-
-			double totI = 0;
-			double totC = 0;
-			double totA = 0;
-			for (int i =0 ; i<numA; i++) {
-				int bona =i+1;
-				totI += interet;
-				totC += amor;
-				totA += annuite;
-				
-				
-				aff = aff + "    "+ bona +"             |   " + Capital + "    |     " + interet + "     |               " + amor +"                  |   " + annuite + "\n";
-
-				Capital = Capital-amor;
-				interet = (Capital/100)*numTA;
-				annuite = amor+interet;
+	        // Initialise la chaîne de caractères pour afficher le tableau 
+	        aff ="Année      |      Capital restant dû      |      Intérêts      |      Amortissement du capital      | Annuité\n";
+	        
+	        //calculs
+	        double Capital=numMontant;
+	        double interet=(Capital/100)*numTauxAnnuel;
+	        double amortissement= (Capital/numAnnee);
+	        double annuite= amortissement+interet;
 
 
-			}
+	        double totaI = 0;
+	        double totalC = 0;
+	        double totA = 0;
+
+	        // Calcule les valeurs pour chaque année et les ajoute à la chaîne d'affichage
+	        for (int i =0 ; i<numAnnee; i++) {
+	            int bona =i+1;
+	            totaI += interet;
+	            totalC += amortissement;
+	            totA += annuite;
 
 
-			aff = aff + "    "+ " Total " +"   |   " + "       " + "    |     " + totI + "     |               " + totC +"                  |   " + totA + "\n";
-			txt.setText(aff);
-			
-		}
+	            aff = aff + "    "+ bona +"          |          " + Capital + "          |          " + interet + "          |          " + amortissement +"          |          " + annuite + "\n";
 
+	            Capital = Capital-amortissement;
+	            interet = (Capital/100)*numTauxAnnuel;
+	            annuite = amortissement+interet;
+
+	        }
+
+	        // Ajoute la ligne du total à la chaîne d'affichage
+	        aff = aff + "    "+ " Total " +"   |   " + "       " + "    |     " + totaI + "     |               " + totalC +"                  |   " + totA + "\n";
+
+	        // Affiche le résultat 
+	        txt.setText(aff);
+	    }
 	}
 
 
-	
-
-
+	/** @autor RAYAN SELLOU 4B
+	 * Effectue une simulation d'assurance en générant un tableau d'amortissement
+	 * basé sur les valeurs saisies dans les champs de texte.
+	 * Affiche le résultat dans le TextArea.
+	 */
 	@FXML
-    private void doAss() {
-        DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        String aff = "";
+	private void doAssurance() {
+	    DecimalFormat decimalFormat = new DecimalFormat("#.##");
+	    String aff = "";
 
-        if (!montantAss.getText().isEmpty() && isNumber(montantAss) && !TauxAnnuel.getText().isEmpty() && isDouble(TauxAnnuel) && !DureeMois.getText().isEmpty() && isNumber(DureeMois)) {
+	    // Vérifie que les champs de texte ne sont pas vides et contiennent des valeurs numériques valides
+	    if (!montantAss.getText().isEmpty() && isNumber(montantAss) && !TauxAnnuel.getText().isEmpty() && isDouble(TauxAnnuel) && !DureeMois.getText().isEmpty() && isNumber(DureeMois)) {
 
-            double numTA= Double.parseDouble(TauxAnnuel.getText());
-            int numA= Integer.parseInt(DureeMois.getText());
-            int numMontant= Integer.parseInt(montantAss.getText());
-            double Tapl = numTA/100/12;
-            double tour = numA;
-            numA = numA - numA - numA;
+	        double numTauxAnnuel= Double.parseDouble(TauxAnnuel.getText());
+	        int numAnnee= Integer.parseInt(DureeMois.getText());
+	        int numMontant= Integer.parseInt(montantAss.getText());
+	        double Tapli = numTauxAnnuel/100/12;
+	        double tour = numAnnee;
+	        numAnnee = numAnnee - numAnnee - numAnnee;
 
-            aff ="Num mois | Capital restant dû en début de période |Intérêts | Montant des intêrets | Montant du principal  |  Montant à rembourser (Mensualité) | Capital restant dû en fin de période \n";
+	        // Initialise la chaîne de caractères pour afficher le tableau d'amortissement
+	        aff ="Num mois          |          Capital restant dû en début de période          |          Intérêts          |          Montant des intêrets          |          Montant du principal           |          Montant à rembourser (Mensualité)          |          Capital restant dû en fin de période \n";
 
-            double CapDeb = numMontant;
-            
+	        double CapitalDebut = numMontant;
 
-            double MontantArembourser = numMontant * (Tapl/ (1-(Math.pow(1+Tapl, numA))));
+	        // Calcul du montant à rembourser (mensualité) selon la formule de calcul de l'assurance
+	        double MontantArembourser = numMontant * (Tapli/ (1-(Math.pow(1+Tapli, numAnnee))));
 
+	        // Calcule les valeurs pour chaque mois et les ajoute à la chaîne d'affichage
+	        for (int i =0 ; i<tour; i++) {
+	            int bona =i+1;
+	            double interet = CapitalDebut*Tapli;
+	            double princ= MontantArembourser-interet;
+	            double CapitalFin= CapitalDebut-princ;
+	            aff = aff + "    "+ bona +"          |          " + decimalFormat.format(CapitalDebut) + "          |          " + decimalFormat.format(interet) + "          |          " + decimalFormat.format(princ) +"          |          " + decimalFormat.format(MontantArembourser) + "          |" + decimalFormat.format(CapitalFin) + "\n";
 
-            
+	            // Met à jour les valeurs pour le prochain mois
+	            interet = CapitalDebut*Tapli;
+	            CapitalFin = CapitalDebut -princ;
+	            princ = MontantArembourser-interet;
+	            CapitalDebut = CapitalFin;
+	        }
 
-            
-
-
-            for (int i =0 ; i<tour; i++) {
-                int bona =i+1;
-                double interet = CapDeb*Tapl;
-                double princ= MontantArembourser-interet;
-                double CapFin= CapDeb-princ;
-                aff = aff + "    "+ bona +"             |                   " + decimalFormat.format(CapDeb) + "             |                           " + decimalFormat.format(interet) + "     |               " + decimalFormat.format(princ) +"                  |   " + decimalFormat.format(MontantArembourser) + "  |    " + decimalFormat.format(CapFin) + "\n";
-
-
-
-
-
-
-                interet = CapDeb*Tapl;
-                CapFin = CapDeb -princ;
-                princ = MontantArembourser-interet;
-                CapDeb = CapFin;
-
-
-            }
-            txt.setText(aff);
-        }
+	        // Affiche le résultat dans le TextArea
+	        txt.setText(aff);
+	    }
 	}
 
 	
@@ -219,18 +223,9 @@ public class SimulationEditorPaneController implements Initializable {
 			return false;
 		}
 	}
-
-	private boolean isFloat(TextField message) {
-		try {
-			Float.parseFloat(message.getText());
-			return true;
-		} catch(NumberFormatException e) {
-			return false;
-		}
-	
 	
 		
-	}
+	
 	private boolean isDouble(TextField message) {
 		try {
 			Double.parseDouble(message.getText());

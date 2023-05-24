@@ -151,7 +151,8 @@ public class OperationsManagementController {
 	}
 
 	/**
-	 * RAYAN SELLOU 4B Ici on créer la fonction permettant de gérer les crédits
+	 * @autor RAYAN SELLOU 4B 
+	 * Ici on créer la fonction permettant de gérer les crédits
 	 * Cette méthode permet de gérer les crédits d'un compte client.
 	 * 
 	 * @implNote Cette méthode est appelée lorsque l'utilisateur clique sur le
@@ -257,39 +258,49 @@ public class OperationsManagementController {
 	@FXML
 	private Button btnPDF;
 	
+	
+	/** @autor RAYAN SELLOU 4B
+	 * Génère un relevé PDF pour le compte courant et l'ouvre avec l'application par défaut.
+	 * Le relevé est enregistré dans le dossier "ReleveComptes" avec le nom "RelevéCompteN°[numéroCompte].pdf".
+	 * Affiche également une boîte de dialogue pour informer l'utilisateur du succès de la création du relevé.
+	 */
 	@FXML
 	private void doRelevePDF() {
-		Document document = new Document();
+	    Document document = new Document();
 
-		try {
-			
-			String nom = "ReleveComptes/RelevéCompteN°" + this.compteConcerne.idNumCompte + ".pdf";
-			
-			PdfWriter.getInstance(document, new FileOutputStream(nom));
-			document.open();
-			
-            Paragraph infoClient = new Paragraph("N°Client : " + this.compteConcerne.idNumCli + "  | Relevé du compte " + this.compteConcerne.toString() + "\n\n");
-			
-            document.add(infoClient);
-			document.add(new Paragraph("Liste des opérations :"));
-			
-			for (int i=0; i<listeOP.size(); i++) {
-				document.add(new Paragraph(listeOP.get(i).toString()));
-			}
-			
-			document.close();
-			try {
-				Desktop.getDesktop().open(new File(nom));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			AlertUtilities.showAlert(this.primaryStage, "Création du relevé réussie", "Le relevé du compte n°" + this.compteConcerne.idNumCompte + " a bien été crée\ndans le dossier ReleveComptes !", null, AlertType.INFORMATION);
-		} catch (DocumentException e) {
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+	    try {
+	        // Définition du nom de fichier pour le relevé
+	        String nom = "ReleveComptes/RelevéCompteN°" + this.compteConcerne.idNumCompte + ".pdf";
+
+	        // Création de l'instance PdfWriter avec le document et le fichier de sortie
+	        PdfWriter.getInstance(document, new FileOutputStream(nom));
+	        document.open();
+	        
+	        // Ajout des informations sur le client et le compte dans le relevé
+	        Paragraph infoClient = new Paragraph("N°Client : " + this.compteConcerne.idNumCli + "  | Relevé du compte " + this.compteConcerne.toString() + "\n\n");
+	        document.add(infoClient);
+	        
+	        // Ajout de la liste des opérations dans le relevé
+	        document.add(new Paragraph("Liste des opérations :"));
+	        for (int i = 0; i < listeOP.size(); i++) {
+	            document.add(new Paragraph(listeOP.get(i).toString()));
+	        }
+	        
+	        document.close();
+	        
+	        // Ouvre le fichier PDF avec l'application par défaut
+	        try {
+	            Desktop.getDesktop().open(new File(nom));
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	        
+	        // Affiche une boîte de dialogue d'information sur la réussite de la création du relevé
+	        AlertUtilities.showAlert(this.primaryStage, "Création du relevé réussie", "Le relevé du compte n°" + this.compteConcerne.idNumCompte + " a bien été créé\n dans le dossier ReleveComptes !", null, AlertType.INFORMATION);
+	    } catch (DocumentException e) {
+	        e.printStackTrace();
+	    } catch (FileNotFoundException e) {
+	        e.printStackTrace();
+	    }
 	}
 }
