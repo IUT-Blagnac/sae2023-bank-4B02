@@ -54,10 +54,10 @@ detaillez contraintes orga (contrainte sur qui fait quoi, jalons de livraisons, 
 | 17/05   | Jar V1           |    Tous     |    link:LV1/Dev/JAR/[Jar V1]     |
 | 16/05   | Suivi projet V1  |    Tous     |                                                             | commits pas assez commentés, readme OK, arbo GIT OK. board des issues pas en ligne avec GANTT, il manque beaucoup d'issues. le board ne semble pas maintenu a jour. Comment faites vous pour connaitre en temps réel l'avancement du projet ?       
 | 26/05   | Gantt V2 réalisé |    Rayan    |                                                             |       
-| 26/05   | Doc. Util. V2    |    Marwan   |                                                             |       
-| 26/05   | Doc. Tec. V2     |    Marwan   |                                                             |       
+| 26/05   | Doc. Util. V2    |    Marwan   | link:LV2/Docs/DocumentUtilisateurV2.adoc[DocUserV2]  |       
+| 26/05   | Doc. Tec. V2     |    Marwan   | link:LV2/Docs/DocumentTechniqueV2.adoc[DocTechV2] |       
 | 26/05   | Code V2          |    Tous     |                                                             |       
-| 26/05   | Cahier Test v2 + Recette|    Ahmad    |                                                |        
+| 26/05   | Cahier Test v2 + Recette|    Ahmad    | link:LV2/Docs/CahierDeRecetteV2.adoc[CahierDeTestV2]  |        
 | 26/05   | `jar` projet     |    Tous     |                                                             |        
 | 26/05   | Chiffrage Projet |             |                                                             |     
 |===
