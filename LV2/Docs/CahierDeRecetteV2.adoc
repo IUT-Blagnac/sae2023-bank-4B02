@@ -300,7 +300,7 @@ Si tous les champs sont valides mais que l'utilisateur clique sur le bouton "Ann
 
 === Cas d'utilisation de la V2
 
-image::ressources/UseCaseV2.PNG[]
+image::ressources/useCase/useCaseV2.PNG[]
 
 === Test des fonctionnalités V2
 
