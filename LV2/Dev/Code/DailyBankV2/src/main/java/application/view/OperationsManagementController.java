@@ -151,7 +151,9 @@ public class OperationsManagementController {
 	}
 
 	/**
-	 * @autor RAYAN SELLOU 4B Ici on créer la fonction permettant de gérer les crédits
+	 * @autor RAYAN SELLOU 4B 
+	 * 
+	 * Ici on créer la fonction permettant de gérer les crédits
 	 * Cette méthode permet de gérer les crédits d'un compte client.
 	 * 
 	 * @implNote Cette méthode est appelée lorsque l'utilisateur clique sur le
@@ -261,6 +263,7 @@ public class OperationsManagementController {
 	
 	
 	/** @autor RAYAN SELLOU 4B
+	 * 
 	 * Génère un relevé PDF pour le compte courant et l'ouvre avec l'application par défaut.
 	 * Le relevé est enregistré dans le dossier "ReleveComptes" avec le nom "RelevéCompteN°[numéroCompte].pdf".
 	 * Affiche également une boîte de dialogue pour informer l'utilisateur du succès de la création du relevé.

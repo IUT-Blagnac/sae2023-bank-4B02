@@ -60,11 +60,10 @@ public class PrelevementEditorPaneController {
 	}
 
 	/**
-	 * @author KHALIL Ahmad
-	 * 
-	 * Affiche une fenêtre de dialogue pour la création ou la modification d'un prélèvement.
-	 * Initialise les valeurs des champs en fonction du prélèvement fourni (s'il existe) et du mode d'édition.
-	 * Retourne le prélèvement résultant de la saisie utilisateur ou null si l'action est annulée.
+	 * Affiche une fenêtre de dialogue pour la création ou la modification d'un
+	 * prélèvement. Initialise les valeurs des champs en fonction du prélèvement
+	 * fourni (s'il existe) et du mode d'édition. Retourne le prélèvement résultant
+	 * de la saisie utilisateur ou null si l'action est annulée.
 	 *
 	 * @param prlv Le prélèvement à modifier (null pour une création)
 	 * @param mode Le mode d'édition (CREATION ou MODIFICATION)
@@ -120,10 +119,8 @@ public class PrelevementEditorPaneController {
 	}
 
 	/**
-	 * @author KHALIL Ahmad
-	 * 
-	 *         Réagit à l'événement de focus sur le champ de saisie de la date de
-	 *         prélèvement récurrent.
+	 * Réagit à l'événement de focus sur le champ de saisie de la date de
+	 * prélèvement récurrent.
 	 *
 	 * @param txtField         la propriété observée du champ de saisie
 	 * @param oldPropertyValue la valeur précédente de la propriété
@@ -144,10 +141,7 @@ public class PrelevementEditorPaneController {
 	}
 
 	/**
-	 * 
-	 * @author KHALIL Ahmad
-	 * 
-	 *         Réagit à l'événement de focus sur le champ de saisie du bénéficiaire.
+	 * Réagit à l'événement de focus sur le champ de saisie du bénéficiaire.
 	 *
 	 * @param txtField         la propriété observée du champ de saisie
 	 * @param oldPropertyValue la valeur précédente de la propriété
@@ -212,8 +206,8 @@ public class PrelevementEditorPaneController {
 	private Button btnCancel;
 
 	/**
-	 * Annule l'action en cours en réinitialisant la variable prelevementResultat à null
-	 * et en fermant la fenêtre.
+	 * Annule l'action en cours en réinitialisant la variable prelevementResultat à
+	 * null et en fermant la fenêtre.
 	 */
 	@FXML
 	private void doCancel() {
@@ -222,11 +216,9 @@ public class PrelevementEditorPaneController {
 	}
 
 	/**
-	 * @author KHALIL Ahmad
-	 * 
-	 * Gère l'action de l'ajout/modification d'un prélèvement.
-	 * Vérifie la validité des saisies et assigne les valeurs appropriées à prelevementResultat.
-	 * Ferme ensuite la fenêtre.
+	 * Gère l'action de l'ajout/modification d'un prélèvement. Vérifie la validité
+	 * des saisies et assigne les valeurs appropriées à prelevementResultat. Ferme
+	 * ensuite la fenêtre.
 	 */
 	@FXML
 	private void doAjouter() {
@@ -249,8 +241,6 @@ public class PrelevementEditorPaneController {
 	}
 
 	/**
-	 * @author KHALIL Ahmad
-	 * 
 	 * Vérifie la validité des saisies de la fenêtre de dialogue. Vérifie que la
 	 * date du prélèvement est comprise entre 1 et 28, que le nom du bénéficiaire
 	 * n'est pas vide, que le montant est supérieur à 0 et inférieur ou égal à

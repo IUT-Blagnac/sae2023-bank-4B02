@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import application.DailyBankState;
 import application.control.ComptesManagement;
 import application.tools.AlertUtilities;
-import application.tools.ConstantesIHM;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -227,6 +226,11 @@ public class ComptesManagementController {
 		}
 	}
 
+	/**
+	 * @author SELLOU Rayan
+	 * 
+	 * Gère l'événement du bouton "Simuler Emprunt/Assu".
+	 */
 	@FXML
 	private void doSimulerEmprunt() {
 		this.cmDialogController.SimulationEditor();

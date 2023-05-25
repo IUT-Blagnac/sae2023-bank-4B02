@@ -200,9 +200,7 @@ public class PrelevementsManagementController {
 	}
 
 	/**
-	 * @author KHALIL Ahmad
-	 * 
-	 *         Met à jour les informations sur les prélèvements.
+	 * Met à jour les informations sur les prélèvements.
 	 */
 	public void updateInfoPrelevements() {
 		try {
@@ -226,9 +224,7 @@ public class PrelevementsManagementController {
 	}
 
 	/**
-	 * @author KHALIL Ahmad
-	 * 
-	 *         Valide l'état des composants de la fenêtre.
+	 * Valide l'état des composants de la fenêtre.
 	 */
 	private void validateComponentState() {
 		this.btnCreer.setDisable(false);

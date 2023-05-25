@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import application.DailyBankState;
 import application.control.ClientsManagement;
-import application.tools.ConstantesIHM;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
