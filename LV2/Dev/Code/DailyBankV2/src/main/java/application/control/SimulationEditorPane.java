@@ -25,35 +25,49 @@ public class SimulationEditorPane {
 	
 
 	
+	/** @autor RAYAN SELLOU 4B
+	 * Constructeur de la classe SimulationEditorPane.
+	 * Crée une nouvelle fenêtre de simulation et d'assurance d'emprunt.
+	 *
+	 * @param _parentStage le stage parent à associer à la nouvelle fenêtre
+	 * @param _dbstate l'état quotidien de la banque utilisé dans la simulation
+	 */
 	public SimulationEditorPane(Stage _parentStage, DailyBankState _dbstate) {
 
-		try {
-			FXMLLoader loader = new FXMLLoader(SimulationEditorPaneController.class.getResource("simulationeditorpane.fxml"));
-			BorderPane root = loader.load();
+	    try {
+	        // Chargement du fichier FXML
+	        FXMLLoader loader = new FXMLLoader(SimulationEditorPaneController.class.getResource("simulationeditorpane.fxml"));
+	        BorderPane root = loader.load();
 
-			Scene scene = new Scene(root, root.getPrefWidth()+20, root.getPrefHeight()+10);
-			scene.getStylesheets().add(DailyBankApp.class.getResource("application.css").toExternalForm());
+	        // Création de la scène avec la taille préférée du root
+	        Scene scene = new Scene(root, root.getPrefWidth()+20, root.getPrefHeight()+10);
+	        scene.getStylesheets().add(DailyBankApp.class.getResource("application.css").toExternalForm());
 
-			this.primaryStage = new Stage();
-			this.primaryStage.initModality(Modality.WINDOW_MODAL);
-			this.primaryStage.initOwner(_parentStage);
-			StageManagement.manageCenteringStage(_parentStage, this.primaryStage);
-			this.primaryStage.setScene(scene);
-			this.primaryStage.setTitle("Simulation et assurance d'emprunt");
-			this.primaryStage.setResizable(false);
+	        // Création d'une nouvelle fenêtre
+	        this.primaryStage = new Stage();
+	        this.primaryStage.initModality(Modality.WINDOW_MODAL);
+	        this.primaryStage.initOwner(_parentStage);
 
-			this.sepc = loader.getController();
-			this.sepc.initContext(this.primaryStage,this, _dbstate);
+	        // Gestion du centrage de la fenêtre par rapport au stage parent
+	        StageManagement.manageCenteringStage(_parentStage, this.primaryStage);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	        // Configuration de la scène et de la fenêtre
+	        this.primaryStage.setScene(scene);
+	        this.primaryStage.setTitle("Simulation et assurance d'emprunt");
+	        this.primaryStage.setResizable(false);
+
+	        // Récupération du contrôleur du fichier FXML et initialisation de son contexte
+	        this.sepc = loader.getController();
+	        this.sepc.initContext(this.primaryStage, this, _dbstate);
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 	}
 
-	/**
-	 * Permet à l'utilisateur d'interagir avec le dialogue du controleur de la simulation et assurance emprunt
-	 * @see EditionMode
-	 * @see SimulerEditorPaneController
+	/** @autor RAYAN SELLOU 4B
+	 * Affiche la boîte de dialogue de simulation.
+	 * Cette méthode appelle la méthode displayDialog() du contrôleur de la fenêtre de simulation.
 	 */
 	public void doSimulerEditorDialog() {
 		this.sepc.displayDialog();

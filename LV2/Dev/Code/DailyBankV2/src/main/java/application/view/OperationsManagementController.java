@@ -7,8 +7,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.*;
 
@@ -151,8 +149,7 @@ public class OperationsManagementController {
 	}
 
 	/**
-	 * @autor RAYAN SELLOU 4B 
-	 * Ici on créer la fonction permettant de gérer les crédits
+	 * @autor RAYAN SELLOU 4B Ici on créer la fonction permettant de gérer les crédits
 	 * Cette méthode permet de gérer les crédits d'un compte client.
 	 * 
 	 * @implNote Cette méthode est appelée lorsque l'utilisateur clique sur le
@@ -271,30 +268,43 @@ public class OperationsManagementController {
 	    try {
 	        // Définition du nom de fichier pour le relevé
 	        String nom = "ReleveComptes/RelevéCompteN°" + this.compteConcerne.idNumCompte + ".pdf";
-
+	        
 	        // Création de l'instance PdfWriter avec le document et le fichier de sortie
 	        PdfWriter.getInstance(document, new FileOutputStream(nom));
 	        document.open();
 	        
-	        // Ajout des informations sur le client et le compte dans le relevé
-	        Paragraph infoClient = new Paragraph("N°Client : " + this.compteConcerne.idNumCli + "  | Relevé du compte " + this.compteConcerne.toString() + "\n\n");
+	        Font font = new Font(Font.FontFamily.TIMES_ROMAN, 20, Font.BOLD, BaseColor.BLACK);
+	        Paragraph titre = new Paragraph("Voici le relevé du compte n° " +  this.compteConcerne.idNumCompte + " du client n° " + this.compteConcerne.idNumCli + "\n\n", font);
+	        document.add(titre);
+
+	        // Création d'une police personnalisée avec une taille de 12 et une couleur rouge
+	        Font font1 = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL, BaseColor.RED);
+
+	        // Ajout des informations sur le client et le compte dans le relevé avec la police personnalisée
+	        Paragraph infoClient = new Paragraph("N°Client : " + this.compteConcerne.idNumCli + "  | Relevé du compte " + this.compteConcerne.toString() + "\n\n", font1);
 	        document.add(infoClient);
-	        
-	        // Ajout de la liste des opérations dans le relevé
-	        document.add(new Paragraph("Liste des opérations :"));
+
+	        // Création d'une nouvelle police personnalisée avec une taille de 10 et une couleur bleue
+	        Font fontOperations = new Font(Font.FontFamily.COURIER, 10, Font.NORMAL, BaseColor.BLUE);
+
+	        // Ajout de la liste des opérations dans le relevé avec la police personnalisée
+	        Paragraph titreOperations = new Paragraph("Liste des opérations :", fontOperations);
+	        document.add(titreOperations);
+
 	        for (int i = 0; i < listeOP.size(); i++) {
-	            document.add(new Paragraph(listeOP.get(i).toString()));
+	            Paragraph operation = new Paragraph(listeOP.get(i).toString(), fontOperations);
+	            document.add(operation);
 	        }
-	        
+
 	        document.close();
-	        
+
 	        // Ouvre le fichier PDF avec l'application par défaut
 	        try {
 	            Desktop.getDesktop().open(new File(nom));
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
-	        
+
 	        // Affiche une boîte de dialogue d'information sur la réussite de la création du relevé
 	        AlertUtilities.showAlert(this.primaryStage, "Création du relevé réussie", "Le relevé du compte n°" + this.compteConcerne.idNumCompte + " a bien été créé\n dans le dossier ReleveComptes !", null, AlertType.INFORMATION);
 	    } catch (DocumentException e) {
