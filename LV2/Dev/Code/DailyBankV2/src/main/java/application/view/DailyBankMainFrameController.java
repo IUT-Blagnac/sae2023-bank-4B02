@@ -136,7 +136,6 @@ public class DailyBankMainFrameController {
 	 */
 	@FXML
 	private void doLogin() {
-
 		this.dbmfDialogController.loginDunEmploye();
 		this.validateComponentState();
 	}

@@ -83,10 +83,17 @@ public class CompteEditorPaneController {
 			this.btnCancel.setText("Annuler");
 			break;
 		case MODIFICATION:
-			AlertUtilities.showAlert(this.primaryStage, "Non implémenté", "Modif de compte n'est pas implémenté", null,
-					AlertType.ERROR);
-			return null;
-		// break;
+			this.txtSolde.setDisable(true);
+			this.txtIdclient.setText("" + client.idNumCli);
+			this.txtIdAgence.setText("" + client.idAg);
+			this.txtIdNumCompte.setText("" + cpte.idNumCompte);
+			this.txtSolde.setText("" + cpte.solde);
+			this.txtDecAutorise.setText("" + cpte.debitAutorise);
+			this.lblMessage.setText("Modification d'un compte");
+			this.lblSolde.setText("Solde (premier dépôt)");
+			this.btnOk.setText("Modifier");
+			this.btnCancel.setText("Annuler");
+			break;
 		case SUPPRESSION:
 			AlertUtilities.showAlert(this.primaryStage, "Non implémenté", "Suppression de compte n'est pas implémenté",
 					null, AlertType.ERROR);

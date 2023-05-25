@@ -2,10 +2,12 @@ package application.control;
 
 import application.DailyBankApp;
 import application.DailyBankState;
+import application.tools.AlertUtilities;
 import application.tools.StageManagement;
 import application.view.LoginDialogController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -82,7 +84,7 @@ public class LoginDialog {
 
 		try {
 			aebd = new Access_BD_Employe();
-
+			aebd.primaryStage = this.primaryStage;
 			employe = aebd.getEmploye(login, password);
 
 			// Si employé trouvé => modifier l'état de l'application
@@ -93,7 +95,6 @@ public class LoginDialog {
 			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
 			ed.doExceptionDialog();
 			this.dailyBankState.setEmployeActuel(null);
-			this.primaryStage.close();
 			employe = null;
 		} catch (ApplicationException ae) {
 			ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, ae);

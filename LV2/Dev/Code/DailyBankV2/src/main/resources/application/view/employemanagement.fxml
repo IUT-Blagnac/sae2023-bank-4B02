@@ -20,7 +20,7 @@
          <top>
             <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doRechercher" text="Rechercher" BorderPane.alignment="CENTER">
                <BorderPane.margin>
-                  <Insets right="10.0" top="20.0" />
+                  <Insets right="10.0" top="18.0" />
                </BorderPane.margin>
                <font>
                   <Font size="16.0" />
@@ -42,7 +42,7 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btnInfos" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#checkInfo" style="-fx-border-color: grey; -fx-border-width: 5; -fx-border-radius: 15; -fx-background-radius: 15;" text="Informations" textFill="#1d430e">
+                        <Button fx:id="btnInfos" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#checkInfo" text="Informations" textFill="#1d430e">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
@@ -50,7 +50,7 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnMAJ" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doModifierEmploye" style="-fx-border-color: grey; -fx-border-width: 5; -fx-border-radius: 15; -fx-background-radius: 15;" text="Mettre à jour" textFill="#1d430e" GridPane.rowIndex="2">
+                        <Button fx:id="btnMAJ" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doModifierEmploye" text="Mettre à jour" textFill="#1d430e" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </GridPane.margin>
@@ -58,11 +58,11 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Button>
-                        <Button layoutX="10.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-border-color: grey; -fx-border-width: 5; -fx-border-radius: 15; -fx-background-radius: 15;" textFill="#1d430e" visible="false" GridPane.rowIndex="1">
+                        <Button layoutX="10.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" textFill="#1d430e" visible="false" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font></Button>
-                        <Button fx:id="btnSupprimer" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteEmploye" style="-fx-border-color: grey; -fx-border-width: 5; -fx-border-radius: 15; -fx-background-radius: 15;" text="Supprimer" textFill="#1d430e" GridPane.rowIndex="4">
+                        <Button fx:id="btnSupprimer" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteEmploye" text="Supprimer" textFill="#1d430e" GridPane.rowIndex="4">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -76,12 +76,12 @@
             </VBox>
          </center>
          <bottom>
-            <Button fx:id="btnAjouter" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doNouveauEmploye" style="-fx-border-color: grey; -fx-border-width: 5; -fx-border-radius: 15; -fx-background-radius: 15;" text="Ajouter" BorderPane.alignment="CENTER">
+            <Button fx:id="btnAjouter" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doNouveauEmploye" text="Ajouter" BorderPane.alignment="CENTER">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
                <BorderPane.margin>
-                  <Insets bottom="8.0" right="10.0" />
+                  <Insets bottom="15.0" right="10.0" />
                </BorderPane.margin>
             </Button>
          </bottom>

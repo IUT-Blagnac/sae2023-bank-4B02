@@ -176,4 +176,30 @@ public class ComptesManagement {
 		SimulationEditorPane cep = new SimulationEditorPane(this.primaryStage, this.dailyBankState);
 		cep.doSimulerEditorDialog();
 	}
+
+	public void modifierCompte(CompteCourant cpt) {
+		CompteCourant compte;
+        CompteEditorPane cep = new CompteEditorPane(this.primaryStage, this.dailyBankState);
+        compte = cep.doCompteEditorDialog(this.clientDesComptes, cpt, EditionMode.MODIFICATION);
+        
+        //Vérifie si un compte a été créé.   
+        if (compte != null) {
+            try {
+            	//accède à la BDD et ajoute le compte courant à cette dernière
+            	Access_BD_CompteCourant ac = new Access_BD_CompteCourant();
+            	ac.updateCompteCourant(compte);
+            	
+                if (Math.random() < -1) {
+                    throw new ApplicationException(Table.CompteCourant, Order.INSERT, "todo : test exceptions", null);
+                }
+            } catch (DatabaseConnexionException e) {
+                ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
+                ed.doExceptionDialog();
+                this.primaryStage.close();
+            } catch (ApplicationException ae) {
+                ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, ae);
+                ed.doExceptionDialog();
+            }
+        }
+	}
 }

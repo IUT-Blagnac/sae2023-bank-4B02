@@ -18,6 +18,10 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Client;
 import model.data.CompteCourant;
+import model.data.Prelevement;
+import model.orm.Access_BD_Prelevements;
+import model.orm.exception.DataAccessException;
+import model.orm.exception.DatabaseConnexionException;
 
 /**
  * Controller JavaFX de la view ComptesManagement.
@@ -37,14 +41,14 @@ public class ComptesManagementController {
 	// Données de la fenêtre
 	private Client clientDesComptes;
 	private ObservableList<CompteCourant> oListCompteCourant;
-	
 
 	/**
 	 * Initialise le contexte de la fenêtre.
+	 * 
 	 * @param _containingStage La fenêtre parente.
-	 * @param _cm Le contrôleur de gestion des comptes.
-	 * @param _dbstate L'état quotidien de la banque.
-	 * @param client Le client dont les comptes sont affichés.
+	 * @param _cm              Le contrôleur de gestion des comptes.
+	 * @param _dbstate         L'état quotidien de la banque.
+	 * @param client           Le client dont les comptes sont affichés.
 	 */
 	public void initContext(Stage _containingStage, ComptesManagement _cm, DailyBankState _dbstate, Client client) {
 		this.cmDialogController = _cm;
@@ -102,8 +106,6 @@ public class ComptesManagementController {
 	private Button btnClotureCompte;
 	@FXML
 	private Button btnSimulation;
-	
-
 
 	/**
 	 * Gère l'événement du bouton "Annuler".
@@ -132,7 +134,13 @@ public class ComptesManagementController {
 	 */
 	@FXML
 	private void doModifierCompte() {
-		
+		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
+		if (selectedIndice >= 0) {
+			CompteCourant cpt = this.oListCompteCourant.get(selectedIndice);
+			this.cmDialogController.modifierCompte(cpt);
+		}
+		this.loadList();
+		this.validateComponentState();
 	}
 
 	/**
@@ -144,17 +152,28 @@ public class ComptesManagementController {
 	 *         correspondant en appelant la méthode cloturerCompte() du contrôleur
 	 *         de dialogue. Ensuite, elle recharge la liste de comptes courants et
 	 *         valide l'état des composants de l'interface utilisateur.
+	 * @throws DatabaseConnexionException
+	 * @throws DataAccessException
 	 */
 	@FXML
-	private void doCloturerCompte() {
+	private void doCloturerCompte() throws DataAccessException, DatabaseConnexionException {
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			CompteCourant cpt = this.oListCompteCourant.get(selectedIndice);
+			Access_BD_Prelevements ap = new Access_BD_Prelevements();
+			ArrayList<Prelevement> listprelevs = ap.getListePrelevements(cpt.idNumCompte);
 			if (cpt.solde == 0) {
-				boolean rep = AlertUtilities.confirmYesCancel(this.primaryStage, "Action impossible",
-						"Voulez vous vraiment cloturer le compte ? ", null, AlertType.CONFIRMATION);
-				if (rep) {
-					this.cmDialogController.cloturerCompte(cpt);
+				if (listprelevs.size() > 0) {
+					AlertUtilities.showAlert(this.primaryStage, "Action impossible",
+							"Impossible de cloturer le compte car il y a encore " + listprelevs.size()
+									+ " prélèvements en cours !",
+							"", AlertType.INFORMATION);
+				} else {
+					boolean rep = AlertUtilities.confirmYesCancel(this.primaryStage, "Action impossible",
+							"Voulez vous vraiment cloturer le compte ? ", null, AlertType.CONFIRMATION);
+					if (rep) {
+						this.cmDialogController.cloturerCompte(cpt);
+					}
 				}
 			} else {
 				AlertUtilities.showAlert(this.primaryStage, "Action impossible",
@@ -183,30 +202,31 @@ public class ComptesManagementController {
 		this.oListCompteCourant.clear();
 		this.oListCompteCourant.addAll(listeCpt);
 	}
-	
-	
 
 	/**
 	 * Valide l'état des composants de l'interface utilisateur.
 	 */
 	private void validateComponentState() {
-		// Non implémenté => désactivé
-		this.btnSimulation.setDisable(true);
-		if(ConstantesIHM.isAdmin(this.dailyBankState.getEmployeActuel())) {
-			this.btnSimulation.setDisable(false);
-		}
 		this.btnModifierCompte.setDisable(true);
 		this.btnClotureCompte.setDisable(true);
-
+		this.btnVoirOpes.setDisable(true);
 		int selectedIndice = this.lvComptes.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
+			if (this.oListCompteCourant.get(selectedIndice).estCloture.equals("N")) {
+				this.btnModifierCompte.setDisable(false);
+				this.btnClotureCompte.setDisable(false);
+			} else {
+				this.btnModifierCompte.setDisable(true);
+				this.btnClotureCompte.setDisable(true);
+			}
 			this.btnVoirOpes.setDisable(false);
-			this.btnClotureCompte.setDisable(false);
 		} else {
+			this.btnModifierCompte.setDisable(true);
+			this.btnClotureCompte.setDisable(true);
 			this.btnVoirOpes.setDisable(true);
 		}
 	}
-	
+
 	@FXML
 	private void doSimulerEmprunt() {
 		this.cmDialogController.SimulationEditor();

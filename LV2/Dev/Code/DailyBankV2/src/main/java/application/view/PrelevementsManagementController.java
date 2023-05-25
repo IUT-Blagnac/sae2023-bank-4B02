@@ -48,10 +48,10 @@ public class PrelevementsManagementController {
 	 * Initialise le contexte de la fenêtre de gestion des prélèvements.
 	 *
 	 * @param _containingStage Le stage contenant la fenêtre
-	 * @param _om L'instance du gestionnaire de prélèvements
-	 * @param _dbstate L'état courant de la banque
-	 * @param client Le client associé au compte
-	 * @param compte Le compte courant concerné
+	 * @param _om              L'instance du gestionnaire de prélèvements
+	 * @param _dbstate         L'état courant de la banque
+	 * @param client           Le client associé au compte
+	 * @param compte           Le compte courant concerné
 	 */
 	public void initContext(Stage _containingStage, PrelevementsManagement _om, DailyBankState _dbstate, Client client,
 			CompteCourant compte) {
@@ -61,14 +61,15 @@ public class PrelevementsManagementController {
 		this.clientDuCompte = client;
 		this.compteConcerne = compte;
 		this.configure();
-		
+
 		this.lblInfosClient.setText(
 				"N°Client : " + this.clientDuCompte.idNumCli + " | N°Compte : " + this.compteConcerne.idNumCompte
 						+ " | Etat : " + (this.compteConcerne.estCloture.equals("N") ? "Ouvert" : "Cloturé"));
 	}
 
 	/**
-	 * Configure les paramètres et le comportement de la fenêtre de gestion des prélèvements.
+	 * Configure les paramètres et le comportement de la fenêtre de gestion des
+	 * prélèvements.
 	 */
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
@@ -127,19 +128,19 @@ public class PrelevementsManagementController {
 	/**
 	 * @author KHALIL Ahmad
 	 * 
-	 * Édite le prélèvement sélectionné.
+	 *         Édite le prélèvement sélectionné.
 	 */
 	@FXML
 	private void doEditer() {
-		
+
 		int selectedIndice = this.lvPrelevements.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			Prelevement prelev = this.oListPrelevements.get(selectedIndice);
 			if (prelev != null) {
 				this.omDialogController.modifierPrelevement(prelev);
 			} else {
-				AlertUtilities.showAlert(this.primaryStage, "Action impossible",
-						"Prelevement choisi null", "", AlertType.INFORMATION);
+				AlertUtilities.showAlert(this.primaryStage, "Action impossible", "Prelevement choisi null", "",
+						AlertType.INFORMATION);
 			}
 		}
 		updateInfoPrelevements();
@@ -148,7 +149,7 @@ public class PrelevementsManagementController {
 	/**
 	 * @author KHALIL Ahmad
 	 * 
-	 * Crée un nouveau prélèvement.
+	 *         Crée un nouveau prélèvement.
 	 */
 	@FXML
 	private void doCreer() {
@@ -159,16 +160,21 @@ public class PrelevementsManagementController {
 	/**
 	 * @author KHALIL Ahmad
 	 * 
-	 * Exécute tous les prélèvements du compte courant.
+	 *         Exécute tous les prélèvements du compte courant.
 	 */
 	@FXML
 	private void doExecuterAll() {
-		String res = this.omDialogController.executerAll(this.compteConcerne.idNumCompte);
-		if (res == null) {
-			res = "Aucun prélèvement à exécuter ou à cette date.";
+		if (this.dailyBankState.getEmployeActuel().droitsAccess.equals("chefAgence")) {
+			String res = this.omDialogController.executerAll(this.compteConcerne.idNumCompte);
+			if (res == null) {
+				res = "Aucun prélèvement à exécuter ou à cette date.";
+			}
+			AlertUtilities.showAlert(primaryStage, "Réponse du serveur", "Exécution des prélèvements", res,
+					AlertType.INFORMATION);
+		} else {
+			AlertUtilities.showAlert(primaryStage, "Action impossible",
+					"Seul un chef d'agence peut exécuter les prélèvements", null, AlertType.INFORMATION);
 		}
-		AlertUtilities.showAlert(primaryStage, "Réponse du serveur", "Exécution des prélèvements", res,
-				AlertType.INFORMATION);
 		this.updateInfoPrelevements();
 		this.validateComponentState();
 	}
@@ -176,7 +182,7 @@ public class PrelevementsManagementController {
 	/**
 	 * @author KHALIL Ahmad
 	 * 
-	 * Supprime le prélèvement sélectionné.
+	 *         Supprime le prélèvement sélectionné.
 	 */
 	@FXML
 	private void doSupprimer() {
@@ -196,7 +202,7 @@ public class PrelevementsManagementController {
 	/**
 	 * @author KHALIL Ahmad
 	 * 
-	 * Met à jour les informations sur les prélèvements.
+	 *         Met à jour les informations sur les prélèvements.
 	 */
 	public void updateInfoPrelevements() {
 		try {
@@ -222,7 +228,7 @@ public class PrelevementsManagementController {
 	/**
 	 * @author KHALIL Ahmad
 	 * 
-	 * Valide l'état des composants de la fenêtre.
+	 *         Valide l'état des composants de la fenêtre.
 	 */
 	private void validateComponentState() {
 		this.btnCreer.setDisable(false);

@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import model.data.Employe;
@@ -38,28 +39,30 @@ public class EmployeEditorPaneController {
 
 	/**
 	 * Initialise le contexte de la fenêtre.
+	 * 
 	 * @param _containingStage La fenêtre parente.
-	 * @param _dbstate L'état quotidien de la banque.
+	 * @param _dbstate         L'état quotidien de la banque.
 	 */
 	public void initContext(Stage _containingStage, DailyBankState _dbstate) {
 		this.primaryStage = _containingStage;
 		this.dailyBankState = _dbstate;
 		this.configure();
 	}
-	
+
 	/**
 	 * @author KHALIL Ahmad
 	 * 
-	 * Affiche la boîte de dialogue de modification d'un employé.
+	 *         Affiche la boîte de dialogue de modification d'un employé.
 	 *
 	 * @param pfEmploye L'employé à modifier
-	 * @param mode Le mode d'édition (CREATION, MODIFICATION ou SUPPRESSION)
+	 * @param mode      Le mode d'édition (CREATION, MODIFICATION ou SUPPRESSION)
 	 * @return L'employé résultat après modification ou suppression
 	 *
-	 * Cette méthode affiche une boîte de dialogue permettant de modifier un employé existant.
-	 * Le paramètre pfEmploye spécifie l'employé à modifier.
-	 * Le paramètre mode indique le mode d'édition de la boîte de dialogue.
-	 * La méthode retourne l'employé résultat après modification ou suppression.
+	 *         Cette méthode affiche une boîte de dialogue permettant de modifier un
+	 *         employé existant. Le paramètre pfEmploye spécifie l'employé à
+	 *         modifier. Le paramètre mode indique le mode d'édition de la boîte de
+	 *         dialogue. La méthode retourne l'employé résultat après modification
+	 *         ou suppression.
 	 */
 	public Employe displayDialog(Employe pfEmploye, EditionMode mode) {
 
@@ -84,7 +87,7 @@ public class EmployeEditorPaneController {
 			this.txtNom.setDisable(false);
 			this.txtPrenom.setDisable(false);
 			this.txtLogin.setDisable(false);
-			this.txtMdp.setDisable(false);
+			this.mdp.setDisable(false);
 			this.btnGuichetier.setSelected(true);
 			this.txtIdAg.setDisable(false);
 			this.lblMessage.setText("Entrer les informations du nouveau employé");
@@ -92,7 +95,7 @@ public class EmployeEditorPaneController {
 			this.txtNom.setText("");
 			this.txtPrenom.setText("");
 			this.txtLogin.setText("");
-			this.txtMdp.setText("");
+			this.mdp.setText("");
 			this.txtIdAg.setText("");
 			break;
 		case MODIFICATION:
@@ -100,12 +103,11 @@ public class EmployeEditorPaneController {
 			this.txtNom.setDisable(false);
 			this.txtPrenom.setDisable(false);
 			this.txtLogin.setDisable(false);
-			this.txtMdp.setDisable(false);
-			if(this.employeEdite.droitsAccess.equals("guichetier")) {
-			this.btnGuichetier.setSelected(true);
-			this.btnChefAg.setSelected(false);
-			}
-			else {
+			this.mdp.setDisable(false);
+			if (this.employeEdite.droitsAccess.equals("guichetier")) {
+				this.btnGuichetier.setSelected(true);
+				this.btnChefAg.setSelected(false);
+			} else {
 				this.btnChefAg.setSelected(true);
 				this.btnGuichetier.setSelected(false);
 			}
@@ -116,7 +118,8 @@ public class EmployeEditorPaneController {
 			this.txtNom.setText(this.employeEdite.nom);
 			this.txtPrenom.setText(this.employeEdite.prenom);
 			this.txtLogin.setText(this.employeEdite.login);
-			this.txtMdp.setText(this.employeEdite.motPasse);
+			this.mdp.setText(this.employeEdite.motPasse);
+			this.mdp2.setText(this.employeEdite.motPasse);
 			this.txtIdAg.setText(String.valueOf(this.employeEdite.idAg));
 			break;
 		case SUPPRESSION:
@@ -134,14 +137,18 @@ public class EmployeEditorPaneController {
 	}
 
 	/**
-	 * Configure la fenêtre en définissant l'action à effectuer lors de sa fermeture.
+	 * Configure la fenêtre en définissant l'action à effectuer lors de sa
+	 * fermeture.
 	 */
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
+//		this.mdp = new PasswordField();
+//		this.mdp2 = new PasswordField();
 	}
 
 	/**
 	 * Gère l'événement de fermeture de la fenêtre.
+	 * 
 	 * @param e L'événement de fermeture de la fenêtre.
 	 */
 	private void closeWindow(WindowEvent e) {
@@ -173,22 +180,26 @@ public class EmployeEditorPaneController {
 	@FXML
 	private TextField txtLogin;
 	@FXML
-	private TextField txtMdp;
+	private PasswordField mdp;
+	@FXML
+	private PasswordField mdp2;
 	@FXML
 	private TextField txtIdAg;
 	@FXML
 	private Button butOk;
 	@FXML
 	private Button butCancel;
-	
+
 	/**
 	 * Effectue l'action d'ajout d'un employé.
 	 *
 	 * Cette méthode est appelée lorsque l'utilisateur clique sur le bouton d'ajout.
 	 * Elle gère l'ajout d'un nouvel employé en fonction du mode d'édition en cours.
-	 * Si le mode est CREATION ou MODIFICATION, elle vérifie d'abord la validité de la saisie.
-	 * Si la saisie est valide, elle affecte l'employé en cours d'édition à l'employé résultat et ferme la fenêtre.
-	 * Si le mode est SUPPRESSION, elle affecte l'employé en cours d'édition à l'employé résultat et ferme la fenêtre.
+	 * Si le mode est CREATION ou MODIFICATION, elle vérifie d'abord la validité de
+	 * la saisie. Si la saisie est valide, elle affecte l'employé en cours d'édition
+	 * à l'employé résultat et ferme la fenêtre. Si le mode est SUPPRESSION, elle
+	 * affecte l'employé en cours d'édition à l'employé résultat et ferme la
+	 * fenêtre.
 	 */
 	@FXML
 	private void doAjouter() {
@@ -211,70 +222,92 @@ public class EmployeEditorPaneController {
 			break;
 		}
 	}
-	
+
 	/**
 	 * Vérifie si la saisie des informations de l'employé est valide.
 	 *
-	 * Cette méthode vérifie si les informations saisies pour l'employé sont valides.
-	 * Elle récupère les valeurs saisies dans les champs de texte et les assigne à l'employé en cours d'édition.
-	 * Elle effectue différentes vérifications, telles que la présence de valeurs obligatoires et la validité du numéro d'agence.
-	 * Si toutes les vérifications passent avec succès, la méthode retourne true.
-	 * Sinon, elle affiche une fenêtre d'alerte avec les informations sur les erreurs de saisie et retourne false.
+	 * Cette méthode vérifie si les informations saisies pour l'employé sont
+	 * valides. Elle récupère les valeurs saisies dans les champs de texte et les
+	 * assigne à l'employé en cours d'édition. Elle effectue différentes
+	 * vérifications, telles que la présence de valeurs obligatoires et la validité
+	 * du numéro d'agence. Si toutes les vérifications passent avec succès, la
+	 * méthode retourne true. Sinon, elle affiche une fenêtre d'alerte avec les
+	 * informations sur les erreurs de saisie et retourne false.
 	 *
 	 * @return true si la saisie est valide, false sinon
 	 */
 	private boolean isSaisieValide() {
 		this.employeEdite.nom = this.txtNom.getText().trim();
-		this.employeEdite.prenom = this.txtPrenom.getText().trim();
-		this.employeEdite.login = this.txtLogin.getText();
-		this.employeEdite.motPasse = this.txtMdp.getText();
-		try {
-			if (!this.txtIdAg.getText().toString().isEmpty()) {
-				this.employeEdite.idAg = Integer.valueOf(this.txtIdAg.getText());
-			}
-		} catch (java.lang.NumberFormatException e) {
-			System.out.println("Exception NumberFormatException : EmployeEditorPaneController.isSaisieValide");
-		}
-		if (this.btnChefAg.isSelected())
-			this.employeEdite.droitsAccess = "chefAgence";
-		else
-			this.employeEdite.droitsAccess = "guichetier";
-		String info = "";
-		if (this.employeEdite.nom.isEmpty()) {
-			info += "Le nom ne doit pas être vide !\n";
-			this.txtNom.requestFocus();
-		}
-		if (this.employeEdite.prenom.isEmpty()) {
-			info += "Le prénom ne doit pas être vide !\n";
-			this.txtPrenom.requestFocus();
-		}
-		if (this.employeEdite.login.isEmpty()) {
-			info += "Le login ne doit pas être vide !\n";
-			this.txtLogin.requestFocus();
-		}
-		if (this.employeEdite.motPasse.isEmpty()) {
-			info += "Le mot de passe ne doit pas être vide !\n";
-			this.txtMdp.requestFocus();
-		}
-		Access_BD_Employe ac = new Access_BD_Employe();
-		try {
-			if (!ac.checkIdAgence(this.employeEdite.idAg)) {
-				info += "Le numéro d'agence est invalide !\n";
-				this.txtIdAg.requestFocus();
-			}
-		} catch (RowNotFoundOrTooManyRowsException e) {
-			System.out.println(
-					"Exception RowNotFoundOrTooManyRowsException : EmployeEditorPaneController.isSaisieValide");
-		} catch (DataAccessException e) {
-			System.out.println("Exception DataAccessException : EmployeEditorPaneController.isSaisieValide");
-		} catch (DatabaseConnexionException e) {
-			System.out.println("Exception DatabaseConnexionException : EmployeEditorPaneController.isSaisieValide");
-		}
-		if (info.equals("")) {
-			return true;
-		} else {
-			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, info, AlertType.WARNING);
-			return false;
+	    this.employeEdite.prenom = this.txtPrenom.getText().trim();
+	    this.employeEdite.login = this.txtLogin.getText();
+	    this.employeEdite.motPasse = this.mdp.getText();
+	    
+	    try {
+	        if (!this.txtIdAg.getText().toString().isEmpty()) {
+	            this.employeEdite.idAg = Integer.valueOf(this.txtIdAg.getText());
+	        }
+	    } catch (java.lang.NumberFormatException e) {
+	        System.out.println("Exception NumberFormatException : EmployeEditorPaneController.isSaisieValide");
+	    }
+	    
+	    if (this.btnChefAg.isSelected()) {
+	        this.employeEdite.droitsAccess = "chefAgence";
+	    } else {
+	        this.employeEdite.droitsAccess = "guichetier";
+	    }
+	    
+	    String info = "";
+	    
+	    if (this.employeEdite.nom.isEmpty()) {
+	        info += "Le nom ne doit pas être vide !\n";
+	        this.txtNom.requestFocus();
+	    }
+	    
+	    if (this.employeEdite.prenom.isEmpty()) {
+	        info += "Le prénom ne doit pas être vide !\n";
+	        this.txtPrenom.requestFocus();
+	    }
+	    
+	    if (this.employeEdite.login.isEmpty()) {
+	        info += "Le login ne doit pas être vide !\n";
+	        this.txtLogin.requestFocus();
+	    }
+	    
+	    if (this.employeEdite.motPasse.isEmpty()) {
+	        info += "Le mot de passe ne doit pas être vide !\n";
+	        this.mdp.requestFocus();
+	    }
+	    
+	    if (this.mdp2.getText().equals("") && !this.mdp.getText().equals("")) {
+	        info += "Merci de confirmer le mot de passe !\n";
+	        this.mdp2.requestFocus();
+	    }
+	    
+	    if (! this.mdp2.getText().equals("") && !this.mdp.getText().equals(this.mdp2.getText())) {
+	        info += "Les mots de passe doivent être identiques !\n";
+	        this.mdp2.requestFocus();
+	    }
+	    
+	    Access_BD_Employe ac = new Access_BD_Employe();
+	    
+	    try {
+	        if (!ac.checkIdAgence(this.employeEdite.idAg)) {
+	            info += "Le numéro d'agence est invalide !\n";
+	            this.txtIdAg.requestFocus();
+	        }
+	    } catch (RowNotFoundOrTooManyRowsException e) {
+	        System.out.println("Exception RowNotFoundOrTooManyRowsException : EmployeEditorPaneController.isSaisieValide");
+	    } catch (DataAccessException e) {
+	        System.out.println("Exception DataAccessException : EmployeEditorPaneController.isSaisieValide");
+	    } catch (DatabaseConnexionException e) {
+	        System.out.println("Exception DatabaseConnexionException : EmployeEditorPaneController.isSaisieValide");
+	    }
+	    
+	    if (info.equals("")) {
+	        return true;
+	    } else {
+	        AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", null, info, AlertType.WARNING);
+	        return false;
 		}
 	}
 }

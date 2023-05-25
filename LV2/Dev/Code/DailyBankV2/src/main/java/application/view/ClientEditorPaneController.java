@@ -63,45 +63,78 @@ public class ClientEditorPaneController {
 	 * @return le client résultant après l'édition
 	 */
 	public Client displayDialog(Client client, EditionMode mode) {
-	    this.editionMode = mode;
 
-	    if (client == null) {
-	        this.clientEdite = new Client(0, "", "", "", "", "", "N", this.dailyBankState.getEmployeActuel().idAg);
-	    } else {
-	        this.clientEdite = new Client(client);
-	    }
+		this.editionMode = mode;
+		if (client == null) {
+			this.clientEdite = new Client(0, "", "", "", "", "", "N", this.dailyBankState.getEmployeActuel().idAg);
+		} else {
+			this.clientEdite = new Client(client);
+		}
+		this.clientResultat = null;
+		switch (mode) {
+		case CREATION:
+			this.txtIdcli.setDisable(true);
+			this.txtNom.setDisable(false);
+			this.txtPrenom.setDisable(false);
+			this.txtTel.setDisable(false);
+			this.txtMail.setDisable(false);
+			this.rbActif.setSelected(true);
+			this.rbInactif.setSelected(false);
+			if (ConstantesIHM.isAdmin(this.dailyBankState.getEmployeActuel())) {
+				this.rbActif.setDisable(false);
+				this.rbInactif.setDisable(false);
+			} else {
+				this.rbActif.setDisable(true);
+				this.rbInactif.setDisable(true);
+			}
+			this.lblMessage.setText("Informations sur le nouveau client");
+			this.butOk.setText("Ajouter");
+			this.butCancel.setText("Annuler");
+			break;
+		case MODIFICATION:
+			this.txtIdcli.setDisable(true);
+			this.txtNom.setDisable(false);
+			this.txtPrenom.setDisable(false);
+			this.txtTel.setDisable(false);
+			this.txtMail.setDisable(false);
+			this.rbActif.setSelected(true);
+			this.rbInactif.setSelected(false);
+			if (ConstantesIHM.isAdmin(this.dailyBankState.getEmployeActuel())) {
+				this.rbActif.setDisable(false);
+				this.rbInactif.setDisable(false);
+			} else {
+				this.rbActif.setDisable(true);
+				this.rbInactif.setDisable(true);
+			}
+			this.lblMessage.setText("Informations client");
+			this.butOk.setText("Modifier");
+			this.butCancel.setText("Annuler");
+			break;
+		case SUPPRESSION:
+			break;
+		}
+		// Paramétrages spécifiques pour les chefs d'agences
+		if (ConstantesIHM.isAdmin(this.dailyBankState.getEmployeActuel())) {
+			// rien pour l'instant
+		}
+		// initialisation du contenu des champs
+		this.txtIdcli.setText("" + this.clientEdite.idNumCli);
+		this.txtNom.setText(this.clientEdite.nom);
+		this.txtPrenom.setText(this.clientEdite.prenom);
+		this.txtAdr.setText(this.clientEdite.adressePostale);
+		this.txtMail.setText(this.clientEdite.email);
+		this.txtTel.setText(this.clientEdite.telephone);
 
-	    this.clientResultat = null;
+		if (ConstantesIHM.estInactif(this.clientEdite)) {
+			this.rbInactif.setSelected(true);
+		} else {
+			this.rbInactif.setSelected(false);
+		}
 
-	    switch (mode) {
-	        case CREATION:
-	            // Configuration spécifique pour le mode CREATION
-	            // ...
-	            break;
-	        case MODIFICATION:
-	            // Configuration spécifique pour le mode MODIFICATION
-	            // ...
-	            break;
-	        case SUPPRESSION:
-	            // Mode SUPPRESSION non utilisé pour les clients
-	            // Affiche une exception et un dialogue d'exception
-	            // ...
-	            break;
-	    }
+		this.clientResultat = null;
 
-	    // Paramétrages spécifiques pour les chefs d'agences
-	    if (ConstantesIHM.isAdmin(this.dailyBankState.getEmployeActuel())) {
-	        // Configuration spécifique pour les chefs d'agences
-	        // ...
-	    }
-
-	    // Initialisation des champs avec les valeurs du client édité
-	    // ...
-
-	    // Affiche la fenêtre de dialogue et attend la fermeture
-	    this.primaryStage.showAndWait();
-
-	    return this.clientResultat;
+		this.primaryStage.showAndWait();
+		return this.clientResultat;
 	}
 
 	/**

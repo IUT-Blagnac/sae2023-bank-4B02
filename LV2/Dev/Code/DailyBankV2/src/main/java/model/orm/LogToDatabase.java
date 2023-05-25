@@ -84,10 +84,8 @@ public class LogToDatabase {
 			LogToDatabase.currentConnexion.setAutoCommit(false);
 		} catch (SQLTimeoutException e) {
 			LogToDatabase.currentConnexion = null;
-			throw new DatabaseConnexionException("Timeout sur connexion", e);
 		} catch (SQLException e) {
 			LogToDatabase.currentConnexion = null;
-			throw new DatabaseConnexionException("Connexion Impossible", e);
 		}
 
 		return LogToDatabase.currentConnexion;

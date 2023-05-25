@@ -2,10 +2,12 @@ package application.control;
 
 import application.DailyBankApp;
 import application.DailyBankState;
+import application.tools.AlertUtilities;
 import application.view.DailyBankMainFrameController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.data.Employe;
@@ -63,7 +65,7 @@ public class DailyBankMainFrame extends Application {
 				e = ae.getEmploye("Tuff", "Lejeune");
 
 				if (e == null) {
-					System.out.println("\n\nPB DE CONNEXION\n\n");
+					AlertUtilities.showAlert(primaryStage, "Connection impossible", "Connexion à la base de données impossible", "Vérifier votre connexion !", AlertType.ERROR);
 				} else {
 					this.dailyBankState.setEmployeActuel(e);
 				}

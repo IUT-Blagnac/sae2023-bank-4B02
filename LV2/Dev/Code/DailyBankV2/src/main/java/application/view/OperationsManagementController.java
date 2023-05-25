@@ -123,6 +123,8 @@ public class OperationsManagementController {
 	private Button btnCredit;
 	@FXML
 	private Button btnVirement;
+	@FXML
+	private Button btnPrelevements;
 
 	/**
 	 * Action exécutée lors de l'appui sur le bouton Annuler. Ferme la fenêtre
@@ -215,10 +217,12 @@ public class OperationsManagementController {
 			this.btnCredit.setDisable(false);
 			this.btnDebit.setDisable(false);
 			this.btnVirement.setDisable(false);
+			this.btnPrelevements.setDisable(false);
 		} else {
 			this.btnCredit.setDisable(true);
 			this.btnDebit.setDisable(true);
 			this.btnVirement.setDisable(true);
+			this.btnPrelevements.setDisable(true);
 		}
 	}
 

@@ -114,7 +114,7 @@ public class Access_BD_Prelevements {
 			Connection con = LogToDatabase.getConnexion();
 			CallableStatement call;
 
-			String q = "{call EXECUTERPRELEVAUTO (?, ?)}";
+			String q = "{call EXECUTERPRELEVMANUELLE (?, ?)}";
 
 			call = con.prepareCall(q);
 
