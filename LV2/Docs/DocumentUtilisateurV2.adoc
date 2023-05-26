@@ -1,4 +1,4 @@
-= Document Utilisateur DailyBank - Version : 1.0 - Date : 10 mai 2023 Groupe 4B02 - Rédigé par Ahmad KHALIL
+= Document Utilisateur DailyBank - Version : 2.0 - Date : 26 mai 2023 Groupe 4B02 - Rédigé par Marwan AL MASRI
 :icons: font
 :models: models
 :experimental:
