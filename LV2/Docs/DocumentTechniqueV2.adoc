@@ -403,6 +403,8 @@ image::ressources/useCase/UseCaseDebit.PNG[]
 
 Partie du diagramme de classe :
 
+image::ressources/DC/creditdebitDC.PNG[]
+
 Diagramme de séquence : 
 
 Classe utilisées : 
@@ -423,6 +425,8 @@ Partie du UseCase :
 image::ressources/useCase/UseCaseEmprunt.PNG[]
 
 Partie du diagramme de classe :
+
+image::ressources/DC/empruntassuDC.PNG[]
 
 Diagramme de séquence : 
 
@@ -445,6 +449,8 @@ image::ressources/useCase/UseCaseAssurance.PNG[]
 
 Partie du diagramme de classe :
 
+image::ressources/DC/empruntassuDC.PNG[]
+
 Diagramme de séquence : 
 
 Classe utilisées : 
@@ -465,6 +471,8 @@ Partie du UseCase :
 image::ressources/useCase/UseCasePDF.PNG[]
 
 Partie du diagramme de classe :
+
+image::ressources/DC/releveDC.PNG[]
 
 Diagramme de séquence : 
 
@@ -487,6 +495,8 @@ image::ressources/useCase/UseCaseCrudC.PNG[]
 
 Partie du diagramme de classe :
 
+image::ressources/DC/prelevementDC.PNG[]
+
 Diagramme de séquence : 
 
 Classe utilisées : 
@@ -507,6 +517,8 @@ Partie du UseCase :
 image::ressources/useCase/UseCaseCrudR.PNG[]
 
 Partie du diagramme de classe :
+
+image::ressources/DC/prelevementDC.PNG[]
 
 Diagramme de séquence : 
 
@@ -529,6 +541,8 @@ image::ressources/useCase/UseCaseCrudU.PNG[]
 
 Partie du diagramme de classe :
 
+image::ressources/DC/prelevementDC.PNG[]
+
 Diagramme de séquence : 
 
 Classe utilisées : 
@@ -550,6 +564,31 @@ image::ressources/useCase/UseCaseCrudD.PNG[]
 
 Partie du diagramme de classe :
 
+image::ressources/DC/prelevementDC.PNG[]
+
+Diagramme de séquence : 
+
+Classe utilisées : 
+
+package Application.control :
+
+package Application.view :
+
+package Model.orm :
+
+=== CRUD Prélèvements - Exécuter tous les prélèvements (KHALIL Ahmad)
+Permet d'exécuter tous les prélèvements du compte selectionné manuellement, si un ou plusieurs prélèvements sont trouvés à cette date, leurs montants seront prélevés du compte.
+
+- Conditions : seul un chef d'agence peut effectuer cette action
+
+Partie du UseCase :
+
+image::ressources/useCase/prelevmanuUseCase.PNG[]
+
+Partie du diagramme de classe :
+
+image::ressources/DC/prelevementexecDC.PNG[]
+
 Diagramme de séquence : 
 
 Classe utilisées : 
@@ -561,15 +600,21 @@ package Application.view :
 package Model.orm :
 
 === Option : Batch - Prélèvements automatiques
-Permet de faire un débit qui peut dépasser le découvert autorisé.
+Vérifie à chaque nouveau jour à 0h00 si un prélèvement à cette date existe parmis tous les prélèvements existants, tous les prélèvements trouvés sont exécutés.
 
-- Conditions : seul un chef d'agence peut effectuer cette action
+- Conditions : l'application doit être lancée
+
+image::ressources/DC/prelevementexecDC.PNG[]
 
 Partie du UseCase :
+
+image::ressources/useCase/prelevautoUseCase.PNG[]
 
 Partie du diagramme de classe :
 
 Diagramme de séquence : 
+
+image::ressources/DC/prelevementexecDC.PNG[]
 
 Classe utilisées : 
 
@@ -580,13 +625,17 @@ package Application.view :
 package Model.orm :
 
 === Option : Batch - Reléves mensuels
-Permet de faire un débit qui peut dépasser le découvert autorisé.
+Génére un relevé PDF chaque premier du mois à 0h00.
 
-- Conditions : seul un chef d'agence peut effectuer cette action
+- Conditions : l'application doit être lancée
 
 Partie du UseCase :
 
+image::ressources/useCase/releveautoUseCase.PNG[]
+
 Partie du diagramme de classe :
+
+image::ressources/DC/releveDC.PNG[]
 
 Diagramme de séquence : 
 
