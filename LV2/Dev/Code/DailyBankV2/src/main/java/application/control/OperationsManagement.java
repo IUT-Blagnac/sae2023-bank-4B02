@@ -92,7 +92,9 @@ public class OperationsManagement {
 
 	/**
 	 * Permet d'afficher la fenêtre d'édition pour enregistrer une opération de type
-	 * débit sur le compte courant associé à l'instance de cette classe.
+	 * débit sur le compte courant associé à l'instance de cette classe. Une alerte
+	 * de confirmation s'affiche si le débit va dépasser le découvert autorisé. Seul
+	 * un chef d'agence peut effectuer le débit exceptionnel. (Partie de Al-Masri Marwan)
 	 * 
 	 * @return L'opération créée si l'utilisateur a validé l'enregistrement, sinon
 	 *         null.
@@ -105,7 +107,12 @@ public class OperationsManagement {
 			try {
 				Access_BD_Operation ao = new Access_BD_Operation();
 
-				ao.insertDebit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+				if (oep.getTypeDebit()) {
+					ao.insertDebitExceptionnel(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+
+				} else {
+					ao.insertDebit(this.compteConcerne.idNumCompte, op.montant, op.idTypeOp);
+				}
 
 			} catch (DatabaseConnexionException e) {
 				ExceptionDialog ed = new ExceptionDialog(this.primaryStage, this.dailyBankState, e);
@@ -191,13 +198,14 @@ public class OperationsManagement {
 	/**
 	 * @author KHALIL Ahmad
 	 * 
-	 * Affiche la fenêtre de gestion des prélèvements.
+	 *         Affiche la fenêtre de gestion des prélèvements.
 	 */
 	public void afficherPrelevements() {
-		PrelevementsManagement plm = new PrelevementsManagement(this.primaryStage, this.dailyBankState, this.clientDuCompte, this.compteConcerne);
+		PrelevementsManagement plm = new PrelevementsManagement(this.primaryStage, this.dailyBankState,
+				this.clientDuCompte, this.compteConcerne);
 		plm.doPrelevementsManagementDialog();
 	}
-	
+
 	/**
 	 * Récupère la liste des opérations enregistrées sur le compte courant associé à
 	 * l'instance de cette classe, ainsi que le solde actuel de ce compte.

@@ -155,6 +155,43 @@ public class Access_BD_Operation {
 
 			call.execute();
 
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
+		}
+	}
+	
+	/**
+	 * @author Al-Masri Marwan
+	 * 
+	 * Insère un débit exceptionnel dans la base de données.
+	 *
+	 * @param idNumCompte L'identifiant du compte sur lequel effectuer le débit exceptionnel.
+	 * @param montant Le montant du débit exceptionnel.
+	 * @param typeOp Le type d'opération lié au débit exceptionnel.
+	 * @throws DatabaseConnexionException Si une erreur de connexion à la base de données se produit.
+	 * @throws ManagementRuleViolation Si une règle de gestion est violée lors de l'insertion du débit exceptionnel.
+	 * @throws DataAccessException Si une erreur d'accès aux données se produit.
+	 */
+	public void insertDebitExceptionnel(int idNumCompte, double montant, String typeOp)
+			throws DatabaseConnexionException, ManagementRuleViolation, DataAccessException {
+		try {
+			Connection con = LogToDatabase.getConnexion();
+			CallableStatement call;
+			
+			String q = "{call Debiter (?, ?, ?, 1, ?)}";
+			// les ? correspondent aux paramètres : cf. déf procédure (4 paramètres)
+			call = con.prepareCall(q);
+			// Paramètres in
+			call.setInt(1, idNumCompte);
+			// 1 -> valeur du premier paramètre, cf. déf procédure
+			call.setDouble(2, montant);
+			call.setString(3, typeOp);
+			// Paramètres out
+			call.registerOutParameter(4, java.sql.Types.INTEGER);
+			// 4 type du quatrième paramètre qui est déclaré en OUT, cf. déf procédure
+
+			call.execute();
+
 			int res = call.getInt(4);
 
 			if (res != 0) { // Erreur applicative

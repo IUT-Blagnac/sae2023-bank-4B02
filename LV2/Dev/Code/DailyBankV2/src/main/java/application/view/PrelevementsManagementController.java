@@ -180,7 +180,7 @@ public class PrelevementsManagementController {
 	}
 
 	/**
-	 * @author KHALIL Ahmad
+	 * @author Al-Masri Marwan
 	 * 
 	 *         Supprime le prélèvement sélectionné.
 	 */

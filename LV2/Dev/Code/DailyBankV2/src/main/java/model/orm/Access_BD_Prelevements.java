@@ -65,7 +65,7 @@ public class Access_BD_Prelevements {
 	}
 
 	/**
-	 * @author KHALIL Ahmad
+	 * @author Al-Masri Marwan
 	 * 
 	 * Supprime un prélèvement de la base de données.
 	 *

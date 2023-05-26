@@ -88,9 +88,9 @@ public class PrelevementsManagement {
 	}
 
 	/**
-	 * @author KHALIL Ahmad
+	 * @author Al-Masri Marwan
 	 * 
-	 *         Supprime un prélèvement de la base de données.
+	 * Supprime un prélèvement de la base de données.
 	 *
 	 * @param pfPrelevement Le prélèvement à supprimer.
 	 */

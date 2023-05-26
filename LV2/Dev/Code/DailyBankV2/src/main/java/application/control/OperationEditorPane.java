@@ -65,4 +65,11 @@ public class OperationEditorPane {
     public Operation doOperationEditorDialog(CompteCourant cpte, CategorieOperation cm) {
         return this.oepcViewController.displayDialog(cpte, cm);
     }
+    
+    /**
+     * Renvoie le type du débit de l'attribut isDebitExceptionnel situé dans le controlleur.
+     */
+	public boolean getTypeDebit() {
+		return this.oepcViewController.isDebitExceptionnel;
+	}
 }

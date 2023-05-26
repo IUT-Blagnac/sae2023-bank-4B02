@@ -39,11 +39,13 @@ public class OperationEditorPaneController {
 	private CategorieOperation categorieOperation;
 	private CompteCourant compteEdite;
 	private Operation operationResultat;
+	public boolean isDebitExceptionnel = false;
 
 	/**
 	 * Initialise le contexte de la fenêtre.
+	 * 
 	 * @param _containingStage La fenêtre parente.
-	 * @param _dbstate L'état quotidien de la banque.
+	 * @param _dbstate         L'état quotidien de la banque.
 	 */
 	public void initContext(Stage _containingStage, DailyBankState _dbstate) {
 		this.primaryStage = _containingStage;
@@ -52,14 +54,19 @@ public class OperationEditorPaneController {
 	}
 
 	/**
-	 * Configure la fenêtre en définissant l'action à effectuer lors de sa fermeture.
+	 * Configure la fenêtre en définissant l'action à effectuer lors de sa
+	 * fermeture.
 	 */
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
 	}
 
 	/**
-	 * Affiche une boîte de dialogue pour l'enregistrement d'une opération sur un compte.
+	 * Affiche une boîte de dialogue pour l'enregistrement d'une opération sur un
+	 * compte. Une alerte de confirmation s'affiche si le débit va dépasser le
+	 * découvert autorisé. Seul un chef d'agence peut effectuer le débit
+	 * exceptionnel. (Partie de Al-Masri Marwan)
+	 * 
 	 * @param cpte le compte courant concerné
 	 * @param mode la catégorie de l'opération (DEBIT, CREDIT, VIREMENT)
 	 * @return l'opération résultante après l'enregistrement
@@ -175,8 +182,8 @@ public class OperationEditorPaneController {
 	}
 
 	/**
-	 * Effectue l'ajout de l'opération en cours en fonction de la catégorie sélectionnée.
-	 * Les règles de validation varient en fonction de la catégorie.
+	 * Effectue l'ajout de l'opération en cours en fonction de la catégorie
+	 * sélectionnée. Les règles de validation varient en fonction de la catégorie.
 	 */
 	@FXML
 	private void doAjouter() {
@@ -215,12 +222,21 @@ public class OperationEditorPaneController {
 				this.lblMontant.getStyleClass().add("borderred");
 				this.lblMessage.getStyleClass().add("borderred");
 				this.txtMontant.requestFocus();
-				return;
-			}
-			if(montant > 999999) {
-				AlertUtilities.showAlert(this.primaryStage, "Opération impossible",
-						"Le montant doit être inférieur à 1 000 000 !", "", AlertType.INFORMATION);
-				return;
+
+				boolean rep = AlertUtilities.confirmYesCancel(this.primaryStage, "Le découvert est dépasse !",
+						"Souhaitez vous faire un débit exceptionnel ?", null, AlertType.CONFIRMATION);
+
+				if (rep == true) {
+					if (!this.dailyBankState.isChefDAgence()) {
+						AlertUtilities.showAlert(primaryStage, "Action impossible",
+								"Seul un chef d'agence peut effectuer cette action.", null, AlertType.INFORMATION);
+						this.isDebitExceptionnel = false;
+					} else {
+						this.isDebitExceptionnel = true;
+					}
+				} else {
+					return;
+				}
 			}
 			String typeOp = this.cbTypeOpe.getValue();
 			this.operationResultat = new Operation(-1, montant, null, null, this.compteEdite.idNumCli, typeOp);
@@ -251,7 +267,7 @@ public class OperationEditorPaneController {
 				this.txtMontant.requestFocus();
 				return;
 			}
-			if(montant1 > 999999) {
+			if (montant1 > 999999) {
 				AlertUtilities.showAlert(this.primaryStage, "Opération impossible",
 						"Le montant doit être inférieur à 1 000 000 !", "", AlertType.INFORMATION);
 				return;
@@ -285,7 +301,7 @@ public class OperationEditorPaneController {
 				this.txtMontant.requestFocus();
 				return;
 			}
-			if(montant2 > 999999) {
+			if (montant2 > 999999) {
 				AlertUtilities.showAlert(this.primaryStage, "Opération impossible",
 						"Le montant doit être inférieur à 1 000 000 !", "", AlertType.INFORMATION);
 				return;
