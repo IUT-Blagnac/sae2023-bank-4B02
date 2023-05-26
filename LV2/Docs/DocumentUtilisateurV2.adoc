@@ -215,6 +215,10 @@ image::ressources/docUtil17.PNG[]
 
 === Relevé PDF RS
 
-=== CRUD Prelevement Create
+=== CRUD Prelevement Create AK
 
-=== 
+=== CRUD Prelevement Read AK
+
+=== CRUD Prelevement Update AK
+
+=== CRUD Prelevement Delete MAM
