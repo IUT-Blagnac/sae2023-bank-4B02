@@ -85,7 +85,7 @@ image::ressources/docUtil4.PNG[]
 
 - Entrer le solde et le découvert autorisé du compte puis cliquez sur 'Ajouter'.
 
-image::ressources/docUtil5.PNG[]
+image::../../LV1/Docs/ressources/docUtil5.PNG[]
 
 === Créditer / Débiter un compte RS
 
