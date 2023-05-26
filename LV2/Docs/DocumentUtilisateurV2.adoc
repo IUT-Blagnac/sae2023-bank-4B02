@@ -179,7 +179,7 @@ image::ressources/docUtil11.png[]
 
 image::ressources/docUtil14.PNG[]
 
-=== Mettre à jour un employé
+=== Mettre à jour un employé AK
 
 - Conditions : un chef d'agence ne peut pas modifier un autre chef d'agence mais peut modifier un guichetier
 
@@ -195,7 +195,7 @@ image::ressources/docUtil15.PNG[]
 
 image::ressources/docUtil16.PNG[]
 
-=== Supprimer un employé
+=== Supprimer un employé AK
 
 - Conditions : un chef d'agence ne peut pas supprimer un autre chef d'agence mais peut supprimer un guichetier
 
@@ -206,3 +206,15 @@ image::ressources/docUtil11.png[]
 - Selectionnez un employé puis cliquez sur 'Supprimer'.
 
 image::ressources/docUtil17.PNG[]
+
+=== Débit exceptionnel MAM
+
+=== Simuler emprunt RS
+
+=== Simuler assurance RS
+
+=== Relevé PDF RS
+
+=== CRUD Prelevement Create
+
+=== 
