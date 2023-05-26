@@ -1,4 +1,4 @@
-= Document Technique Utilisateur DailyBank - Version : 1.0 - Date : 10 mai 2023 Groupe 4B02 - Rédigé par Ahmad KHALIL
+= Document Technique Utilisateur DailyBank - Version : 2.0 - Date : 26 mai 2023 Groupe 4B02 - Rédigé par Ahmad KHALIL
 :icons: font
 :models: models
 :experimental:
@@ -391,3 +391,224 @@ package Application.view :
 package Model.orm :
 
 - Access_BD_Employe -> la méthode *deleteEmploye* appelée par deleteEmploye (EmployeManagement)
+
+=== Débit exceptionnel (Al-Masri Marwan)
+Permet de faire un débit qui peut dépasser le découvert autorisé.
+
+- Conditions : seul un chef d'agence peut effectuer cette action
+
+Partie du UseCase :
+
+image::ressources/useCase/UseCaseDebit.PNG[]
+
+Partie du diagramme de classe :
+
+Diagramme de séquence : 
+
+Classe utilisées : 
+
+package Application.control :
+
+package Application.view :
+
+package Model.orm :
+
+=== Simuler un emprunt (SELLOU Rayan)
+Permet de faire un débit qui peut dépasser le découvert autorisé.
+
+- Conditions : seul un chef d'agence peut effectuer cette action
+
+Partie du UseCase :
+
+image::ressources/useCase/UseCaseEmprunt.PNG[]
+
+Partie du diagramme de classe :
+
+Diagramme de séquence : 
+
+Classe utilisées : 
+
+package Application.control :
+
+package Application.view :
+
+package Model.orm :
+
+=== Simuler une assurance (SELLOU Rayan)
+Permet de faire un débit qui peut dépasser le découvert autorisé.
+
+- Conditions : seul un chef d'agence peut effectuer cette action
+
+Partie du UseCase :
+
+image::ressources/useCase/UseCaseAssurance.PNG[]
+
+Partie du diagramme de classe :
+
+Diagramme de séquence : 
+
+Classe utilisées : 
+
+package Application.control :
+
+package Application.view :
+
+package Model.orm :
+
+=== Relevé PDF (SELLOU Rayan)
+Permet de faire un débit qui peut dépasser le découvert autorisé.
+
+- Conditions : seul un chef d'agence peut effectuer cette action
+
+Partie du UseCase :
+
+image::ressources/useCase/UseCasePDF.PNG[]
+
+Partie du diagramme de classe :
+
+Diagramme de séquence : 
+
+Classe utilisées : 
+
+package Application.control :
+
+package Application.view :
+
+package Model.orm :
+
+=== CRUD Prélèvements - CREATE (KHALIL Ahmad)
+Permet de faire un débit qui peut dépasser le découvert autorisé.
+
+- Conditions : seul un chef d'agence peut effectuer cette action
+
+Partie du UseCase :
+
+image::ressources/useCase/UseCaseCrudC.PNG[]
+
+Partie du diagramme de classe :
+
+Diagramme de séquence : 
+
+Classe utilisées : 
+
+package Application.control :
+
+package Application.view :
+
+package Model.orm :
+
+=== CRUD Prélèvements - READ (KHALIL Ahmad)
+Permet de faire un débit qui peut dépasser le découvert autorisé.
+
+- Conditions : seul un chef d'agence peut effectuer cette action
+
+Partie du UseCase :
+
+image::ressources/useCase/UseCaseCrudR.PNG[]
+
+Partie du diagramme de classe :
+
+Diagramme de séquence : 
+
+Classe utilisées : 
+
+package Application.control :
+
+package Application.view :
+
+package Model.orm :
+
+=== CRUD Prélèvements - UPDATE (KHALIL Ahmad)
+Permet de faire un débit qui peut dépasser le découvert autorisé.
+
+- Conditions : seul un chef d'agence peut effectuer cette action
+
+Partie du UseCase :
+
+image::ressources/useCase/UseCaseCrudU.PNG[]
+
+Partie du diagramme de classe :
+
+Diagramme de séquence : 
+
+Classe utilisées : 
+
+package Application.control :
+
+package Application.view :
+
+package Model.orm :
+
+=== CRUD Prélèvements - DELETE (Al-Masri Marwan)
+Permet de faire un débit qui peut dépasser le découvert autorisé.
+
+- Conditions : seul un chef d'agence peut effectuer cette action
+
+Partie du UseCase :
+
+image::ressources/useCase/UseCaseCrudD.PNG[]
+
+Partie du diagramme de classe :
+
+Diagramme de séquence : 
+
+Classe utilisées : 
+
+package Application.control :
+
+package Application.view :
+
+package Model.orm :
+
+=== Option : Batch - Prélèvements automatiques
+Permet de faire un débit qui peut dépasser le découvert autorisé.
+
+- Conditions : seul un chef d'agence peut effectuer cette action
+
+Partie du UseCase :
+
+Partie du diagramme de classe :
+
+Diagramme de séquence : 
+
+Classe utilisées : 
+
+package Application.control :
+
+package Application.view :
+
+package Model.orm :
+
+=== Option : Batch - Reléves mensuels
+Permet de faire un débit qui peut dépasser le découvert autorisé.
+
+- Conditions : seul un chef d'agence peut effectuer cette action
+
+Partie du UseCase :
+
+Partie du diagramme de classe :
+
+Diagramme de séquence : 
+
+Classe utilisées : 
+
+package Application.control :
+
+package Application.view :
+
+package Model.orm :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
