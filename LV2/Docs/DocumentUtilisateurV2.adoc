@@ -28,7 +28,7 @@ ifdef::env-github[]
 endif::[]
 
 Équipe de développement :
-- Chef de projet : Marwan ALMASRI
+- Chef de projet : Marwan AL MASRI
 - Développeurs : Ahmad KHALIL, Rayan SELLOU, Marwan ALMASRI
 
 toc::[]
