@@ -4,8 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import application.DailyBankState;
 import application.control.SimulationEditorPane;
-import application.tools.AlertUtilities;
-import application.tools.ConstantesIHM;
 import application.tools.EditionMode;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,18 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import model.data.Client;
-import model.data.CompteCourant;
-import model.data.Employe;
-import model.data.Prelevement;
-
 import java.lang.Math;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 

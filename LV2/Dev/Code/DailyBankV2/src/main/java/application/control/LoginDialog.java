@@ -2,12 +2,10 @@ package application.control;
 
 import application.DailyBankApp;
 import application.DailyBankState;
-import application.tools.AlertUtilities;
 import application.tools.StageManagement;
 import application.view.LoginDialogController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;

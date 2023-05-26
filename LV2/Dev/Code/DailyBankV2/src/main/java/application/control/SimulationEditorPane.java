@@ -2,17 +2,13 @@ package application.control;
 
 import application.DailyBankApp;
 import application.DailyBankState;
-import application.tools.EditionMode;
 import application.tools.StageManagement;
-import application.view.ClientsManagementController;
 import application.view.SimulationEditorPaneController;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 
 public class SimulationEditorPane {
