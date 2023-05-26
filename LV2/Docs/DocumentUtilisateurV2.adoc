@@ -59,7 +59,7 @@ Deux options :
 
 == Prise en main de l'application
 
-=== Se connecter
+=== Se connecter MAM RS AK
 
 Première chose à faire dans l'application, se connecter soit en tant que guichetier soit en tant que chef d'agence. Pour se connecter : 
 
@@ -67,7 +67,7 @@ Première chose à faire dans l'application, se connecter soit en tant que guich
 
 image::ressources/docUtil1.PNG[]
 
-=== Créer un compte bancaire
+=== Créer un compte bancaire RS
 
 - Conditions : le découvert autorisé doit être <= 0 et le montant du premier dépôt doit être >= 0.
 
@@ -87,7 +87,7 @@ image::ressources/docUtil4.PNG[]
 
 image::ressources/docUtil5.PNG[]
 
-=== Créditer / Débiter un compte
+=== Créditer / Débiter un compte RS
 
 - Conditions : Le solde de noit pas dépasser le découvert autorisé lors d'un débit. Le montant maximal est de 999 999 pour un crédit / débit (limite de la base de données).
 
@@ -111,7 +111,7 @@ image::ressources/docUtil7.PNG[]
 
 image::ressources/docUtil8.PNG[]
 
-=== Cloturer un compte
+=== Cloturer un compte MAM
 
 - Conditions : le solde du compte à cloturer doit être à 0.
 
@@ -127,7 +127,7 @@ image::ressources/docUtil3.PNG[]
 
 image::ressources/docUtil9.PNG[]
 
-=== Effectuer un virement
+=== Effectuer un virement AK
 
 - Conditions : le solde ne doit pas dépasser le découvert autorisé et le montant maximal est de 999 999 (limite de la base de données).
 
@@ -151,7 +151,7 @@ image::ressources/docUtil7.PNG[]
 
 image::ressources/docUtil10.PNG[]
 
-=== Créer un employé
+=== Créer un employé AK
 
 - Conditions : les champs saisies doivent êtres valide, le numéro d'agence doit exister dans la base de données.
 
@@ -167,8 +167,7 @@ image::ressources/docUtil12.PNG[]
 
 image::ressources/docUtil13.PNG[]
 
-=== Voir un employé
-
+=== Voir un employé MAM
 - Conditions : un chef d'agence ne peut pas voir les LOGINS d'un autre chef d'agence mais peut voir ceux des guichetiers
 
 - Une fois connectée, rendez vous dans -> 'Gestion' -> 'Employe' comme ci-dessous.
