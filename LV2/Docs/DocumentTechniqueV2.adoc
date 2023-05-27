@@ -407,18 +407,30 @@ image::ressources/DC/creditdebitDC.PNG[]
 
 Diagramme de séquence : 
 
-Classe utilisées : 
+image::ressources/DSeq/debitexcepDSeq.png[]
+
+Classe utilisées :
 
 package Application.control :
 
+- OperationsManagement -> la méthode *enregistrerDebit* appelée par doCredit/Debit (OperationsManagementController)
+
+- OperationEditorPane -> *constructeur de CompteEditorPane* && la méthode *doCompteEditorDialog* appelée par enregistrerDebit (OperationsManagement)
+
 package Application.view :
+
+- OperationsManagementController -> la méthode *doDebit* appelée par operationsmanagement.fxml(bouton Crédit/Débit sur la scène)
+
+- OperationEditorPaneController -> la méthode *displayDialog* appelée par doOperationEditorDialog (OperationEditorPane)
 
 package Model.orm :
 
-=== Simuler un emprunt (SELLOU Rayan)
-Permet de faire un débit qui peut dépasser le découvert autorisé.
+- Access_BD_Operation -> la méthode *insertDebitExceptionnel* appelée par enregistrerDebit (OperationsManagement)
 
-- Conditions : seul un chef d'agence peut effectuer cette action
+=== Simuler un emprunt (SELLOU Rayan)
+Permet de simuler un emprunt.
+
+- Conditions : un client doit être seléctionné.
 
 Partie du UseCase :
 
@@ -430,18 +442,30 @@ image::ressources/DC/empruntassuDC.PNG[]
 
 Diagramme de séquence : 
 
+image::ressources/DSeq/empruntDSeq.png[]
+
 Classe utilisées : 
 
 package Application.control :
 
+- ComptesManagement -> la méthode *SimulationEditor* appelée par doSimulerEmprunt (ComptesManagementController)
+
+- ComptesManagement -> *constructeur de SimulationEditorPane* && la méthode *doSimulerEditorDialog* appelée par SimulationEditor (ComptesManagement)
+
+- SimulationEditorPane -> la méthode *displayDialog* appelée par doSimulerEditorDialog (ComptesManagement)
+
 package Application.view :
 
-package Model.orm :
+- ComptesManagementController -> la méthode *doSimulerEmprunt* appelée par comptesmanagement.fxml(bouton "Simuler Emprunt/Assu" sur la scène)
+
+- SimulationEditorPaneController -> la méthode *displayDialog* appelée par doSimulerEditorDialog (SimulationEditorPane)
+
+- SimulationEditorPaneController -> la méthode *doEmprunt* appelée par simulationeditorpane.fxml(bouton "Simuler emprunt" sur la scène)
 
 === Simuler une assurance (SELLOU Rayan)
-Permet de faire un débit qui peut dépasser le découvert autorisé.
+Permet de simuler une assurance d'emprunt.
 
-- Conditions : seul un chef d'agence peut effectuer cette action
+- Conditions : un client doit être seléctionné.
 
 Partie du UseCase :
 
@@ -453,18 +477,30 @@ image::ressources/DC/empruntassuDC.PNG[]
 
 Diagramme de séquence : 
 
+image::ressources/DSeq/assuranceDSeq.png[]
+
 Classe utilisées : 
 
 package Application.control :
 
+- ComptesManagement -> la méthode *SimulationEditor* appelée par doSimulerEmprunt (ComptesManagementController)
+
+- ComptesManagement -> *constructeur de SimulationEditorPane* && la méthode *doSimulerEditorDialog* appelée par SimulationEditor (ComptesManagement)
+
+- SimulationEditorPane -> la méthode *displayDialog* appelée par doSimulerEditorDialog (ComptesManagement)
+
 package Application.view :
 
-package Model.orm :
+- ComptesManagementController -> la méthode *doSimulerEmprunt* appelée par comptesmanagement.fxml(bouton "Simuler Emprunt/Assu" sur la scène)
+
+- SimulationEditorPaneController -> la méthode *displayDialog* appelée par doSimulerEditorDialog (SimulationEditorPane)
+
+- SimulationEditorPaneController -> la méthode *doAssurance* appelée par simulationeditorpane.fxml(bouton "Simuler Assurance" sur la scène)
 
 === Relevé PDF (SELLOU Rayan)
-Permet de faire un débit qui peut dépasser le découvert autorisé.
+Permet de générer un relevé PDF d'un compte bancaire.
 
-- Conditions : seul un chef d'agence peut effectuer cette action
+- Conditions : un compte doit être seléctionné.
 
 Partie du UseCase :
 
@@ -476,18 +512,18 @@ image::ressources/DC/releveDC.PNG[]
 
 Diagramme de séquence : 
 
-Classe utilisées : 
+image::ressources/DSeq/releveDSeq.png[]
 
-package Application.control :
+Classe utilisées : 
 
 package Application.view :
 
-package Model.orm :
+- OperationsManagementController -> la méthode *doRelevePDF* appelée par operationsmanagement.fxml(bouton "Relevé PDF" sur la scène)
 
 === CRUD Prélèvements - CREATE (KHALIL Ahmad)
-Permet de faire un débit qui peut dépasser le découvert autorisé.
+Permet de créer un nouveau prélèvement.
 
-- Conditions : seul un chef d'agence peut effectuer cette action
+- Conditions : le compte ne doit pas être clôturé
 
 Partie du UseCase :
 
@@ -499,18 +535,28 @@ image::ressources/DC/prelevementDC.PNG[]
 
 Diagramme de séquence : 
 
-Classe utilisées : 
+image::ressources/DSeq/prelevCDSeq.png[]
+
+Classe utilisées :
 
 package Application.control :
 
+- PrelevementsManagement -> la méthode *nouveauPrelevement* appelée par doCreer (PrelevementsManagementController)
+- PrelevementEditorPane -> *constructeur de PrelevementEditorPane* && la méthode *doPrelevementEditorDialog* appelée par nouveauPrelevement (PrelevementsManagement)
+
 package Application.view :
+
+- PrelevementsManagementController -> la méthode *doCreer* appelée par PrelevementsManagement.fxml (bouton créer sur la scène)
+- PrelevementEditorPaneController -> la méthode *displayDialog* appelée par doPrelevementEditorDialog (PrelevementEditorPane)
 
 package Model.orm :
 
-=== CRUD Prélèvements - READ (KHALIL Ahmad)
-Permet de faire un débit qui peut dépasser le découvert autorisé.
+- Access_BD_Prelevements -> la méthode *addPrelevement* appelée par nouveauPrelevement (PrelevementsManagement)
 
-- Conditions : seul un chef d'agence peut effectuer cette action
+=== CRUD Prélèvements - READ (KHALIL Ahmad)
+Permet de voir les informations des prélèvements.
+
+- Conditions : le compte ne doit pas être clôturé
 
 Partie du UseCase :
 
@@ -522,18 +568,22 @@ image::ressources/DC/prelevementDC.PNG[]
 
 Diagramme de séquence : 
 
-Classe utilisées : 
+image::ressources/DSeq/prelevRDSeq.png[]
 
-package Application.control :
+Classe utilisées :
 
 package Application.view :
 
+- PrelevementsManagementController -> la méthode *updateInfoPrelevements* appelée par configure (PrelevementsManagementController)
+
 package Model.orm :
 
-=== CRUD Prélèvements - UPDATE (KHALIL Ahmad)
-Permet de faire un débit qui peut dépasser le découvert autorisé.
+- Access_BD_Prelevements -> la méthode *getListePrelevements* appelée par updateInfoPrelevements (PrelevementsManagementController)
 
-- Conditions : seul un chef d'agence peut effectuer cette action
+=== CRUD Prélèvements - UPDATE (KHALIL Ahmad)
+Permet de mettre à jour un prélèvement.
+
+- Conditions : le compte ne doit pas être clôturé
 
 Partie du UseCase :
 
@@ -545,18 +595,28 @@ image::ressources/DC/prelevementDC.PNG[]
 
 Diagramme de séquence : 
 
+image::ressources/DSeq/prelevUDSeq.png[]
+
 Classe utilisées : 
 
 package Application.control :
 
+- PrelevementsManagement -> la méthode *modifierPrelevement* appelée par doEditer (PrelevementsManagementController)
+- PrelevementEditorPane -> *constructeur de PrelevementEditorPane* && la méthode *doPrelevementEditorDialog* appelée par modifierPrelevement (PrelevementsManagement)
+
 package Application.view :
+
+- PrelevementsManagementController -> la méthode *doEditer* appelée par PrelevementsManagement.fxml (bouton Mettre à jour sur la scène)
+- PrelevementEditorPaneController -> la méthode *displayDialog* appelée par doPrelevementEditorDialog (PrelevementEditorPane)
 
 package Model.orm :
 
-=== CRUD Prélèvements - DELETE (Al-Masri Marwan)
-Permet de faire un débit qui peut dépasser le découvert autorisé.
+- Access_BD_Prelevements -> la méthode *updatePrelevement* appelée par modifierPrelevement (PrelevementsManagement)
 
-- Conditions : seul un chef d'agence peut effectuer cette action
+=== CRUD Prélèvements - DELETE (Al-Masri Marwan)
+Permet de supprimer un prélèvement.
+
+- Conditions : le compte ne doit pas être clôturé
 
 Partie du UseCase :
 
@@ -568,15 +628,23 @@ image::ressources/DC/prelevementDC.PNG[]
 
 Diagramme de séquence : 
 
+image::ressources/DSeq/prelevDDSeq.png[]
+
 Classe utilisées : 
 
 package Application.control :
 
+- PrelevementsManagement -> la méthode *supprimer* appelée par doSupprimer (PrelevementsManagementController)
+
 package Application.view :
+
+- PrelevementsManagementController -> la méthode *doSupprimer* appelée par PrelevementsManagement.fxml (bouton Supprimer sur la scène)
 
 package Model.orm :
 
-=== CRUD Prélèvements - Exécuter tous les prélèvements (KHALIL Ahmad)
+- Access_BD_Prelevements -> la méthode *supprimerPrelevement* appelée par supprimer (PrelevementsManagement)
+
+=== Option : Exécuter tous les prélèvements (KHALIL Ahmad)
 Permet d'exécuter tous les prélèvements du compte selectionné manuellement, si un ou plusieurs prélèvements sont trouvés à cette date, leurs montants seront prélevés du compte.
 
 - Conditions : seul un chef d'agence peut effectuer cette action
@@ -591,20 +659,26 @@ image::ressources/DC/prelevementexecDC.PNG[]
 
 Diagramme de séquence : 
 
+image::ressources/DSeq/prelevmanuelleDSeq.png[]
+
 Classe utilisées : 
 
 package Application.control :
 
+- PrelevementsManagement -> la méthode *executerAll* appelée par doExecuterAll (PrelevementsManagementController)
+
 package Application.view :
 
+- PrelevementsManagementController -> la méthode *doExecuterAll* appelée par PrelevementsManagement.fxml (bouton Executer les prélèvements sur la scène)
+
 package Model.orm :
+
+- Access_BD_Prelevements -> la méthode *executerAll* appelée par executerAll (PrelevementsManagement)
 
 === Option : Batch - Prélèvements automatiques
 Vérifie à chaque nouveau jour à 0h00 si un prélèvement à cette date existe parmis tous les prélèvements existants, tous les prélèvements trouvés sont exécutés.
 
 - Conditions : l'application doit être lancée
-
-image::ressources/DC/prelevementexecDC.PNG[]
 
 Partie du UseCase :
 
@@ -612,52 +686,18 @@ image::ressources/useCase/prelevautoUseCase.PNG[]
 
 Partie du diagramme de classe :
 
-Diagramme de séquence : 
-
 image::ressources/DC/prelevementexecDC.PNG[]
 
-Classe utilisées : 
-
-package Application.control :
-
-package Application.view :
-
-package Model.orm :
-
-=== Option : Batch - Reléves mensuels
-Génére un relevé PDF chaque premier du mois à 0h00.
-
-- Conditions : l'application doit être lancée
-
-Partie du UseCase :
-
-image::ressources/useCase/releveautoUseCase.PNG[]
-
-Partie du diagramme de classe :
-
-image::ressources/DC/releveDC.PNG[]
-
 Diagramme de séquence : 
 
+image::ressources/DSeq/prelevAutoDSeq.png[]
+
 Classe utilisées : 
 
-package Application.control :
+package Application.batch :
 
-package Application.view :
+- PrelevementAuto -> la méthode *execute(JobExecutionContext context)* appelée tous les jours à 0h00 par le start de l'application (DailyBankMainFrame)
 
 package Model.orm :
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Access_BD_Prelevements -> la méthode *executerPrelevementAuto* appelée par execute(JobExecutionContext context) (PrelevementAuto)
