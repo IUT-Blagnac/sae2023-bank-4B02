@@ -1,7 +1,9 @@
 package application.view;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
+
 import application.DailyBankState;
 import application.control.SimulationEditorPane;
 import application.tools.EditionMode;
@@ -13,8 +15,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import java.lang.Math;
-import java.text.DecimalFormat;
 
 
 public class SimulationEditorPaneController implements Initializable {

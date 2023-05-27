@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import application.tools.AlertUtilities;
+import javafx.scene.control.Alert.AlertType;
 import model.data.CompteCourant;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -189,14 +191,6 @@ public class Access_BD_CompteCourant {
 			DatabaseConnexionException, ManagementRuleViolation {
 		try {
 
-			CompteCourant cAvant = this.getCompteCourant(cc.idNumCompte);
-			if (cc.debitAutorise > 0) {
-				cc.debitAutorise = -cc.debitAutorise;
-			}
-			if (cAvant.solde < cc.debitAutorise) {
-				throw new ManagementRuleViolation(Table.CompteCourant, Order.UPDATE,
-						"Erreur de règle de gestion : sole à découvert", null);
-			}
 			Connection con = LogToDatabase.getConnexion();
 
 			String query = "UPDATE CompteCourant SET " + "debitAutorise = ? " + "WHERE idNumCompte = ?";
@@ -209,8 +203,7 @@ public class Access_BD_CompteCourant {
 			pst.close();
 			if (result != 1) {
 				con.rollback();
-				throw new RowNotFoundOrTooManyRowsException(Table.CompteCourant, Order.UPDATE,
-						"Update anormal (update de moins ou plus d'une ligne)", null, result);
+				AlertUtilities.showAlert("Erreur", "Merci de réessayer.", AlertType.ERROR);
 			}
 			con.commit();
 		} catch (SQLException e) {

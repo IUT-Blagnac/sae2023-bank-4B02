@@ -1,7 +1,6 @@
 package application.view;
 
 import application.DailyBankState;
-import application.view.PrelevementEditorPaneController;
 import application.tools.AlertUtilities;
 import application.tools.ConstantesIHM;
 import application.tools.EditionMode;

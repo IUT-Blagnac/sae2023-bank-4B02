@@ -38,7 +38,6 @@
 			<version>${javafx.version}</version>
 		</dependency>
 
-
 		<!-- Dépendance pour ojdbc oracle : driver d'accès à une BD Oracle
 		depuis java -->
 		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc10 -->
@@ -47,7 +46,12 @@
 			<artifactId>ojdbc10</artifactId>
 			<version>19.18.0.0</version>
 		</dependency>
-
+		
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.3.2</version>
+		</dependency>
 
 		<!-- Dépendance pour .jar de génération d'un pdf 
 			Exemples de code :

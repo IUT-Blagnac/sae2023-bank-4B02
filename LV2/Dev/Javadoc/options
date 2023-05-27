@@ -1,0 +1,24 @@
+-classpath
+'C:/Users/K/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17.jar;C:/Users/K/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17-win.jar;C:/Users/K/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17.jar;C:/Users/K/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17-win.jar;C:/Users/K/.m2/repository/org/openjfx/javafx-fxml/17/javafx-fxml-17.jar;C:/Users/K/.m2/repository/org/openjfx/javafx-fxml/17/javafx-fxml-17-win.jar;C:/Users/K/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17.jar;C:/Users/K/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17-win.jar;C:/Users/K/.m2/repository/org/openjfx/javafx-web/17/javafx-web-17.jar;C:/Users/K/.m2/repository/org/openjfx/javafx-web/17/javafx-web-17-win.jar;C:/Users/K/.m2/repository/org/openjfx/javafx-media/17/javafx-media-17.jar;C:/Users/K/.m2/repository/org/openjfx/javafx-media/17/javafx-media-17-win.jar;C:/Users/K/.m2/repository/com/oracle/database/jdbc/ojdbc10/19.18.0.0/ojdbc10-19.18.0.0.jar;C:/Users/K/.m2/repository/org/quartz-scheduler/quartz/2.3.2/quartz-2.3.2.jar;C:/Users/K/.m2/repository/com/mchange/c3p0/0.9.5.4/c3p0-0.9.5.4.jar;C:/Users/K/.m2/repository/com/mchange/mchange-commons-java/0.2.15/mchange-commons-java-0.2.15.jar;C:/Users/K/.m2/repository/com/zaxxer/HikariCP-java7/2.4.13/HikariCP-java7-2.4.13.jar;C:/Users/K/.m2/repository/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar;C:/Users/K/.m2/repository/com/itextpdf/itextpdf/5.5.13.3/itextpdf-5.5.13.3.jar'
+-encoding
+'UTF-8'
+-public
+-source
+'17'
+-sourcepath
+'C:/Users/K/sae2023-bank-4B02/LV2/Dev/Code/DailyBankV2/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2023. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/K/sae2023-bank-4B02/LV2/Dev/Code/DailyBankV2/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'DailyBank App 1.0 API'
+-use
+-version
+-windowtitle
+'DailyBank App 1.0 API'

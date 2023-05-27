@@ -70,4 +70,25 @@ public class AlertUtilities {
 
 		alert.showAndWait();
 	}
+	
+	/**
+	 * Affiche une message simple avec bouton de fermeture.
+	 *
+	 * @param _title   Titre du dialogue
+	 * @param _message Message à donner
+	 * @param _at      Type d'alerte (icône associé) (constante définie par
+	 *                 AlertType)
+	 */
+	public static void showAlert(String _title, String _message, AlertType _at) {
+
+		if (_at == null) {
+			_at = AlertType.INFORMATION;
+		}
+		Alert alert = new Alert(_at);
+		alert.setTitle(_title);
+		if (_message == null || !_message.equals(""))
+			alert.setHeaderText(_message);
+
+		alert.showAndWait();
+	}
 }

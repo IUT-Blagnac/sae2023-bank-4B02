@@ -170,7 +170,6 @@ public class ClientsManagementController {
 	 */
 	@FXML
 	private void doModifierClient() {
-
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {
 			Client cliMod = this.oListClients.get(selectedIndice);
@@ -180,7 +179,6 @@ public class ClientsManagementController {
 			}
 		}
 	}
-	
 
 	/**
 	 * Désactive le client sélectionné.
@@ -209,8 +207,6 @@ public class ClientsManagementController {
 	 * Active ou désactive les boutons de modification et de gestion des comptes en fonction de la sélection d'un client.
 	 */
 	private void validateComponentState() {
-		// Non implémenté => désactivé
-		
 		this.btnDesactClient.setDisable(true);
 		int selectedIndice = this.lvClients.getSelectionModel().getSelectedIndex();
 		if (selectedIndice >= 0) {

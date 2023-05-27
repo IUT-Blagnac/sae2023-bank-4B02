@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import application.tools.AlertUtilities;
+import javafx.scene.control.Alert.AlertType;
 import model.data.Prelevement;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -214,6 +217,39 @@ public class Access_BD_Prelevements {
 			con.commit();
 		} catch (SQLException e) {
 			throw new DataAccessException(Table.PrelevementAutomatique, Order.UPDATE, "Erreur accès", e);
+		}
+	}
+
+	/**
+	 * @author KHALIL Ahmad
+	 *
+	 *         Exécute tous les prélèvements automatiques qui sont à cette date.
+	 *
+	 * @throws DatabaseConnexionException En cas de problème de connexion à la base
+	 *                                    de données.
+	 * @throws ManagementRuleViolation    En cas de violation d'une règle de
+	 *                                    gestion.
+	 * @throws DataAccessException        En cas d'erreur d'accès aux données.
+	 */
+	public void executerPrelevementAuto()
+			throws DatabaseConnexionException, ManagementRuleViolation, DataAccessException {
+		try {
+			Connection con = LogToDatabase.getConnexion();
+			CallableStatement call;
+
+			String q = "{call EXECUTERPRELEVAUTO (?)}";
+
+			call = con.prepareCall(q);
+
+			call.registerOutParameter(1, java.sql.Types.VARCHAR);
+
+			call.execute();
+
+			String res = call.getString(1);
+
+			AlertUtilities.showAlert(null, "Prélèvements automatique", res, q, AlertType.INFORMATION);
+		} catch (SQLException e) {
+			throw new DataAccessException(Table.PrelevementAutomatique, Order.OTHER, "Erreur accès", e);
 		}
 	}
 }

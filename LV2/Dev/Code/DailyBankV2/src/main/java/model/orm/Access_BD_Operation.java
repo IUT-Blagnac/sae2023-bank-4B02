@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import application.tools.AlertUtilities;
+import javafx.scene.control.Alert.AlertType;
 import model.data.Operation;
 import model.orm.exception.DataAccessException;
 import model.orm.exception.DatabaseConnexionException;
@@ -61,7 +63,8 @@ public class Access_BD_Operation {
 			pst.close();
 			return alResult;
 		} catch (SQLException e) {
-			throw new DataAccessException(Table.Operation, Order.SELECT, "Erreur accès", e);
+			AlertUtilities.showAlert("Erreur", "Impossible d'accéder à la table.", AlertType.ERROR);
+			return null;
 		}
 	}
 
@@ -108,14 +111,15 @@ public class Access_BD_Operation {
 			if (rs.next()) {
 				rs.close();
 				pst.close();
-				throw new RowNotFoundOrTooManyRowsException(Table.Operation, Order.SELECT,
-						"Recherche anormale (en trouve au moins 2)", null, 2);
+				AlertUtilities.showAlert("Erreur", "Merci de réessayer.", AlertType.ERROR);
+				return null;
 			}
 			rs.close();
 			pst.close();
 			return operationTrouvee;
 		} catch (SQLException e) {
-			throw new DataAccessException(Table.Operation, Order.SELECT, "Erreur accès", e);
+			AlertUtilities.showAlert("Erreur", "Impossible d'accéder à la table.", AlertType.ERROR);
+			return null;
 		}
 	}
 
@@ -156,28 +160,32 @@ public class Access_BD_Operation {
 			call.execute();
 
 		} catch (SQLException e) {
-			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
+			AlertUtilities.showAlert("Erreur", "Impossible d'accéder à la table.", AlertType.ERROR);
 		}
 	}
-	
+
 	/**
 	 * @author Al-Masri Marwan
 	 * 
-	 * Insère un débit exceptionnel dans la base de données.
+	 *         Insère un débit exceptionnel dans la base de données.
 	 *
-	 * @param idNumCompte L'identifiant du compte sur lequel effectuer le débit exceptionnel.
-	 * @param montant Le montant du débit exceptionnel.
-	 * @param typeOp Le type d'opération lié au débit exceptionnel.
-	 * @throws DatabaseConnexionException Si une erreur de connexion à la base de données se produit.
-	 * @throws ManagementRuleViolation Si une règle de gestion est violée lors de l'insertion du débit exceptionnel.
-	 * @throws DataAccessException Si une erreur d'accès aux données se produit.
+	 * @param idNumCompte L'identifiant du compte sur lequel effectuer le débit
+	 *                    exceptionnel.
+	 * @param montant     Le montant du débit exceptionnel.
+	 * @param typeOp      Le type d'opération lié au débit exceptionnel.
+	 * @throws DatabaseConnexionException Si une erreur de connexion à la base de
+	 *                                    données se produit.
+	 * @throws ManagementRuleViolation    Si une règle de gestion est violée lors de
+	 *                                    l'insertion du débit exceptionnel.
+	 * @throws DataAccessException        Si une erreur d'accès aux données se
+	 *                                    produit.
 	 */
 	public void insertDebitExceptionnel(int idNumCompte, double montant, String typeOp)
 			throws DatabaseConnexionException, ManagementRuleViolation, DataAccessException {
 		try {
 			Connection con = LogToDatabase.getConnexion();
 			CallableStatement call;
-			
+
 			String q = "{call Debiter (?, ?, ?, 1, ?)}";
 			// les ? correspondent aux paramètres : cf. déf procédure (4 paramètres)
 			call = con.prepareCall(q);
@@ -195,11 +203,10 @@ public class Access_BD_Operation {
 			int res = call.getInt(4);
 
 			if (res != 0) { // Erreur applicative
-				throw new ManagementRuleViolation(Table.Operation, Order.INSERT,
-						"Erreur de règle de gestion : découvert autorisé dépassé", null);
+				AlertUtilities.showAlert("Erreur", "Merci de réessayer.", AlertType.ERROR);
 			}
 		} catch (SQLException e) {
-			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
+			AlertUtilities.showAlert("Erreur", "Impossible d'accéder à la table.", AlertType.ERROR);
 		}
 	}
 
@@ -221,16 +228,16 @@ public class Access_BD_Operation {
 		sd = "TO_DATE( '" + sd + "' , 'DD/MM/YYYY')";
 		return sd;
 	}
-	
+
 	/**
 	 * @author SELLOU Rayan 4B
 	 * 
-	 * Enregistrement d'un crédit.
+	 *         Enregistrement d'un crédit.
 	 *
-	 * Se fait par procédure stockée : - Vérifie que le débitAutorisé n'est pas
-	 * dépassé <BR />
-	 * - Enregistre l'opération <BR />
-	 * - Met à jour le solde du compte. <BR />
+	 *         Se fait par procédure stockée : - Vérifie que le débitAutorisé n'est
+	 *         pas dépassé <BR />
+	 *         - Enregistre l'opération <BR />
+	 *         - Met à jour le solde du compte. <BR />
 	 *
 	 * @param idNumCompte compte crédité
 	 * @param montant     montant crédité
@@ -240,7 +247,8 @@ public class Access_BD_Operation {
 	 * @throws DatabaseConnexionException Erreur de connexion
 	 * @throws ManagementRuleViolation    Si dépassement découvert autorisé
 	 */
-	public void insertCredit(int idNumCompte, double montant, String idTypeOp) throws DatabaseConnexionException, ManagementRuleViolation, DataAccessException {
+	public void insertCredit(int idNumCompte, double montant, String idTypeOp)
+			throws DatabaseConnexionException, ManagementRuleViolation, DataAccessException {
 		try {
 			Connection con = LogToDatabase.getConnexion();
 			CallableStatement call;
@@ -258,37 +266,37 @@ public class Access_BD_Operation {
 			// 4 type du quatrième paramètre qui est déclaré en OUT, cf. déf procédure
 
 			call.execute();
-			
+
 			int res = call.getInt(4);
 
 			if (res != 0) { // Erreur applicative
-				throw new ManagementRuleViolation(Table.Operation, Order.INSERT,
-						"Erreur de règle de gestion : découvert autorisé dépassé", null);
+				AlertUtilities.showAlert("Erreur", "Dépassement du découvert autorisé !", AlertType.ERROR);
 			}
 		} catch (SQLException e) {
 			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
 		}
 	}
-	
+
 	/**
 	 * @author KHALIL Ahmad
 	 * 
-	 * Enregistrement d'un virement.
+	 *         Enregistrement d'un virement.
 	 *
-	 * Se fait par procédure stockée : - Vérifie que le débitAutorisé n'est pas
-	 * dépassé <BR />
-	 * - Enregistre l'opération <BR />
-	 * - Met à jour le solde du compte. <BR />
+	 *         Se fait par procédure stockée : - Vérifie que le débitAutorisé n'est
+	 *         pas dépassé <BR />
+	 *         - Enregistre l'opération <BR />
+	 *         - Met à jour le solde du compte. <BR />
 	 *
 	 * @param idNumCompte compte emetteur
-	 * @param pfNumCpt numéro du compte recepteur
+	 * @param pfNumCpt    numéro du compte recepteur
 	 * @param montant     montant envoyé
 	 * @throws DataAccessException        Erreur d'accès aux données (requête mal
 	 *                                    formée ou autre)
 	 * @throws DatabaseConnexionException Erreur de connexion
 	 * @throws ManagementRuleViolation    Si dépassement découvert autorisé
 	 */
-	public void insertVirement(int idNumCompte, int pfNumCptVir, double montant) throws DatabaseConnexionException, ManagementRuleViolation, DataAccessException {
+	public void insertVirement(int idNumCompte, int pfNumCptVir, double montant)
+			throws DatabaseConnexionException, ManagementRuleViolation, DataAccessException {
 		try {
 			Connection con = LogToDatabase.getConnexion();
 			CallableStatement call;
@@ -298,20 +306,19 @@ public class Access_BD_Operation {
 			call.setInt(1, idNumCompte);
 			call.setInt(2, pfNumCptVir);
 			call.setDouble(3, montant);
-			
+
 			call.registerOutParameter(4, java.sql.Types.INTEGER);
 
 			call.execute();
-			
+
 			int res = call.getInt(4);
 
 			if (res != 0) { // Erreur applicative
-				throw new ManagementRuleViolation(Table.Operation, Order.INSERT,
-						"Erreur de règle de gestion : découvert autorisé dépassé", null);
+				AlertUtilities.showAlert("Erreur", "Dépassement du découvert autorisé !", AlertType.ERROR);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DataAccessException(Table.Operation, Order.INSERT, "Erreur accès", e);
+			AlertUtilities.showAlert("Erreur", "Impossible d'accéder à la table.", AlertType.ERROR);
 		}
 	}
 }

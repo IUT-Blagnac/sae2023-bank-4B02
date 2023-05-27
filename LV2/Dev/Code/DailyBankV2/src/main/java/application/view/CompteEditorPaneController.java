@@ -34,9 +34,11 @@ public class CompteEditorPaneController {
 	private CompteCourant compteResultat;
 
 	/**
-	 * Initialise le contexte de la fenêtre avec le stage parent et l'état quotidien de la banque.
+	 * Initialise le contexte de la fenêtre avec le stage parent et l'état quotidien
+	 * de la banque.
+	 * 
 	 * @param _containingStage Le stage parent de la fenêtre.
-	 * @param _dbstate L'état quotidien de la banque.
+	 * @param _dbstate         L'état quotidien de la banque.
 	 */
 	public void initContext(Stage _containingStage, DailyBankState _dbstate) {
 		this.primaryStage = _containingStage;
@@ -45,7 +47,8 @@ public class CompteEditorPaneController {
 	}
 
 	/**
-	 * Configure la fenêtre en ajoutant des gestionnaires d'événements aux composants.
+	 * Configure la fenêtre en ajoutant des gestionnaires d'événements aux
+	 * composants.
 	 */
 	private void configure() {
 		this.primaryStage.setOnCloseRequest(e -> this.closeWindow(e));
@@ -56,10 +59,12 @@ public class CompteEditorPaneController {
 
 	/**
 	 * Affiche la fenêtre de dialogue pour la gestion des comptes courants.
+	 * 
 	 * @param client Le client associé au compte courant.
-	 * @param cpte Le compte courant à afficher (null pour un nouveau compte).
-	 * @param mode Le mode d'édition (CREATION, MODIFICATION, SUPPRESSION).
-	 * @return Le compte courant résultant de l'opération (null en cas d'annulation ou d'erreur).
+	 * @param cpte   Le compte courant à afficher (null pour un nouveau compte).
+	 * @param mode   Le mode d'édition (CREATION, MODIFICATION, SUPPRESSION).
+	 * @return Le compte courant résultant de l'opération (null en cas d'annulation
+	 *         ou d'erreur).
 	 */
 	public CompteCourant displayDialog(Client client, CompteCourant cpte, EditionMode mode) {
 		this.clientDuCompte = client;
@@ -121,6 +126,7 @@ public class CompteEditorPaneController {
 
 	/**
 	 * Gère l'événement de fermeture de la fenêtre.
+	 * 
 	 * @param e L'événement de fermeture de la fenêtre.
 	 */
 	private void closeWindow(WindowEvent e) {
@@ -130,7 +136,9 @@ public class CompteEditorPaneController {
 
 	/**
 	 * Gère l'événement de mise au focus du champ de texte "txtDecAutorise".
-	 * @param txtField L'observable qui détecte le changement de focus du champ de texte.
+	 * 
+	 * @param txtField         L'observable qui détecte le changement de focus du
+	 *                         champ de texte.
 	 * @param oldPropertyValue La valeur précédente de la propriété focus.
 	 * @param newPropertyValue La nouvelle valeur de la propriété focus.
 	 * @return null
@@ -153,7 +161,9 @@ public class CompteEditorPaneController {
 
 	/**
 	 * Gère l'événement de mise au focus du champ de texte "txtSolde".
-	 * @param txtField L'observable qui détecte le changement de focus du champ de texte.
+	 * 
+	 * @param txtField         L'observable qui détecte le changement de focus du
+	 *                         champ de texte.
 	 * @param oldPropertyValue La valeur précédente de la propriété focus.
 	 * @param newPropertyValue La nouvelle valeur de la propriété focus.
 	 * @return null
@@ -230,6 +240,7 @@ public class CompteEditorPaneController {
 
 	/**
 	 * Vérifie si la saisie des champs est valide.
+	 * 
 	 * @return true si la saisie est valide, false sinon.
 	 */
 	private boolean isSaisieValide() {
@@ -240,8 +251,10 @@ public class CompteEditorPaneController {
 			if (decouvert > 0) {
 				info += "Le découvert ne peut pas être supérieur à 0 !\n";
 			}
-			if (solde < 0) {
-				info += "Le premier dépôt doit être > à 0 !";
+			if (this.editionMode == editionMode.CREATION) {
+				if (solde < 0) {
+					info += "Le premier dépôt doit être > à 0 !";
+				}
 			}
 			if (decouvert < -9999) {
 				info += "Le découvert maximale est de -9999 !\n";
@@ -253,7 +266,8 @@ public class CompteEditorPaneController {
 				return false;
 			}
 		} catch (NumberFormatException e) {
-			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", "Saisie invalide ! ", "Merci d'entrer des chiffres dans les cases 'Découvert autorisé' et 'Solde'", AlertType.WARNING);
+			AlertUtilities.showAlert(this.primaryStage, "Erreur de saisie", "Saisie invalide ! ",
+					"Merci d'entrer des chiffres dans les cases 'Découvert autorisé' et 'Solde'", AlertType.WARNING);
 			return false;
 		}
 	}
