@@ -278,10 +278,24 @@ image::../../LV2/Docs/ressources/images/ScreenDocUtil5.png[]
 
 === Relevé PDF RS
 
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Client' comme ci-dessous.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil1.png[]
+
+- Selectionnez un client puis cliquer sur 'Comptes client'.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil2.png[]
+
+- Selectionnez un compte puis cliquer sur 'Voir opérations'.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil3.png[]
+
+- Appuyez sur le bouton "Relevé PDF" pour générer un PDF du compte que vous avez sélectionné précedemment.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil6.png[]
+
+- Voilà ! Votre relevé a été créé.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil21.png[]
 
 === CRUD Prelevement Create AK
