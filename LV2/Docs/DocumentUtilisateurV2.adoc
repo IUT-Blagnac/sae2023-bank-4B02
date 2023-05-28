@@ -240,8 +240,20 @@ image::../../LV2/Docs/ressources/images/ScreenDocUtil6.png[]
 
 === CRUD Prelevement Create AK
 
+image::../../LV2/Docs/ressources/images/ScreenDocUtil1.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil2.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil3.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil16.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil0.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil11.png[]
+
 === CRUD Prelevement Read AK
 
 === CRUD Prelevement Update AK
+
+image::../../LV2/Docs/ressources/images/ScreenDocUtil1.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil2.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil3.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil16.png[]
 
 === CRUD Prelevement Delete MAM
