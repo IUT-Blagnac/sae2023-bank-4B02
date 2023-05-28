@@ -244,10 +244,16 @@ image::../../LV2/Docs/ressources/images/ScreenDocUtil1.png[]
 image::../../LV2/Docs/ressources/images/ScreenDocUtil2.png[]
 image::../../LV2/Docs/ressources/images/ScreenDocUtil3.png[]
 image::../../LV2/Docs/ressources/images/ScreenDocUtil16.png[]
-image::../../LV2/Docs/ressources/images/ScreenDocUtil0.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil10.png[]
 image::../../LV2/Docs/ressources/images/ScreenDocUtil11.png[]
 
 === CRUD Prelevement Read AK
+
+image::../../LV2/Docs/ressources/images/ScreenDocUtil1.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil2.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil3.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil16.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil20.png[]
 
 === CRUD Prelevement Update AK
 
