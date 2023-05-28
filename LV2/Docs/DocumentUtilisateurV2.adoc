@@ -300,35 +300,94 @@ image::../../LV2/Docs/ressources/images/ScreenDocUtil21.png[]
 
 === CRUD Prelevement Create AK
 
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Client' comme ci-dessous.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil1.png[]
+
+- Selectionnez un client puis cliquer sur 'Comptes client'.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil2.png[]
+
+- Selectionnez un client puis cliquer sur 'Comptes client'.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil3.png[]
+
+- Appuyez sur le bouton "Gérer les prélèvements" pour effectuer un prélèvement sur le compte sélectionné précedemment.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil16.png[]
+
+- Appuyez sur le bouton "Créer" pour ouvrir la fenêtre de création de prélèvement.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil10.png[]
+
+- Remplissez les champs et appuyez sur le bouton "Valider" pour créer un nouveau prélèvement, appuyez sur "Annuler" si vous ne souhaitez plus le créer.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil11.png[]
 
 === CRUD Prelevement Read AK
 
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Client' comme ci-dessous.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil1.png[]
+
+- Selectionnez un client puis cliquer sur 'Comptes client'.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil2.png[]
+
+- Selectionnez un client puis cliquer sur 'Comptes client'.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil3.png[]
+
+- Appuyez sur le bouton "Gérer les prélèvements" pour effectuer ou consulter un / les prélèvement(s) sur le compte sélectionné précedemment.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil16.png[]
+
+- Vous pouvez maintenant consulter les prélèvements du compte.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil20.png[]
 
 === CRUD Prelevement Update AK
 
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Client' comme ci-dessous.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil1.png[]
+
+- Selectionnez un client puis cliquer sur 'Comptes client'.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil2.png[]
+
+- Selectionnez un client puis cliquer sur 'Comptes client'.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil3.png[]
+
+- Appuyez sur le bouton "Gérer les prélèvements" pour effectuer un prélèvement sur le compte sélectionné précedemment.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil16.png[]
+
+- Appuyez sur le bouton "Mettre à jour" pour ouvrir la fenêtre de mise à jour des prélèvements.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil19.png[]
+
+- Modifiez ce que vous voulez modifier dans les champs puis appuyez sur le bouton 'Modifier" pour appliquer les modifications.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil12.png[]
 
 === CRUD Prelevement Delete MAM
 
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Client' comme ci-dessous.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil1.png[]
+
+- Selectionnez un client puis cliquer sur 'Comptes client'.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil2.png[]
+
+- Selectionnez un client puis cliquer sur 'Comptes client'.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil3.png[]
+
+- Appuyez sur le bouton "Gérer les prélèvements" pour effectuer un prélèvement sur le compte sélectionné précedemment.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil16.png[]
 image::../../LV2/Docs/ressources/images/ScreenDocUtil18.png[]
 image::../../LV2/Docs/ressources/images/ScreenDocUtil14.png[]
