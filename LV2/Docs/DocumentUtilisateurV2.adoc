@@ -237,17 +237,43 @@ image::../../LV2/Docs/ressources/images/ScreenDocUtil15.png[]
 
 === Simuler emprunt RS
 
+- Conditions : Il faut être connecté à un compte Chef d'Agence
+
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Client' comme ci-dessous.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil1.png[]
+
+- Selectionnez un client puis cliquer sur 'Comptes client'.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil2.png[]
+
+- Appuyez ensuite sur le bouton 'Simuler emprunt / assu".
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil4.png[]
+
+- Enfin remplissez les champs concernant la simulation de l'emprunt et validez en appuyant sur le bouton "Simulation emprunt".
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil7.png[]
 
 
 === Simuler assurance RS
 
+- Conditions : Il faut être connecté à un compte Chef d'Agence
+
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Client' comme ci-dessous.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil1.png[]
+
+- Selectionnez un client puis cliquer sur 'Comptes client'.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil2.png[]
+
+- Appuyez ensuite sur le bouton 'Simuler emprunt / assu".
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil4.png[]
+
+- Enfin remplissez les champs concernant la simulation de l'assurance et validez en appuyant sur le bouton "Simulation assurance".
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil5.png[]
 
 === Relevé PDF RS
