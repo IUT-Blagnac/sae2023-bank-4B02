@@ -208,11 +208,30 @@ image::../../LV1/Docs/ressources/docUtil17.PNG[]
 
 === Débit exceptionnel MAM
 
+- Conditions : Il faut être connecté à un compte Chef d'Agence
+
+- Une fois connectée, rendez vous dans -> 'Gestion' -> 'Client' comme ci-dessous.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil1.png[]
+
+- Selectionnez un client puis cliquer sur 'Comptes client'.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil2.png[]
+
+- Selectionnez un compte puis cliquer sur 'Voir opérations'.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil3.png[]
+
+- Appuyez sur le bouton "Débiter" pour effectuer un débit sur le compte sélectionné précedemment.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil17.png[]
+
+- Après avoir rentré un montant au dessus de votre plafond, vous pouvez effectuer le débit.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil13.png[]
+
+- Si vous souhaitez effectivement faire un débit exceptionnel, appuyez sur le bouton "OK", sinon simplement le bouton "Annuler".
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil15.png[]
 
 
