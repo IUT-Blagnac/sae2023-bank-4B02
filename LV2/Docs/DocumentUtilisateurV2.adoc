@@ -257,3 +257,10 @@ image::../../LV2/Docs/ressources/images/ScreenDocUtil3.png[]
 image::../../LV2/Docs/ressources/images/ScreenDocUtil16.png[]
 
 === CRUD Prelevement Delete MAM
+
+image::../../LV2/Docs/ressources/images/ScreenDocUtil1.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil2.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil3.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil16.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil18.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil14.png[]
