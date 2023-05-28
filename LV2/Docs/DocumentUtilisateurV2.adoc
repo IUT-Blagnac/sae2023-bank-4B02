@@ -389,5 +389,11 @@ image::../../LV2/Docs/ressources/images/ScreenDocUtil3.png[]
 - Appuyez sur le bouton "Gérer les prélèvements" pour effectuer un prélèvement sur le compte sélectionné précedemment.
 
 image::../../LV2/Docs/ressources/images/ScreenDocUtil16.png[]
+
+- Appuyez sur le bouton "Supprimer" pour ouvrir la fenêtre de mise à jour des prélèvements.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil18.png[]
+
+- Sélectionnez le prélèvement à supprimer puis appuyez sur le bouton "OK" lors du message de confirmation. Vous pouvez appuyez sur le bouton "Annuler" pour annuler la suppression.
+
 image::../../LV2/Docs/ressources/images/ScreenDocUtil14.png[]
