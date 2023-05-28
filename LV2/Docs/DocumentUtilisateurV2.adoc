@@ -237,6 +237,7 @@ image::../../LV2/Docs/ressources/images/ScreenDocUtil1.png[]
 image::../../LV2/Docs/ressources/images/ScreenDocUtil2.png[]
 image::../../LV2/Docs/ressources/images/ScreenDocUtil3.png[]
 image::../../LV2/Docs/ressources/images/ScreenDocUtil6.png[]
+image::../../LV2/Docs/ressources/images/ScreenDocUtil21.png[]
 
 === CRUD Prelevement Create AK
 
